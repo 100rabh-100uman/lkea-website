@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import Facilities from '../components/Facilities.astro';
+import PrincipalSection from '../components/PrincipalSection.astro';
+import FacultySection from '../components/FacultySection.astro';
+import Testimonials from '../components/Testimonials.astro';
+import GalleryPreview from '../components/GalleryPreview.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+
+
+---
+
+<Layout title="Home">
+  
+  <WhatsAppButton />
+
+  <Hero />
+
+  <AboutSection />
+
+  <Facilities />
+
+  <PrincipalSection />
+
+  <FacultySection />    
+  
+  <Testimonials />
+  
+  <GalleryPreview />  
+
+
+<div id="welcome-modal" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 md:p-6 opacity-0 transition-opacity duration-500">
+    
+    <div class="absolute inset-0 bg-blue-950/80 backdrop-blur-sm" id="modal-overlay"></div>
+    
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-[90%] md:max-w-3xl max-h-[90vh] md:max-h-none overflow-y-auto hide-scrollbar flex flex-col md:flex-row transform scale-95 transition-transform duration-500" id="modal-content">
+        
+        <button id="close-modal" type="button" aria-label="Close" class="absolute top-2 right-2 md:top-3 md:right-3 z-50 bg-slate-100 hover:bg-red-50 text-slate-500 hover:text-red-600 rounded-full p-1.5 md:p-2 shadow-sm border border-slate-200 transition-all cursor-pointer">
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="w-full md:w-5/12 bg-gradient-to-br from-blue-950 to-blue-900 p-5 md:p-8 flex flex-col justify-center items-center text-center relative overflow-hidden shrink-0">
+            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#fbbf24 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            <span class="bg-amber-500 text-white text-[9px] md:text-xs font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full uppercase tracking-widest mb-2 md:mb-5 z-10 shadow-lg border border-amber-400">
+                Session 2026-27
+            </span>
+            <h2 class="text-2xl md:text-4xl font-heading font-black text-white leading-tight mb-1 md:mb-3 z-10 drop-shadow-md">
+                Admissions<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">Now Open</span>
+            </h2>
+            <p class="hidden md:block text-blue-100 text-sm font-medium z-10 leading-relaxed">
+                Shape your child's future with Lord Krishna Educational Academy.
+            </p>
+            
+            <div class="absolute -bottom-16 -left-16 w-40 h-40 bg-amber-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="w-full md:w-7/12 p-5 md:p-10 bg-slate-50 flex flex-col justify-center">
+            <h3 class="text-lg md:text-2xl font-bold text-blue-950 mb-1">Quick Enquiry</h3>
+            <p class="text-[10px] md:text-sm text-slate-500 mb-4 md:mb-6 font-medium leading-tight">Fill out the details below and our admission counselor will contact you.</p>
+
+            <form action="https://api.web3forms.com/submit" method="POST" id="popupEnquiryForm" class="space-y-3 md:space-y-4">
+                <input type="hidden" name="access_key" value="c4b0799c-0bde-498c-ba74-3b047d8162fc">
+                <input type="hidden" name="subject" value="🔥 New Website Enquiry (Popup)">
+                <input type="hidden" name="from_name" value="LKEA Website">
+                
+                <div>
+                    <label class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 block">Parent / Student Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="Name" required class="w-full bg-white border border-slate-300 p-2.5 md:p-3 rounded-lg focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none shadow-sm text-blue-950 text-sm md:text-base font-bold transition-all" placeholder="Enter full name">
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                    <div class="w-full sm:w-1/2">
+                        <label class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 block">Mobile Number <span class="text-red-500">*</span></label>
+                        <input type="tel" name="Mobile" required maxlength="10" class="w-full bg-white border border-slate-300 p-2.5 md:p-3 rounded-lg focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none shadow-sm text-blue-950 text-sm md:text-base font-bold tracking-wide transition-all" placeholder="10 Digits" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    </div>
+                    <div class="w-full sm:w-1/2">
+                        <label class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 block">Class <span class="text-red-500">*</span></label>
+                        <select name="Class" required class="w-full bg-white border border-slate-300 p-2.5 md:p-3 rounded-lg focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none shadow-sm text-blue-950 text-sm md:text-base font-bold transition-all cursor-pointer">
+                            <option value="" disabled selected>Select</option>
+                            <option value="Nursery">Nursery</option>
+                            <option value="LKG">LKG</option>
+                            <option value="UKG">UKG</option>
+                            <option value="Class 1">Class 1</option>
+                            <option value="Class 2">Class 2</option>
+                            <option value="Class 3">Class 3</option>
+                            <option value="Class 4">Class 4</option>
+                            <option value="Class 5">Class 5</option>
+                            <option value="Class 6">Class 6</option>
+                            <option value="Class 7">Class 7</option>
+                            <option value="Class 8">Class 8</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" id="popupSubmitBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-blue-950 font-black py-3 md:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 mt-2 md:mt-4 text-xs md:text-sm uppercase tracking-widest cursor-pointer">
+                    Get a Call Back
+                </button>
+
+                <p id="popupSuccessMsg" class="hidden text-green-600 font-bold text-xs md:text-sm text-center mt-2 md:mt-3 bg-green-50 py-2 rounded border border-green-200">
+                    ✅ Enquiry sent! We will call you soon.
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    // =========================================================
+    // 🧠 SMART MODAL LOGIC (Session Storage & Web3Forms Submit)
+    // =========================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('welcome-modal');
+        const content = document.getElementById('modal-content');
+        const closeBtn = document.getElementById('close-modal');
+        const overlay = document.getElementById('modal-overlay');
+        const form = document.getElementById('popupEnquiryForm');
+
+        // 1. Show Modal only if not seen in this session
+        if (!sessionStorage.getItem('hasSeenLKEAPopup')) {
+            // Wait 2 seconds before showing
+            setTimeout(() => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                // Trigger animation frame
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    content.classList.remove('scale-95');
+                    content.classList.add('scale-100');
+                }, 50);
+
+                // Mark as seen
+                sessionStorage.setItem('hasSeenLKEAPopup', 'true');
+            }, 2000);
+        }
+
+        // 2. Close Modal Function
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 500); // Matches CSS transition duration
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal); // Close when clicking outside
+
+        // 3. Form Submit Logic (Without redirecting)
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Stop page reload
+                
+                const btn = document.getElementById('popupSubmitBtn');
+                const originalText = btn.innerHTML;
+                const msg = document.getElementById('popupSuccessMsg');
+
+                btn.innerHTML = "Sending...";
+                btn.disabled = true;
+
+                const formData = new FormData(form);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if(response.status === 200) {
+                        btn.classList.add('hidden'); // Hide button
+                        msg.classList.remove('hidden'); // Show success message
+                        
+                        // Automatically close modal after 3 seconds of success
+                        setTimeout(() => {
+                            closeModal();
+                        }, 3000);
+                    } else {
+                        alert("Something went wrong. Please try again.");
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    alert("Network Error!");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            });
+        }
+    });
+</script>
+
+</Layout>
+  

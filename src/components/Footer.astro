@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+// Ensure logo.png exists in src/assets/
+import logoImg from '../assets/logo.png'; 
+
+const schoolName = "Lord Krishna";
+const schoolSub = "Educational Academy";
+const address = "Ward no.- 14, Maharshi Mehi Ashram Road, Shivpuri , Saharsa,pin code- 852124, Bihar, INDIA";
+const phone = "94304 52463";
+const phone2 = "6207 436091"; // Second Number Added
+const email = "lkeaSaharsa@gmail.com";
+const googleMapUrl = "https://maps.app.goo.gl/iSKwriiKXs35BHAp7";
+---
+
+<footer class="bg-[#0B1120] text-white pt-10 pb-6 border-t-8 border-amber-600 font-sans relative z-50">
+  
+  <div class="max-w-[95%] mx-auto px-4 md:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8">
+        
+        <div class="space-y-6 md:col-span-1">
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center p-1 border-4 border-amber-600 shadow-xl overflow-hidden shrink-0">
+                    <Image src={logoImg} alt="LKEA Logo" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                    <h2 class="font-heading font-bold text-2xl leading-none text-white tracking-tight">{schoolName}</h2>
+                    <p class="text-xs font-bold text-amber-500 uppercase tracking-widest mt-1">{schoolSub}</p>
+                </div>
+            </div>
+
+            <p class="text-slate-300 text-sm leading-relaxed border-l-4 border-amber-600 pl-4">
+                Lord Krishna Educational Academy is a government-registered school in Saharsa, Bihar, committed to providing quality education with strong discipline and moral values.
+                <br><br>
+                We focus on academic excellence, character building, and a safe learning environment for every child.
+            </p>
+
+            <div class="bg-slate-800/50 border border-amber-500/30 rounded-lg p-4 flex items-start gap-3 backdrop-blur-sm">
+                <span class="text-2xl">⏰</span>
+                <div>
+                    <h4 class="text-amber-500 font-bold text-sm uppercase tracking-wider mb-1">School Hours</h4>
+                    <p class="text-slate-200 text-sm">Mon - Sat: <span class="font-bold text-white">08:00 AM - 01:00 PM</span></p>
+                    <p class="text-slate-400 text-xs mt-1">Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-2 grid grid-cols-2 gap-4 md:gap-12 md:pl-6 print:hidden">
+            
+            <div>
+                <h3 class="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 border-b-2 border-amber-600 inline-block pb-2">Quick Links</h3>
+                <ul class="space-y-3 text-sm md:text-base text-slate-300">
+                    <li><a href="/about" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> About School</a></li>
+                    <li><a href="/#PrincipalSection" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> The Principal</a></li>
+                    <li><a href="/#FacultySection" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Our Faculty</a></li>
+                    <li><a href="/admission" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Admissions</a></li>
+                    <li><a href="/academics/uniform" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Uniform Guidelines</a></li>
+                    <li><a href="/hostel" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Hostel Info</a></li>
+                    <li><a href="/#facilities" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Facilities</a></li>
+                    <li><a href="/gallery" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Gallery</a></li>
+                    <li><a href="/contact" class="hover:text-amber-500 flex items-center gap-2 transition-colors group"><span class="text-amber-600 group-hover:translate-x-1 transition-transform">›</span> Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 border-b-2 border-amber-600 inline-block pb-2">Socials</h3>
+                <div class="space-y-3 md:space-y-4">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center group-hover:bg-[#1877F2] group-hover:border-[#1877F2] transition-all shadow-lg">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 fill-white" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </div>
+                        <span class="text-slate-300 text-sm md:text-base group-hover:text-white transition-colors">Facebook</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center group-hover:bg-[#E4405F] group-hover:border-[#E4405F] transition-all shadow-lg">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 fill-white" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0 1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0 1 7.8,2M7.6,4A3.6,3.6 0 0 0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0 0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0 1 18.5,6.75A1.25,1.25 0 0 1 17.25,8A1.25,1.25 0 0 1 16,6.75A1.25,1.25 0 0 1 17.25,5.5M12,7A5,5 0 1 1 7,12A5,5 0 0 1 12,7Z" /></svg>
+                        </div>
+                        <span class="text-slate-300 text-sm md:text-base group-hover:text-white transition-colors">Instagram</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center group-hover:bg-black group-hover:border-slate-500 transition-all shadow-lg">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 fill-white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </div>
+                        <span class="text-slate-300 text-sm md:text-base group-hover:text-white transition-colors">Twitter</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center group-hover:bg-[#FF0000] group-hover:border-[#FF0000] transition-all shadow-lg">
+                            <svg class="w-4 h-4 md:w-5 md:h-5 fill-white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                        <span class="text-slate-300 text-sm md:text-base group-hover:text-white transition-colors">YouTube</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hidden print:show mt-4 p-4 text-center border-t border-slate-300">
+            <p class="text-sm font-bold text-slate-600 mb-1">For more details, visit our website:</p>
+            <p class="text-xl font-extrabold text-blue-950">www.lkeasaharsa.com</p> 
+        </div>
+        <div class="md:col-span-1">
+            <h3 class="text-xl font-bold text-white mb-6 border-b-2 border-amber-600 inline-block pb-2">Contact Us</h3>
+            <div class="space-y-6 text-base text-slate-300">
+                <p class="leading-relaxed flex gap-4">
+                    <span class="text-2xl mt-1">📍</span>
+                    <span>{address}</span>
+                </p>
+                
+                <div class="flex gap-4 items-start">
+                    <span class="text-2xl mt-1">📞</span>
+                    <div class="flex flex-col gap-1">
+                        <a href={`tel:${phone}`} class="hover:text-amber-500 font-bold transition-colors">{phone}</a>
+                        <a href={`tel:${phone2}`} class="hover:text-amber-500 font-bold transition-colors">{phone2}</a>
+                    </div>
+                </div>
+
+                <p class="flex gap-4 items-center">
+                    <span class="text-2xl">✉️</span>
+                    <a href={`mailto:${email}`} class="hover:text-amber-500 transition-colors break-all">{email}</a>
+                </p>
+                <div class="pt-4">
+                    <a href={googleMapUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white px-6 py-4 rounded-xl w-full justify-center transition-all group shadow-lg">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="font-bold group-hover:text-amber-400">View on Google Map</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="border-t border-slate-800 pt-6 mt-4 text-center text-sm text-slate-500">
+    <p>© {new Date().getFullYear()} {schoolName} {schoolSub}. All rights reserved.</p>
+    <p class="mt-2">Designed with <span class="text-red-500">❤</span> for the students of Saharsa.</p>
+  </div>
+</footer>

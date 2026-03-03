@@ -1,0 +1,149 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section class="pt-8 pb-16 md:pt-12 md:pb-24 -mt-12 md:-mt-15 relative overflow-hidden bg-gradient-to-b from-amber-50 via-white to-amber-50 rounded-t-[2.5rem] md:rounded-t-[5rem] z-30 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
+  
+  <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-blue-950/10 to-transparent pointer-events-none"></div>
+
+  <div class="absolute inset-0 opacity-[0.04]" 
+       style="background-image: radial-gradient(#d97706 1px, transparent 1px); background-size: 30px 30px;">
+  </div>
+  
+  <div class="absolute top-0 right-0 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl pointer-events-none mix-blend-multiply"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-300/10 rounded-full blur-3xl pointer-events-none mix-blend-multiply"></div>
+
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    
+    <div class="text-center mb-8 md:mb-16">
+      <div class="inline-flex items-center gap-2 bg-white border border-amber-200 rounded-full px-4 py-1.5 mb-4 shadow-sm animate-fade-in-up">
+        <span class="text-amber-500 text-xs">⭐⭐⭐⭐⭐</span>
+        <span class="text-amber-800 font-bold tracking-wide text-[10px] md:text-xs uppercase">Rated 4.9/5 by Parents</span>
+      </div>
+      
+      <h2 class="text-2xl md:text-5xl font-heading font-black text-blue-950 leading-tight">
+        Parents' <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-500">Trust & Love</span>
+      </h2>
+      <p class="text-slate-600 mt-2 max-w-2xl mx-auto text-[10px] md:text-base font-medium">
+        Hear from the families who have seen their children transform at LKEA.
+      </p>
+    </div>
+
+    <div class="relative group-hover-container">
+        
+        <div id="testimonial-scroll" class="flex overflow-x-auto gap-3 md:gap-6 pb-8 px-0 md:px-4 snap-x snap-mandatory scrollbar-hide scroll-smooth">
+            
+            <div class="min-w-[160px] md:min-w-[350px] snap-center bg-white p-4 md:p-8 rounded-2xl shadow-xl border border-amber-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-0.5 mb-2 md:mb-4">
+                        <span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span>
+                    </div>
+                    <p class="text-slate-600 text-[9px] md:text-base leading-relaxed italic relative z-10">
+                        "Pehle mera beta padhai me weak tha, but LKEA join karne ke baad usme bahut improvement aaya hai. Especially <strong class="text-blue-900">Navodaya ki taiyari</strong> yaha sabse best hoti hai. Teachers personally dhyan dete hain."
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-2 md:gap-4 border-t border-slate-100 pt-3 mt-3 md:mt-6">
+                    <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-blue-100 flex items-center justify-center text-xs md:text-xl shrink-0">👨‍💼</div>
+                    <div>
+                        <h4 class="text-[10px] md:text-sm font-bold text-blue-950">Mr. Rajesh Yadav</h4>
+                        <p class="text-[8px] md:text-[10px] text-slate-500 font-bold uppercase">Father of Aryan (Class 6)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="min-w-[160px] md:min-w-[350px] snap-center bg-white p-4 md:p-8 rounded-2xl shadow-xl border border-amber-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-0.5 mb-2 md:mb-4">
+                        <span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span>
+                    </div>
+                    <p class="text-slate-600 text-[9px] md:text-base leading-relaxed italic relative z-10">
+                        "As a mother, safety was my biggest concern. But LKEA ka environment bahut disciplined hai. <strong class="text-blue-900">CCTV monitoring aur staff</strong> bahut cooperative hain. Meri beti yaha bohot khush aur safe feel karti hai."
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-2 md:gap-4 border-t border-slate-100 pt-3 mt-3 md:mt-6">
+                    <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-pink-100 flex items-center justify-center text-xs md:text-xl shrink-0">👩‍💼</div>
+                    <div>
+                        <h4 class="text-[10px] md:text-sm font-bold text-blue-950">Mrs. Sunita Devi</h4>
+                        <p class="text-[8px] md:text-[10px] text-slate-500 font-bold uppercase">Mother of Riya (Class 4)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="min-w-[160px] md:min-w-[350px] snap-center bg-white p-4 md:p-8 rounded-2xl shadow-xl border border-amber-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-0.5 mb-2 md:mb-4">
+                        <span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span>
+                    </div>
+                    <p class="text-slate-600 text-[9px] md:text-base leading-relaxed italic relative z-10">
+                        "The <strong class="text-blue-900">Bus Facility</strong> is punctual and safe. Sabse achi baat hai school ka discipline aur Principal Sir ka personal guidance. Bachon me sanskar aur padhai dono dikhta hai."
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-2 md:gap-4 border-t border-slate-100 pt-3 mt-3 md:mt-6">
+                    <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-green-100 flex items-center justify-center text-xs md:text-xl shrink-0">👨‍💻</div>
+                    <div>
+                        <h4 class="text-[10px] md:text-sm font-bold text-blue-950">Mr. Manoj Kumar</h4>
+                        <p class="text-[8px] md:text-[10px] text-slate-500 font-bold uppercase">Father of Ankit (Class 7)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="min-w-[160px] md:min-w-[350px] snap-center bg-white p-4 md:p-8 rounded-2xl shadow-xl border border-amber-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-0.5 mb-2 md:mb-4">
+                        <span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span><span class="text-amber-400 text-[10px] md:text-base">★</span>
+                    </div>
+                    <p class="text-slate-600 text-[9px] md:text-base leading-relaxed italic relative z-10">
+                        "Teachers yaha sirf padhate nahi, samjhate hain. <strong class="text-blue-900">Activity-Based Learning</strong> se mera bacha ab padhai me interest lene laga hai. Highly recommended for every parent in Saharsa."
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-2 md:gap-4 border-t border-slate-100 pt-3 mt-3 md:mt-6">
+                    <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-purple-100 flex items-center justify-center text-xs md:text-xl shrink-0">👮‍♂️</div>
+                    <div>
+                        <h4 class="text-[10px] md:text-sm font-bold text-blue-950">Mr. Sanjay Singh</h4>
+                        <p class="text-[8px] md:text-[10px] text-slate-500 font-bold uppercase">Father of Vikram (Class 8)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button id="test-prev-btn" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white text-amber-600 w-12 h-12 rounded-full shadow-lg items-center justify-center hover:bg-amber-50 transition-all border border-amber-100 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button id="test-next-btn" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white text-amber-600 w-12 h-12 rounded-full shadow-lg items-center justify-center hover:bg-amber-50 transition-all border border-amber-100 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+
+    </div>
+
+  </div>
+
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+  </style>
+
+  <script>
+    const tContainer = document.getElementById('testimonial-scroll');
+    const tPrevBtn = document.getElementById('test-prev-btn');
+    const tNextBtn = document.getElementById('test-next-btn');
+
+    // Scroll Logic
+    tNextBtn?.addEventListener('click', () => {
+        tContainer.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+
+    tPrevBtn?.addEventListener('click', () => {
+        tContainer.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+  </script>
+</section>

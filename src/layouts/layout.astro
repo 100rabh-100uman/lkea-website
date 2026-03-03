@@ -1,0 +1,113 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro'; 
+import '../styles/global.css';
+// Import Logo for Preloader
+import logoImg from '../assets/logo.png'; 
+
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Lord Krishna Educational Academy - Premier Education in Saharsa" />
+    <title>{title} | Lord Krishna Educational Academy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  
+  <body class="flex flex-col min-h-screen bg-slate-50 antialiased overflow-hidden" id="body-container">
+    
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-blue-950 flex flex-col items-center justify-center transition-opacity duration-700">
+        
+        <div class="relative w-40 h-40 md:w-56 md:h-56 animate-pulse">
+            <div class="absolute inset-0 bg-amber-500 rounded-full blur-2xl opacity-25"></div>
+            <div class="relative w-full h-full bg-white rounded-full p-3 border-[6px] border-amber-500 shadow-2xl flex items-center justify-center overflow-hidden">
+                <img src={logoImg.src} alt="Loading..." class="w-full h-full object-contain animate-bounce-slow" />
+            </div>
+        </div>
+
+        <div class="mt-10 md:mt-12 text-center space-y-3">
+            <h2 class="text-3xl md:text-5xl font-heading font-black text-white tracking-wider uppercase animate-fade-in-up drop-shadow-lg">
+                Lord Krishna
+            </h2>
+            
+            <div class="flex items-center justify-center gap-3">
+                <span class="w-3 h-3 bg-amber-500 rounded-full animate-bounce delay-100 shadow-sm"></span>
+                <span class="w-3 h-3 bg-amber-500 rounded-full animate-bounce delay-200 shadow-sm"></span>
+                <span class="w-3 h-3 bg-amber-500 rounded-full animate-bounce delay-300 shadow-sm"></span>
+            </div>
+            
+            <p class="text-slate-300 text-sm md:text-lg tracking-[0.3em] uppercase font-bold animate-fade-in-up delay-500">
+                Educational Academy
+            </p>
+        </div>
+    </div>
+    <Header />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+    
+    <Footer /> 
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const body = document.getElementById('body-container');
+            
+            if(preloader) {
+                // Keep visible for 1.8 seconds for grand feeling
+                setTimeout(() => {
+                    preloader.style.opacity = '0'; // Fade out
+                    
+                    setTimeout(() => {
+                        preloader.style.display = 'none'; // Remove completely
+                        if(body) body.classList.remove('overflow-hidden'); // Allow scrolling
+                    }, 700); // Wait for fade transition
+                }, 1800); 
+            }
+        });
+    </script>
+
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init({
+        duration: 800,   // Animation speed
+        easing: 'ease-out', 
+        once: true,      // Animate only once per scroll
+        offset: 100,     // Trigger offset
+      });
+    </script>
+
+  </body>
+</html>
+
+<style is:global>
+    .font-heading { font-family: 'Playfair Display', serif; }
+    
+    /* Slow Bounce for Logo */
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(-5%); }
+        50% { transform: translateY(5%); }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 2s infinite ease-in-out;
+    }
+
+    /* Fade In Up Text */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+</style>

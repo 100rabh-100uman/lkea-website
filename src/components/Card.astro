@@ -1,0 +1,10 @@
+---
+const { title, icon } = Astro.props;
+---
+<div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+  <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{icon}</div>
+  <h3 class="text-xl font-bold mb-2 text-blue-900">{title}</h3>
+  <p class="text-slate-600 text-sm leading-relaxed">
+    <slot />
+  </p>
+</div>

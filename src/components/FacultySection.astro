@@ -1,0 +1,211 @@
+---
+import { Image } from 'astro:assets';
+
+// -----------------------------------------------------------------
+// STEP 1: JAB PHOTOS AA JAYE TO INHE UNCOMMENT KAREIN
+// -----------------------------------------------------------------
+// import teacher1 from '../assets/teacher1.png';
+// import teacher2 from '../assets/teacher2.png';
+// ...
+---
+
+<section id="FacultySection" class="relative bg-blue-950 pb-15 md:pb-30 pt-16 md:pt-24 -mt-4 md:-mt-14 z-20 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[3.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+  
+  <div class="absolute top-0 left-0 w-full h-12 md:h-20 bg-gradient-to-b from-white/90 to-transparent z-10 pointer-events-none"></div>
+
+  <div class="absolute inset-0 opacity-[0.07] pointer-events-none mix-blend-overlay" 
+       style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0); background-size: 40px 40px;">
+  </div>
+  
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
+  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
+
+  <div class="max-w-7xl mx-auto px-4 relative z-20">
+    
+    <div class="text-center mb-8 md:mb-16 relative mt-2 md:mt-4">
+      <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-lg border border-amber-500/30 rounded-full px-4 py-1.5 mb-4 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+        <span class="text-amber-300 font-bold tracking-[0.2em] uppercase text-[9px] md:text-xs">Academic Pillars</span>
+      </div>
+      
+      <h2 class="text-2xl md:text-5xl font-heading font-black text-white leading-tight drop-shadow-2xl">
+        Meet Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">Expert Faculty</span>
+      </h2>
+    </div>
+
+    <div class="relative group-hover-container">
+        
+        <div id="faculty-scroll" class="flex overflow-x-auto gap-3 md:gap-6 pb-8 px-0 md:px-4 snap-x snap-mandatory scrollbar-hide scroll-smooth py-4">
+            
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-amber-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-amber-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👨‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Mr. Rahul Kumar</h3>
+                <p class="text-amber-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Mathematics</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 M.Sc, B.Ed</p>
+                    <p class="text-amber-200 font-semibold">⭐ 8 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-cyan-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👩‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Ms. Priya Singh</h3>
+                <p class="text-cyan-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Science Expert</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 B.Sc, D.El.Ed</p>
+                    <p class="text-cyan-200 font-semibold">⭐ 5 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-green-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-green-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👨‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Mr. Amit Verma</h3>
+                <p class="text-green-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">English Expert</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 M.A (English)</p>
+                    <p class="text-green-200 font-semibold">⭐ 10 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-purple-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👨‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Mr. S.K. Mishra</h3>
+                <p class="text-purple-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Social Science</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 B.A, B.Ed</p>
+                    <p class="text-purple-200 font-semibold">⭐ 12 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-rose-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👩‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Ms. Anjali Verma</h3>
+                <p class="text-rose-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Hindi Expert</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 M.A (Hindi)</p>
+                    <p class="text-rose-200 font-semibold">⭐ 6 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-yellow-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-yellow-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👨‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Mr. Rakesh Singh</h3>
+                <p class="text-yellow-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Sports Coach</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 B.P.Ed</p>
+                    <p class="text-yellow-200 font-semibold">⭐ 7 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-indigo-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-indigo-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👩‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Ms. Kavita Das</h3>
+                <p class="text-indigo-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Computer Science</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 MCA</p>
+                    <p class="text-indigo-200 font-semibold">⭐ 4 Years Exp.</p>
+                </div>
+            </div>
+
+            <div class="min-w-[170px] md:min-w-[280px] snap-center bg-gradient-to-b from-white/5 to-blue-900/40 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl shadow-xl hover:shadow-lime-500/20 hover:-translate-y-2 transition-all duration-500 group text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-0.5 md:h-1 bg-gradient-to-r from-transparent via-lime-400 to-transparent opacity-80 md:opacity-50 md:group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-5">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-lime-500/40 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full bg-blue-950 flex items-center justify-center text-3xl border-2 md:border-4 border-white/10 shadow-inner relative z-10 overflow-hidden group-hover:scale-105 transition-transform duration-500">👨‍🏫</div>
+                </div>
+                <h3 class="text-sm md:text-xl font-bold text-white mb-0.5">Mr. Indra Mohan</h3>
+                <p class="text-lime-400 text-[9px] md:text-xs font-bold uppercase tracking-wider mb-2 md:mb-4">Sanskrit</p>
+                <div class="bg-blue-950/50 rounded-lg py-2 px-1 md:p-3 text-[9px] md:text-xs text-blue-100 space-y-0.5 md:space-y-1 border border-white/5">
+                    <p class="opacity-80">🎓 M.A (Sanskrit)</p>
+                    <p class="text-lime-200 font-semibold">⭐ 15 Years Exp.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button id="scroll-btn" class="absolute top-1/2 -right-3 md:-right-6 -translate-y-1/2 z-30 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white w-10 h-10 md:w-14 md:h-14 rounded-full shadow-[0_4px_15px_rgba(245,158,11,0.5)] flex items-center justify-center transition-all duration-300 hover:scale-110 border-4 border-blue-950">
+            <svg id="scroll-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-7 md:w-7 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+        animation: spin-slow 10s linear infinite;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+  </style>
+
+  <script>
+    const scrollContainer = document.getElementById('faculty-scroll');
+    const scrollBtn = document.getElementById('scroll-btn');
+    const scrollIcon = document.getElementById('scroll-icon');
+
+    // Adjusted Scroll Amount for new Card Size
+    const scrollAmount = window.innerWidth < 768 ? 180 : 300; 
+
+    // Click Handler
+    scrollBtn.addEventListener('click', () => {
+        const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        
+        if (scrollContainer.scrollLeft >= maxScrollLeft - 10) {
+            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    });
+
+    // Scroll Monitor
+    scrollContainer.addEventListener('scroll', () => {
+        const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        
+        if (scrollContainer.scrollLeft >= maxScrollLeft - 10) {
+            scrollIcon.style.transform = 'rotate(180deg)';
+        } else {
+            scrollIcon.style.transform = 'rotate(0deg)';
+        }
+    });
+  </script>
+</section>

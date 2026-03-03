@@ -1,0 +1,188 @@
+---
+import { Image } from 'astro:assets';
+import slide1 from '../assets/StudentPhoto1.png';
+import slide2 from '../assets/StudentPhoto2.png';
+---
+
+<section class="pt-8 md:pt-8 pb-12 md:pb-16 relative overflow-hidden bg-slate-50 rounded-t-[40px] md:rounded-t-[60px] z-20 -mt-10 md:-mt-12 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.2)]">
+  
+  <div class="absolute inset-0 z-0 opacity-[0.4]" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 24px 24px;"></div>
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-amber-100/60 rounded-full blur-[80px] z-0 pointer-events-none mix-blend-multiply"></div>
+  <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-blue-100/60 rounded-full blur-[80px] z-0 pointer-events-none mix-blend-multiply"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+      
+      <div class="relative group order-2 md:order-1 mt-6 md:mt-0 hidden md:block lg:w-[118%] lg:-ml-25">
+        <div class="absolute -inset-4 bg-gradient-to-tr from-amber-500 to-blue-600 rounded-2xl opacity-20 blur-lg group-hover:opacity-40 transition duration-500"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white transform transition-transform duration-700 group-hover:scale-[1.01] aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/3]">
+    
+            <Image src={slide1} alt="Students Learning" class="absolute inset-0 w-full h-full object-cover" />
+    
+            <Image src={slide2} alt="Students Learning" class="absolute inset-0 w-full h-full object-cover animate-crossfade" />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent z-10"></div>
+    
+            <div class="absolute bottom-4 left-4 text-white z-20">
+                <div class="flex items-center gap-2 mb-1">
+                <span class="bg-amber-500 w-8 h-1 rounded-full"></span>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-amber-300">Since 2007</p>
+                </div>
+                <p class="font-heading font-bold text-lg leading-tight">Building Future Leaders</p>
+            </div>
+        </div>
+
+        <div class="absolute -top-6 -right-4 md:-top-10 md:-right-10 bg-white text-blue-950 p-4 md:p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] animate-float-slow border border-slate-100 z-20 flex flex-col items-center justify-center gap-0">
+          <span class="text-4xl md:text-5xl font-black text-amber-500 leading-none">19<span class="text-2xl">+</span></span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500 mt-1 text-center">Years of<br>Excellence</span>
+        </div>
+      </div>
+
+      <div class="space-y-6 order-1 md:order-2">
+        
+        <div class="space-y-3">
+            <div class="flex items-center gap-3">
+                <span class="h-px w-8 bg-amber-500"></span>
+                <span class="text-amber-600 font-bold tracking-[0.2em] uppercase text-xs">Welcome to LKEA</span>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-heading font-black text-blue-950 leading-tight">
+                Preparing Today’s Child for <span class="relative inline-block">
+                    Tomorrow’s India
+                    <span class="absolute bottom-1 left-0 w-full h-3 bg-amber-300/40 -z-10 -rotate-1"></span>
+                </span>.
+            </h2>
+        </div>
+
+        <div class="text-slate-600 text-sm md:text-base leading-relaxed space-y-4 font-medium text-justify">
+            <p>
+                <span class="text-blue-950 font-bold text-lg block mb-1">“New Thinking, New Heights.”</span>
+                Established with a vision to shape the future, <span class="text-blue-950 font-bold">Lord Krishna Educational Academy</span> is the region's most reputed institution. We are more than just a school; we are a family where values meet modern education, A trusted educational institution serving Saharsa since 2007
+            </p>
+            <p class="bg-white p-4 rounded-lg border-l-4 border-amber-500 shadow-sm italic text-slate-700">
+                "We believe in <span class="font-bold text-amber-600">Activity-Based Learning</span>We do not focus only on textbook knowledge; we teach children through experiments and real-life skills"
+            </p>
+        </div>
+
+        <div class="hidden md:grid grid-cols-2 gap-4 pt-2">
+            <div class="flex items-start gap-3">
+                <div class="bg-blue-100 p-2 rounded-lg text-blue-600 mt-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-950 text-sm">CBSE Curriculum</h4>
+                    <p class="text-xs text-slate-500">Nursery to Class 8th</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+                <div class="bg-amber-100 p-2 rounded-lg text-amber-600 mt-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-950 text-sm">Digital Learning</h4>
+                    <p class="text-xs text-slate-500">computer & Smart classes</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+                <div class="bg-green-100 p-2 rounded-lg text-green-600 mt-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-950 text-sm">100% Safety</h4>
+                    <p class="text-xs text-slate-500">Every Corner of campus under 24x7 CCTv surveillance</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+                <div class="bg-purple-100 p-2 rounded-lg text-purple-600 mt-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-950 text-sm">Values & Discipline</h4>
+                    <p class="text-xs text-slate-500">Building Character with Care</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative group block md:hidden mt-6 mb-2">
+            <div class="absolute -inset-3 bg-gradient-to-tr from-amber-500 to-blue-600 rounded-2xl opacity-20 blur-lg"></div>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl border-[4px] border-white aspect-[4/3]">
+                
+                <div id="mobile-about-slider" class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth">
+                    <div class="min-w-full h-full relative snap-center flex-shrink-0">
+                        <Image src={slide1} alt="Students Learning" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-full h-full relative snap-center flex-shrink-0">
+                        <Image src={slide2} alt="Students Learning" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute bottom-4 left-4 text-white z-20 pointer-events-none">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-amber-500 w-6 h-1 rounded-full"></span>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-amber-300">Since 2007</p>
+                    </div>
+                    <p class="font-heading font-bold text-base leading-tight">Building Future Leaders</p>
+                </div>
+            </div>
+            
+            <div class="hidden">
+              <span class="text-3xl font-black text-amber-500 leading-none">19<span class="text-xl">+</span></span>
+              <span class="text-[9px] font-bold uppercase tracking-wider text-slate-500 mt-1 text-center">Years of<br>Excellence</span>
+            </div>
+        </div>
+
+
+        <div class="pt-4 flex justify-center md:justify-start">
+            <a href="/about" class="inline-flex items-center justify-center gap-2 bg-blue-950 text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-amber-600 transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-900/20 group w-full md:w-auto">
+                Know More About School
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    /* 1. Float Animation (Existing) */
+    @keyframes float-slow { 
+        0%, 100% { transform: translateY(0); } 
+        50% { transform: translateY(-12px); } 
+    }
+    .animate-float-slow { 
+        animation: float-slow 5s ease-in-out infinite; 
+    }
+
+    /* 👇 2. NEW SLIDE ANIMATION (10s Hold + Fast Switch) */
+    @keyframes crossfade {
+        0%, 45% { opacity: 0; }   /* Show Image 1 (Background) for ~9s */
+        50%, 95% { opacity: 1; }  /* Show Image 2 (Foreground) for ~9s */
+        100% { opacity: 0; }      /* Fade back to Image 1 */
+    }
+    
+    .animate-crossfade {
+        /* Total cycle 20s = 10s per image */
+        animation: crossfade 20s ease-in-out infinite;
+    }
+</style>
+
+<script is:inline>
+  // Script specifically for the mobile "About Us" slider
+  setTimeout(() => {
+    const mobileSlider = document.getElementById('mobile-about-slider');
+    if(!mobileSlider) return;
+    
+    setInterval(() => {
+      // Toggle back and forth between the 2 slides automatically
+      if(mobileSlider.scrollLeft > 50) {
+        mobileSlider.scrollTo({ left: 0, behavior: 'smooth' }); // Go back to Slide 1
+      } else {
+        mobileSlider.scrollTo({ left: mobileSlider.clientWidth, behavior: 'smooth' }); // Go to Slide 2
+      }
+    }, 4000); // Slides every 4 seconds
+  }, 500);
+</script>

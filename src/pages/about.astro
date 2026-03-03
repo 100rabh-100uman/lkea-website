@@ -1,0 +1,314 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo.png';
+---
+
+<Layout title="About Us - Lord Krishna Educational Academy">
+  
+  <div class="relative h-[65vh] flex flex-col items-center justify-center bg-blue-950 overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center bg-fixed opacity-20 transform scale-105"></div>
+      
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/80 to-blue-950"></div>
+      
+      <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-300 via-amber-500 to-amber-300"></div>
+
+      <div class="absolute top-6 left-4 md:top-8 md:left-8 z-30">
+          <a href="/" class="group flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-xl border border-slate-500/40 bg-blue-950/40 backdrop-blur-md text-slate-200 text-xs md:text-sm font-bold hover:text-amber-400 hover:border-amber-400/60 transition-all shadow-lg hover:shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+              <span class="group-hover:-translate-x-1 transition-transform text-lg leading-none mb-0.5">←</span> Back to Home
+          </a>
+      </div>
+
+      <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-amber-500/30 text-amber-400 px-6 py-2 rounded-full font-bold text-sm uppercase tracking-[0.2em] shadow-2xl mb-8 animate-fade-in-up">
+              <span>✦</span> Estd. 2007 <span>✦</span>
+          </div>
+          
+          <h1 class="text-5xl md:text-7xl font-heading font-black text-white uppercase tracking-tight leading-none mb-6 drop-shadow-2xl">
+              center of <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">Excellence</span>
+          </h1>
+          
+          <div class="w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-6"></div>
+
+          <p class="text-blue-100 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+              "Building Character. Igniting Minds. Shaping the Future of Saharsa"
+          </p>
+      </div>
+  </div>
+
+  <section class="relative z-20 -mt-10 px-4 pb-20">
+      <div class="max-w-6xl mx-auto bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 overflow-hidden relative">
+          
+          <div class="h-3 bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900"></div>
+
+          <div class="p-8 md:p-14 relative grid md:grid-cols-12 gap-10 items-center">
+              
+              <div class="absolute right-0 bottom-0 w-[600px] h-[600px] opacity-[0.03] pointer-events-none translate-x-1/3 translate-y-1/3">
+                  <Image src={logoImg} alt="Watermark" class="w-full h-full grayscale object-contain" />
+              </div>
+
+              <div class="md:col-span-4 text-center relative">
+                  <div class="relative inline-block">
+                      <div class="absolute inset-0 bg-amber-400 blur-[60px] opacity-20 rounded-full animate-pulse"></div>
+                      <Image src={logoImg} alt="LKEA Logo" class="w-48 h-48 md:w-56 md:h-56 object-contain relative z-10 drop-shadow-2xl mx-auto" />
+                  </div>
+                  <div class="mt-6">
+                      <span class="block text-xs font-black text-slate-400 uppercase tracking-[0.3em]">Official Profile</span>
+                  </div>
+              </div>
+
+              <div class="md:col-span-8 space-y-8 text-center md:text-left">
+                  <div>
+                      <h2 class="text-4xl md:text-5xl font-heading font-black text-blue-950 uppercase leading-none mb-2">
+                          Lord Krishna
+                      </h2>
+                      <h3 class="text-2xl md:text-3xl font-heading font-bold text-amber-600 uppercase tracking-wide">
+                          Educational Academy
+                      </h3>
+                      
+                      <div class="mt-4 inline-block bg-blue-50 border border-blue-100 rounded-lg px-4 py-2">
+                          <p class="text-xs md:text-sm font-bold text-blue-900 uppercase tracking-wider flex items-center gap-2">
+                              <span class="text-amber-500">🏛️</span> Run by: Bina Memorial Educational & Charitable Trust
+                          </p>
+                      </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-amber-500 hover:shadow-lg transition-all duration-300">
+                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Govt. Registration No.</p>
+                          <p class="text-sm font-black text-blue-950 break-all group-hover:text-blue-700">SAHPRIVATESCHOOL/<br>L.K.E.A-38/2014</p>
+                      </div>
+
+                      <div class="group bg-gradient-to-br from-amber-50 to-white border border-amber-200 p-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                          <p class="text-[10px] font-bold text-amber-700/60 uppercase tracking-wider mb-1">UDISE Code</p>
+                          <p class="text-xl font-black text-amber-600 group-hover:scale-105 transition-transform origin-left">10120404402</p>
+                      </div>
+
+                      <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300">
+                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Academic Levels</p>
+                          <p class="text-lg font-black text-blue-950">Nursery <span class="text-slate-300">to</span> 8th Grade</p>
+                      </div>
+
+                      <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-green-500 hover:shadow-lg transition-all duration-300">
+                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Campus Location</p>
+                          <p class="text-sm font-black text-blue-950">Ward No. 14,maharshi mehi Ashram road, Shivpuri, Saharsa</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-20 bg-slate-50 relative">
+      <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+              <span class="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs">Guidance</span>
+              <h2 class="text-4xl md:text-5xl font-heading font-black text-blue-950 mt-2">Meet Our Leaders</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-10">
+              <div class="bg-white rounded-3xl p-8 shadow-xl border-t-4 border-blue-900 relative group hover:-translate-y-2 transition-transform duration-300">
+                  <div class="absolute top-8 right-8 text-6xl text-slate-100 font-serif opacity-50 group-hover:text-blue-50 transition-colors">"</div>
+                  
+                  <div class="flex items-center gap-6 mb-8">
+                      <div class="w-20 h-20 bg-blue-950 text-white rounded-2xl flex items-center justify-center text-4xl shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+                          👨‍🏫
+                      </div>
+                      <div>
+                          <h3 class="text-2xl font-black text-blue-950">Mr. Bishnudeo Kumar</h3>
+                          <div class="inline-block bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mt-1">Principal</div>
+                      </div>
+                  </div>
+                  
+                  <blockquote class="text-slate-600 italic mb-8 border-l-4 border-slate-200 pl-4">
+                      "Education is not just about syllabus, it's about building a character that stands tall in society. We are committed to excellence."
+                  </blockquote>
+
+                  <a href="tel:+919430452463" class="flex items-center justify-between w-full bg-slate-50 hover:bg-blue-950 text-slate-700 hover:text-white p-4 rounded-xl font-bold transition-all group-hover:shadow-md">
+                      <span>📞 Call Principal</span>
+                      <span class="opacity-70">+91 94304 52463</span>
+                  </a>
+              </div>
+
+              <div class="bg-white rounded-3xl p-8 shadow-xl border-t-4 border-amber-500 relative group hover:-translate-y-2 transition-transform duration-300">
+                  <div class="absolute top-8 right-8 text-6xl text-slate-100 font-serif opacity-50 group-hover:text-amber-50 transition-colors">"</div>
+                  
+                  <div class="flex items-center gap-6 mb-8">
+                      <div class="w-20 h-20 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-4xl shadow-lg -rotate-3 group-hover:rotate-0 transition-transform">
+                          🎓
+                      </div>
+                      <div>
+                          <h3 class="text-2xl font-black text-blue-950">Mr. Sushil Kumar Suman</h3>
+                          <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mt-1">Vice-Principal</div>
+                      </div>
+                  </div>
+                  
+                  <blockquote class="text-slate-600 italic mb-8 border-l-4 border-slate-200 pl-4">
+                      "Discipline and dedication are the keys to success. We ensure every child gets the attention they deserve."
+                  </blockquote>
+
+                  <a href="tel:+917631716184" class="flex items-center justify-between w-full bg-slate-50 hover:bg-amber-500 text-slate-700 hover:text-white p-4 rounded-xl font-bold transition-all group-hover:shadow-md">
+                      <span>📞 Call Vice-Principal</span>
+                      <span class="opacity-70">+91 76317 16184 </span>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-20 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4">
+          
+          <div class="grid md:grid-cols-2 gap-8 items-stretch mb-20">
+              <div class="bg-blue-950 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+                  <div class="absolute top-0 right-0 bg-blue-800 w-40 h-40 rounded-bl-full opacity-50 transition-transform group-hover:scale-110"></div>
+                  <span class="text-6xl mb-6 block drop-shadow-md">🎯</span>
+                  <h3 class="text-3xl font-heading font-black text-white mb-4 tracking-wide">Our Mission</h3>
+                  <p class="text-blue-100 text-lg leading-relaxed font-medium">
+                      To provide <span class="text-amber-400 font-bold">affordable yet premium quality education</span> in Saharsa. We focus on modern teaching methods, strong discipline, and holistic development (sports, arts, and culture) alongside academic excellence.
+                  </p>
+              </div>
+
+              <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl border border-slate-200 relative overflow-hidden group">
+                  <div class="absolute top-0 right-0 bg-amber-100 w-40 h-40 rounded-bl-full opacity-50 transition-transform group-hover:scale-110"></div>
+                  <span class="text-6xl mb-6 block drop-shadow-md">👁️</span>
+                  <h3 class="text-3xl font-heading font-black text-blue-950 mb-4 tracking-wide">Our Vision</h3>
+                  <p class="text-slate-600 text-lg leading-relaxed font-medium">
+                      To create a learning environment where every child discovers their potential. We aim to nurture future leaders who are <span class="text-amber-600 font-bold">academically brilliant, morally strong</span>, and socially responsible citizens of India.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+          <h3 class="text-3xl font-black text-blue-950 uppercase tracking-widest mb-12">Our Core Values</h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+              <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:bg-blue-950 transition-all duration-300 border-b-8 border-blue-900">
+                  <div class="w-20 h-20 bg-blue-100 text-blue-900 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 group-hover:bg-white/10 group-hover:text-white transition-colors">🛡️</div>
+                  <h4 class="text-2xl font-black text-blue-950 uppercase mb-3 group-hover:text-white">Discipline</h4>
+                  <p class="text-slate-600 font-medium group-hover:text-blue-200">The foundation of character. We teach punctuality, respect, and self-control.</p>
+              </div>
+              <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:bg-amber-500 transition-all duration-300 border-b-8 border-amber-500">
+                  <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 group-hover:bg-white/20 group-hover:text-white transition-colors">🎭</div>
+                  <h4 class="text-2xl font-black text-blue-950 uppercase mb-3 group-hover:text-white">Culture</h4>
+                  <p class="text-slate-600 font-medium group-hover:text-amber-100">Rooted in Indian traditions (Sanskar). We value our heritage and morals.</p>
+              </div>
+              <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:bg-green-600 transition-all duration-300 border-b-8 border-green-600">
+                  <div class="w-20 h-20 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 group-hover:bg-white/20 group-hover:text-white transition-colors">🚀</div>
+                  <h4 class="text-2xl font-black text-blue-950 uppercase mb-3 group-hover:text-white">Modernity</h4>
+                  <p class="text-slate-600 font-medium group-hover:text-green-100">Embracing technology. Smart classes and computer literacy for the future.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-24 bg-white overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-20">
+              <span class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-amber-200">Timeline</span>
+              <h2 class="text-4xl md:text-6xl font-heading font-black text-blue-950 mt-4">Our Safarnama</h2>
+              <p class="text-slate-500 font-medium mt-2 text-lg">A journey of dedication and continuous growth (2007 - Present)</p>
+          </div>
+
+          <div class="relative">
+              <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-200 md:-translate-x-1/2"></div>
+
+              <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 group">
+                  <div class="order-1 md:w-5/12"></div>
+                  <div class="z-20 flex items-center order-1 bg-amber-500 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1">
+                      <h1 class="mx-auto font-bold text-lg text-white">07</h1>
+                  </div>
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-amber-500 transition-colors">
+                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-10">2007</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl">The Beginning</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                          Foundation laid by <span class="font-bold text-amber-600">Bina Memorial Educational Trust</span> with a humble vision: to bring quality education to every child in Ward No. 14, Saharsa.
+                      </p>
+                  </div>
+              </div>
+
+              <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-16 group">
+                  <div class="order-1 md:w-5/12"></div>
+                  <div class="z-20 flex items-center order-1 bg-blue-900 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1">
+                      <h1 class="mx-auto font-bold text-lg text-white">14</h1>
+                  </div>
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:mr-0 hover:border-blue-900 transition-colors text-left md:text-right">
+                      <span class="font-black text-5xl text-slate-100 absolute left-6 md:left-auto md:right-auto md:left-6 top-6 -z-10">2014</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl">Official Recognition</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                          A milestone year. We received Govt. Registration <span class="font-bold text-blue-800">(L.K.E.A-38/2014)</span> & UDISE Code, validating our commitment to standards and excellence.
+                      </p>
+                  </div>
+              </div>
+
+              <div class="relative flex flex-col md:flex-row items-center justify-between mb-8 group">
+                  <div class="order-1 md:w-5/12"></div>
+                  <div class="z-20 flex items-center order-1 bg-green-600 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1 animate-pulse">
+                      <h1 class="mx-auto font-bold text-lg text-white">26</h1>
+                  </div>
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-green-600 transition-colors">
+                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-10">2026</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl">Digital Revolution</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                          Launching our <span class="font-bold text-green-600">Premium Website</span>, implementing Smart Classes, and expanding our Hostel facilities to serve students better.
+                      </p>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+
+<section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+          <div class="bg-blue-950 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-auto md:h-[500px]">
+              
+              <div class="w-full md:w-1/3 p-8 md:p-12 flex flex-col justify-center text-white relative z-10">
+                  <h3 class="text-2xl font-black text-amber-500 uppercase tracking-widest mb-8">Visit Campus</h3>
+                  
+                  <div class="space-y-8">
+                      <div class="flex items-start gap-4">
+                          <span class="text-3xl">📍</span>
+                          <div>
+                              <p class="font-bold text-xl mb-1">Lord Krishna Educational Academy</p>
+                              <p class="text-blue-200 text-sm leading-relaxed">
+                                  Ward No. 14, Shivpuri,<br>
+                                Maharshi Mehi Ashram road,<br>
+                                  Saharsa, Bihar - 852124
+                              </p>
+                          </div>
+                      </div>
+
+                      <div class="flex items-center gap-4">
+                          <span class="text-3xl">📞</span>
+                          <div>
+                              <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Contact</p>
+                              <a href="tel:+919430452463" class="text-lg font-bold hover:text-amber-400 transition-colors block">+91 94304 52463</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <a href="https://maps.app.goo.gl/QHgXyyZQyY2xn3iw6?entry=ttu" target="_blank" class="mt-10 inline-flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-600 text-blue-950 font-black py-4 px-6 rounded-xl transition-colors">
+                      <span>🗺️</span> Get Directions
+                  </a>
+              </div>
+
+              <div class="w-full md:w-2/3 h-[400px] md:h-full bg-slate-200 relative border-t-4 md:border-t-0 md:border-l-4 border-amber-500">
+                 <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.966952496739!2d86.59971577539956!3d25.89702977726466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f23dbb2b11f79b%3A0xde9188f89ee372ec!2sLord%20Krishna%20Educational%20Academy!5e0!3m2!1sen!2sin!4v1707900000000!5m2!1sen!2sin"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+
+          </div>
+      </div>
+  </section>
+</Layout>

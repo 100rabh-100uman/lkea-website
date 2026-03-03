@@ -1,0 +1,433 @@
+---
+import Layout from '../../layouts/layout.astro';
+import { Image } from 'astro:assets';
+import logoImg from '../../assets/logo.png'; 
+import studentImg from '../../assets/student.png';
+
+// Array for our class selection toggle
+const classes = ["Nursery", "LKG", "UKG", "Std I", "Std II", "Std III", "Std IV", "Std V", "Std VI", "Std VII", "Std VIII"];
+---
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+
+<Layout title="Book List & Syllabus (2025-26) | Lord Krishna Educational Academy">
+    
+    <section class="min-h-screen bg-slate-100 pt-2 pb-6 md:py-12 print:py-0 print:bg-white flex flex-col items-center">
+        
+        <div class="w-full max-w-4xl px-2 mb-2 md:px-4 md:mb-6 hidden md:flex justify-start print:hidden">
+            <a href="/" class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 text-xs md:text-sm font-bold hover:text-amber-600 hover:border-amber-400 transition-all shadow-sm">
+                <span class="text-lg leading-none mb-0.5">←</span> Back to Home
+            </a>
+        </div>
+
+        <div class="max-w-4xl w-full mx-auto bg-white md:rounded-2xl shadow-2xl print:shadow-none border border-slate-200 overflow-hidden print:border-none p-6 md:p-12 relative z-10" id="printable-booklist">
+            
+            <div class="flex flex-row justify-between items-end text-left text-[7px] min-[400px]:text-[9px] md:text-xs font-black text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2 md:pb-3 mb-4 gap-2">
+                <span class="shrink-0">Bihar Govt. Regd. School</span>
+                <span class="text-right tracking-tighter md:tracking-wide">Regd.No - SAHPRIVATESCHOOL/L.K.E.A.38/2014</span>
+            </div>
+
+            <div class="flex flex-row items-center justify-center md:justify-start gap-3 md:gap-8 mb-6 md:mb-8 border-b border-slate-200 pb-5 md:pb-8 px-1 w-full max-w-full overflow-hidden">
+
+                <div class="shrink-0 w-16 h-16 min-[400px]:w-20 min-[400px]:h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 p-1 md:p-2 bg-white rounded-full border-2 border-amber-500 shadow-lg flex items-center justify-center overflow-hidden">
+                    <Image id="pdf-logo" src={logoImg} alt="LKEA Logo" loading="eager" class="w-full h-full object-contain p-0.5 md:p-1" />
+                </div>
+                <div class="text-left flex flex-col justify-center flex-1 min-w-0 overflow-hidden">
+                    <h1 class="font-heading font-black text-blue-950 uppercase leading-none mb-1 md:mb-2" style="-webkit-text-stroke: 1px rgba(30, 58, 138, 0.2);">
+                        
+                        <span class="block whitespace-nowrap text-4xl md:text-6xl lg:text-7xl tracking-tighter mb-0.5 md:mb-1 w-full">
+                            Lord Krishna
+                        </span>
+
+                        <span class="block whitespace-nowrap text-amber-500 text-xl md:text-4xl lg:text-4xl tracking-normal w-full">
+                            Educational<span class="inline-block w-3 md:w-6"></span>Academy
+                        </span>
+
+                    </h1>
+
+                    <div class="whitespace-nowrap text-[8px] min-[375px]:text-[7px] md:text-xs lg:text-sm font-bold text-slate-600 uppercase tracking-wide md:tracking-widest mt-1 md:mt-2 ml-[1px] md:ml-0 overflow-hidden text-ellipsis w-full">
+                        A Unit of Bina Memorial Educational & Charitable Trust
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-y-2 border-blue-950 py-2 mb-6">
+                <h2 class="text-center font-black text-blue-950 text-sm md:text-xl tracking-[0.15em] uppercase">
+                    Maharshi mehi Ashram road, Shivpuri, Ward No -05, Saharsa, 852201
+                </h2>
+            </div>
+
+            <div class="text-center mb-8">
+                <p class="font-black text-slate-800 text-sm md:text-lg uppercase tracking-wide leading-relaxed">
+                    An English Medium || C.B.S.E. curriculum<br/>
+                    <span class="text-blue-900">Nursery to VIII || Co-Education</span>
+                </p>
+            </div>
+
+            <div class="flex justify-center mb-8">
+                <div class="bg-blue-950 text-white px-8 py-3 rounded-full border-2 border-amber-500 shadow-lg relative">
+                    <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-amber-500 rotate-45 -z-10"></div>
+                    <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-amber-500 rotate-45 -z-10"></div>
+                    <h3 class="font-black text-xl md:text-3xl uppercase tracking-widest text-amber-400">
+                        Book List - 2025-26
+                    </h3>
+                </div>
+            </div>
+
+            <div class="flex justify-center mb-8 print:hidden relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-48 md:h-48 bg-amber-100 rounded-full blur-[40px] -z-10"></div>
+                <Image src={studentImg} alt="Happy Student" class="w-40 md:w-56 h-auto drop-shadow-2xl hover:-translate-y-2 transition-transform duration-300" />
+            </div>
+
+            <div class="hidden print:block text-center mb-8 border-y-2 border-slate-200 py-3">
+                <h2 class="font-black text-2xl uppercase tracking-widest text-slate-800" id="print-class-title">
+                    Class: Nursery
+                </h2>
+            </div>
+
+            <div class="mb-12 print:hidden flex flex-col items-center mt-4">
+                <label for="class-select" class="text-center text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-3">Select Class to View Books</label>
+                
+                <div class="relative w-full max-w-sm mx-auto group">
+                    <select id="class-select" class="w-full appearance-none bg-blue-950 border-4 border-amber-500 text-white font-black text-xl md:text-2xl px-6 py-4 rounded-2xl shadow-[0_10px_20px_rgba(245,158,11,0.2)] focus:outline-none focus:ring-4 focus:ring-amber-500/40 transition-all cursor-pointer text-center hover:bg-blue-900">
+                        <option value="" disabled selected>SELECT CLASS</option>
+                        
+                        {classes.map((className) => (
+                            <option value={className} class="bg-white text-blue-950 text-lg font-bold">{className}</option>
+                        ))}
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-amber-400 group-hover:text-amber-300 transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div id="book-container" class="transition-all duration-500">
+                
+                <div id="empty-state" class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-8 text-center">
+                    <p class="text-slate-400 font-bold text-lg">👇 Select a class above to see the book list.</p>
+                </div>
+
+                <div id="table-wrapper" class="hidden">
+                    <div class="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-blue-950 text-white">
+                                    <th class="py-4 px-6 font-black uppercase tracking-wider text-sm w-20 text-center border-r border-blue-900">S.No</th>
+                                    <th class="py-4 px-6 font-black uppercase tracking-wider text-sm">Book Name / Publication</th>
+                                </tr>
+                            </thead>
+                            <tbody id="book-table-body" class="bg-white divide-y divide-slate-100">
+                                </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-center print:hidden pb-4">
+                        <button id="download-btn" class="bg-amber-500 hover:bg-amber-600 text-white font-black py-4 px-10 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 uppercase tracking-wider text-lg ring-4 ring-amber-500/30">
+                            <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download PDF List
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+            <div class="w-full rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row" style="background-color: #1a237e;">
+                
+                <div class="p-8 md:p-12 md:w-1/2 flex flex-col justify-center items-center text-center text-white" style="color: white;">
+            
+            <h3 class="text-yellow-400 font-bold tracking-widest uppercase mb-2 text-sm drop-shadow-md">
+                Official Book Store
+            </h3>
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Laxmi Pushtak Mahal
+            </h2>
+            
+            <div class="space-y-6 text-white mb-8 w-full flex flex-col items-center">
+                <div class="flex flex-col items-center justify-center">
+                     <div class="mb-2">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                     </div>
+                     <span class="text-lg font-medium">Gokul Chowk, Nagar Nigam office se purab</span>
+                </div>
+                
+                <div class="flex flex-col items-center justify-center">
+                    <div class="mb-2">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3 text-lg font-medium">
+                        <a href="tel:7631266905" class="hover:text-orange-200 md:pointer-events-none text-white" style="color: white;">7631266905</a>
+                        <span class="hidden sm:inline">|</span>
+                        <a href="tel:9835070162" class="hover:text-orange-200 md:pointer-events-none text-white" style="color: white;">9835070162</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/13V5644uKjVjUYYg8" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-all transform hover:-translate-y-1 shadow-lg w-full sm:w-auto">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.447-.894L15 7m0 13V7"></path>
+                </svg>
+                Get Directions
+            </a>
+
+        </div>
+
+                <div class="relative w-full h-80 md:w-1/2 md:h-auto min-h-[500px]">
+             <iframe 
+                src="https://maps.google.com/maps?q=Laxmi%20Pushtak%20Mahal%2C%20Gokul%20Chowk%2C%20Saharsa&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style="border:0; position: absolute; inset: 0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full object-cover">
+            </iframe>
+        </div>
+                
+            </div>
+        </section>
+        <div class="w-full max-w-4xl px-4 mt-8 mb-6 flex justify-center md:hidden print:hidden">
+            <a href="/" class="inline-flex items-center justify-center w-full gap-2 px-6 py-3.5 rounded-xl border border-slate-300 bg-white text-blue-950 text-sm font-black hover:text-amber-600 hover:border-amber-400 transition-all shadow-md uppercase tracking-wider">
+                <span class="text-xl leading-none mb-0.5">←</span> Back to Home
+            </a>
+        </div>
+
+    </section>
+
+</Layout>
+
+
+
+<style is:global>
+    header { display: none !important; }
+    footer { display: none !important; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media print {
+        body { 
+            background-color: white !important; 
+            -webkit-print-color-adjust: exact; 
+            print-color-adjust: exact;
+        }
+        .print\:hidden { display: none !important; }
+        .print\:shadow-none { box-shadow: none !important; }
+        .print\:border-none { border: none !important; }
+        .print\:bg-white { background-color: white !important; }
+        .print\:py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+    }
+</style>
+
+<script>
+    // 1. DATA DATABASE (Book List Data)
+    const bookDatabase = {
+        "Nursery": ["MGS PUBLICATION KIT. NUR.", "COPY – 3 IN ONE"],
+        "LKG": ["MGS PUBLICATION KIT. L.K.G", "COPY – 3 IN ONE"],
+        "UKG": ["MGS PUBLICATION KIT. U.K.G", "MATH STEP – 1", "UPHAR BAL VYAKARAN", "GOLDEN EASY ESSAY – 1", "OXFORD BASIC GRAMMAR", "OXFORD BASIC TRANSLATION", "THIRST FOR KNOWLEDGE", "SCIENCE INTRODUCTORY (MGS)"],
+        "Std I": ["SUGANDHA HINDI – MGS", "UPHAR BAL VYAKARAN", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "MATH STEP – 2", "NOESIS KNOWLEDGE – 1", "TECH WORLD COMPUTER – 1", "VIDYA SAGAR CONVERSATION", "GOLDEN EASY ESSAY – 2", "OXFORD BASIC GRAMMAR", "OXFORD BASIC TRANSLATION"],
+        "Std II": ["SUGANDHA HINDI – MGS", "UPHAR BAL VYAKARAN", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "MATH STEP – 3", "NOESIS KNOWLEDGE – 2", "TECH WORLD COMPUTER – 2", "VIDYA SAGAR CONVERSATION", "GOLDEN EASY ESSAY – 3", "OXFORD BASIC GRAMMAR", "OXFORD BASIC TRANSLATION", "SANSKRIT ANSHIKA – 1"],
+        "Std III": ["SUGANDHA HINDI – MGS", "UPHAR BAL VYAKARAN", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "MATH STEP – 4", "NOESIS KNOWLEDGE – 3", "TECH WORLD COMPUTER – 3", "VIDYA SAGAR CONVERSATION", "GOLDEN EASY ESSAY – 3", "OXFORD BASIC GRAMMAR", "OXFORD BASIC TRANSLATION", "SANSKRIT ANSHIKA – 2"],
+        "Std IV": ["SUGANDHA HINDI – MGS", "UPHAR BAL VYAKARAN", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "MATH STEP – 5", "VIDYASAGAR JUNIOR G.K", "TECH WORLD COMPUTER – 4", "VIDYA SAGAR CONVERSATION", "GOLDEN EASY ESSAY – 3", "OXFORD JUNIOR GRAMMAR", "OXFORD JUNIOR TRANSLATION", "SANSKRIT ANSHIKA – 3"],
+        "Std V": ["SUGANDHA HINDI – MGS", "VYAKARAN BHASKAR", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "RS AGRAWAL MATH – 6", "VIDYASAGAR JUNIOR G.K", "TECH WORLD COMPUTER – 5", "GOLDEN EASY ESSAY – 3", "OXFORD JUNIOR GRAMMAR", "OXFORD JUNIOR TRANSLATION", "SANSKRIT ANSHIKA – 4"],
+        "Std VI": ["MITHAS HINDI – (B.B)", "VYAKARAN BHASKAR", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "RD SHARMA MATH – 6", "VIDYASAGAR JUNIOR G.K", "TECH WORLD COMPUTER – 6", "GOLDEN EASY ESSAY – 3", "OXFORD CURRENT GRAMMAR", "OXFORD CURRENT TRANSLATION", "SANSKRIT ANSHIKA – 5"],
+        "Std VII": ["MITHAS HINDI – (B.B)", "VYAKARAN BHASKAR", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "RD AGRAWAL MATH – 7", "VIDYASAGAR JUNIOR G.K", "TECH WORLD COMPUTER – 7", "GOLDEN EASY ESSAY – 4", "OXFORD CURRENT GRAMMAR", "OXFORD CURRENT TRANSLATION", "SANSKRIT ANSHIKA – 6"],
+        "Std VIII": ["MITHAS HINDI – (B.B)", "VYAKARAN BHASKAR", "TULIP ENGLISH", "DUNE SCIENCE", "SOCIAL – MGS", "RS AGRAWAL MATH – 8", "VIDYASAGAR JUNIOR G.K", "TECH WORLD COMPUTER – 8", "GOLDEN EASY ESSAY – 4", "OXFORD CURRENT GRAMMAR", "OXFORD CURRENT TRANSLATION", "SANSKRIT ANSHIKA – 7"]
+    };
+
+    // 2. ELEMENT SELECTION
+    const selectElement = document.getElementById('class-select');
+    const emptyState = document.getElementById('empty-state');
+    const tableWrapper = document.getElementById('table-wrapper');
+    const tableBody = document.getElementById('book-table-body');
+    const downloadBtn = document.getElementById('download-btn');
+    
+    let currentClass = ""; 
+
+    // 3. SHOW DATA ON CLASS SELECTION (Ye wala part shayad missing tha)
+    selectElement.addEventListener('change', (event) => {
+        const selectedClass = event.target.value;
+        currentClass = selectedClass;
+        const books = bookDatabase[selectedClass];
+
+        if (books) {
+            emptyState.classList.add('hidden');
+            tableWrapper.classList.remove('hidden');
+            tableBody.innerHTML = '';
+
+            books.forEach((book, index) => {
+                const row = document.createElement('tr');
+                row.className = index % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50 hover:bg-slate-100'; 
+                row.innerHTML = `
+                    <td class="py-4 px-6 text-center border-r border-slate-200 font-bold text-slate-500 text-sm">${index + 1}</td>
+                    <td class="py-4 px-6 font-bold text-blue-950 text-sm md:text-lg">${book}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    });
+
+    // --- HELPER: GET IMAGE FOR PDF ---
+    const getBase64Image = (img) => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL("image/png");
+    }
+
+    // --- GENERATE PDF (With Beautiful Shop Card) ---
+    downloadBtn.addEventListener('click', () => {
+        if (!window.jspdf) {
+            alert("PDF Tools are loading... please click again in 2 seconds.");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // 1. TOP BAR
+        doc.setFontSize(8);
+        doc.setTextColor(100);
+        doc.setFont("helvetica", "bold");
+        doc.text("BIHAR GOVT. REGD. SCHOOL", 14, 10);
+        doc.text("REGD.NO - SAHPRIVATESCHOOL/L.K.E.A.38/2014", 196, 10, { align: "right" });
+        doc.setDrawColor(200);
+        doc.line(14, 12, 196, 12);
+
+        // 2. LOGO
+        const logoEl = document.getElementById('pdf-logo');
+        if (logoEl && logoEl.naturalWidth > 0) {
+            try {
+                const logoData = getBase64Image(logoEl);
+                doc.addImage(logoData, 'PNG', 14, 16, 28, 28);
+            } catch (e) {
+                console.error("Logo Error", e);
+            }
+        }
+
+        // 3. SCHOOL HEADER
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(39); 
+        doc.setTextColor(23, 37, 84);
+        doc.text("LORD KRISHNA", 46, 26);
+        
+        doc.setFontSize(24); 
+        doc.setTextColor(245, 158, 11);
+        doc.text("EDUCATIONAL ACADEMY", 46, 36);
+
+        doc.setFontSize(9); 
+        doc.setTextColor(100);
+        doc.text("A UNIT OF BINA MEMORIAL EDUCATIONAL & CHARITABLE TRUST", 46, 42);
+
+        // 4. ADDRESS
+        doc.setDrawColor(23, 37, 84);
+        doc.setLineWidth(0.5);
+        doc.line(14, 48, 196, 48); 
+        
+        doc.setFontSize(10);
+        doc.setTextColor(23, 37, 84);
+        doc.text("ward no.- 05, maharshi mehi Ashram road, Shivpuri, Saharsa, 852201", 105, 53, { align: "center" });
+        
+        doc.line(14, 56, 196, 56);
+
+        doc.setFontSize(9);
+        doc.setTextColor(0);
+        doc.text("AN ENGLISH MEDIUM C.B.S.E.", 105, 62, { align: "center" });
+        doc.setTextColor(23, 37, 84);
+        doc.text("NURSERY TO VIII | CO-EDUCATION", 105, 67, { align: "center" });
+
+        // 5. TITLE & CLASS
+        doc.setFillColor(23, 37, 84);
+        doc.roundedRect(55, 74, 100, 11, 3, 3, 'F');
+        doc.setFontSize(14);
+        doc.setTextColor(255, 255, 255);
+        doc.text("BOOK LIST - 2025-26", 105, 81, { align: "center" });
+
+        doc.setFontSize(18); 
+        doc.setTextColor(23, 37, 84); 
+        doc.text(`CLASS: ${currentClass.toUpperCase()}`, 105, 95, { align: "center" });
+
+        // 6. TABLE
+        const tableBodyData = bookDatabase[currentClass].map((book, index) => [index + 1, book]);
+
+        doc.autoTable({
+            startY: 102, 
+            head: [['S.No', 'Book Name / Publication']],
+            body: tableBodyData,
+            theme: 'grid',
+            headStyles: { fillColor: [23, 37, 84], textColor: 255, fontStyle: 'bold', halign: 'center' },
+            alternateRowStyles: { fillColor: [248, 250, 252] },
+            styles: { fontSize: 12, cellPadding: 4, valign: 'middle' },
+            columnStyles: { 0: { halign: 'center', cellWidth: 20 }, 1: { cellWidth: 'auto' } }
+        });
+
+        // 7. BEAUTIFUL SHOP CARD (The part we added)
+        let currentY = doc.lastAutoTable.finalY + 15;
+
+        if (currentY > 220) {
+            doc.addPage();
+            currentY = 20;
+        }
+
+        // Navy Blue Box
+        doc.setFillColor(26, 35, 126); 
+        doc.roundedRect(14, currentY, 182, 60, 4, 4, 'F'); 
+
+        const centerX = 105; 
+        const cardTop = currentY;
+
+        // "OFFICIAL BOOK STORE" (Yellow)
+        doc.setFontSize(10);
+        doc.setTextColor(255, 191, 0); 
+        doc.setFont("helvetica", "bold");
+        doc.text("OFFICIAL BOOK STORE", centerX, cardTop + 12, { align: "center" });
+
+        // "Laxmi Pushtak Mahal" (White)
+        doc.setFontSize(20);
+        doc.setTextColor(255, 255, 255); 
+        doc.text("Laxmi Pushtak Mahal", centerX, cardTop + 22, { align: "center" });
+
+        // Address & Phone (White)
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        doc.text("Gokul Chowk, Nagar Nigam office se purab", centerX, cardTop + 32, { align: "center" });
+        doc.text("Contact: 7631266905, 9835070162", centerX, cardTop + 40, { align: "center" });
+
+        // Orange Button
+        const btnWidth = 50;
+        const btnHeight = 10;
+        const btnX = centerX - (btnWidth / 2);
+        const btnY = cardTop + 45;
+
+        doc.setFillColor(249, 115, 22); 
+        doc.roundedRect(btnX, btnY, btnWidth, btnHeight, 2, 2, 'F');
+
+        // Button Text
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("GET DIRECTIONS", centerX, btnY + 6.5, { align: "center" });
+
+        // Clickable Link
+        doc.link(btnX, btnY, btnWidth, btnHeight, { url: "https://maps.app.goo.gl/o9gKJK8h5vaqgkwN7" });
+
+        // 8. FOOTER
+        const footerY = cardTop + 70; 
+        doc.setFontSize(8);
+        doc.setTextColor(150);
+        doc.text("Generated from official website of Lord Krishna Educational Academy.", 105, footerY, { align: "center" });
+
+        // SAVE
+        doc.save(`LKEA_BookList_${currentClass.replace(/\s/g, '')}.pdf`);
+    });
+</script>

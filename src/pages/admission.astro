@@ -1,0 +1,1551 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets'
+
+import logoImg from '../assets/logo.png';
+
+// 🔴 YOUR WEB3FORMS ACCESS KEY
+const access_key = "c4b0799c-0bde-498c-ba74-3b047d8162fc"; 
+---
+
+
+
+<style is:global>
+    /* 👇 Desktop Header Visibility Fix */
+    header, nav, .nav-wrapper {
+        position: relative !important;
+        z-index: 100 !important;
+    }
+
+/* 🚀 1. SUPER FORM LOCK: Freezes the entire container against clicks */
+    .review-mode {
+        pointer-events: none !important;
+    }
+    /* Rescue interactive action buttons from the freeze */
+    .review-mode #submitOptions,
+    .review-mode #successSection,
+    .review-mode a,
+    .review-mode button {
+        pointer-events: auto !important;
+    }
+
+    /* 2. Review Mode Styling (Form Input Look) */
+    .review-mode input, 
+    .review-mode select, 
+    .review-mode textarea {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-weight: bold;
+        color: #000;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        box-shadow: none !important;
+    }
+
+    /* 🚀 FIXED: Restore Radio Buttons & Checkboxes Visibility in PDF */
+    .review-mode input[type="radio"], 
+    .review-mode input[type="checkbox"] { 
+        appearance: auto !important; 
+        -moz-appearance: auto !important; 
+        -webkit-appearance: auto !important; 
+        accent-color: black !important; 
+        opacity: 1 !important; /* Prevents fading when form is locked */
+    }
+
+    /* Force printers to print locked checkboxes in full dark color */
+    @media print {
+        input[type="radio"]:disabled, 
+        input[type="checkbox"]:disabled,
+        .review-mode input[type="radio"], 
+        .review-mode input[type="checkbox"] {
+            opacity: 1 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+    }
+
+    /* Stop animations in review mode */
+    .review-mode .animate-pulse {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+
+    /* 👇 BULLETPROOF NATIVE PRINT SETTINGS 🖨️ */
+    @media print {
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        /* Hide unwanted UI elements during print */
+        body > header, 
+        body > nav,
+        header, nav, footer,
+        .sticky, .fixed, 
+        .print\:hidden, 
+        astro-dev-toolbar,
+        a[href="/"] { 
+            display: none !important; 
+        }
+
+        /* Full width A4 page setup */
+        body { 
+            background-color: white !important; 
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .min-h-screen {
+            min-height: auto !important;
+            padding: 0 !important;
+            background: white !important;
+        }
+
+        #printableArea {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 🚀 FIX: Prevent Badge and UDISE from Disappearing! */
+        /* Instead of hiding them, we just disable the blur effect so the print engine doesn't crash */
+        .blur, .blur-xl, .backdrop-blur-md {
+            filter: none !important;
+            -webkit-filter: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* 🚀 FIX: Prevent Header from clipping the Badge during print */
+        .overflow-hidden {
+            overflow: visible !important;
+        }
+
+        /* Prevent cards from cutting in half */
+        .rounded-xl {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+
+        /* 👇 Hide Calendar Icon in Print/Review */
+        .review-mode input[type="date"]::-webkit-calendar-picker-indicator,
+        .review-mode input[type="date"]::-webkit-inner-spin-button {
+            display: none !important;
+            -webkit-appearance: none;
+        }
+
+        /* 👇 Smart Page Break for Parents Details */
+        .dynamic-page-break {
+            page-break-before: always !important;
+            break-before: page !important;
+            margin-top: 20px !important;
+        }
+
+        /* Setup A4 Margin */
+        @page { 
+            margin: 10mm; 
+            size: A4 portrait; 
+        }
+    }
+
+/* 👇 Fix Admission Toggle & Signature Box for Print/Review */
+    .print-only-text { display: none; }
+    
+    .review-mode .interactive-toggle { display: none !important; }
+    .review-mode .print-only-text { display: block !important; }
+    
+    @media print {
+        .interactive-toggle { display: none !important; }
+        .print-only-text { display: block !important; text-align: center; }
+        
+        /* Clean up signature upload box so it looks like a physical signing area */
+        label[for="guardianSignature"] { 
+            border: 1px solid #cbd5e1 !important; 
+            background: transparent !important; 
+        }
+        #signaturePlaceholder span, #signaturePlaceholder p { display: none !important; }
+    }
+
+</style>
+
+
+
+<Layout title="Admission Form 2026-27">
+    
+<div class="bg-slate-100 min-h-screen py-6 md:py-12 font-sans">
+    <div id="printableArea" class="max-w-4xl mx-auto px-4">
+      
+      <a href="/" data-html2canvas-ignore="true" class="inline-flex items-center gap-2 text-blue-900 font-bold mb-6 hover:text-amber-600 transition-colors bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200 text-sm">
+        <span>←</span> Back to Home
+      </a>
+
+      <div class="bg-blue-950 text-white p-6 md:p-10 rounded-t-2xl shadow-2xl border-b-4 border-amber-500 relative overflow-hidden">
+        
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-medium text-blue-200 uppercase tracking-widest mb-8 border-b border-blue-800 pb-4 gap-2">
+            <span>Registered by Bihar Government</span>
+            <span>Reg No: SAHPRIVATESCHOOL/L.K.E.A-38/2014</span>
+        </div>
+
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-center md:text-left mb-8">
+            
+            <div class="shrink-0 relative group">
+                <div class="absolute inset-0 bg-white/20 blur-xl rounded-full group-hover:bg-white/30 transition-all"></div>
+                <Image id="pdf-logo" src={logoImg} alt="School Logo" class="w-24 h-24 object-contain" />
+
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+                <h1 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight leading-none mb-2 drop-shadow-lg">
+                    Lord Krishna
+                </h1>
+                <h2 class="text-xl md:text-3xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500 uppercase tracking-widest leading-tight mb-3 drop-shadow-sm">
+                    Educational Academy
+                </h2>
+                <p class="text-xs md:text-sm text-blue-200 font-medium italic uppercase tracking-wide">
+                    A Unit of Bina Memorial Educational & Charitable Trust
+                </p>
+                
+                <div class="flex items-center gap-2 mt-3 mb-2 opacity-50">
+                    <span class="w-8 h-[1px] bg-amber-500"></span>
+                    <span class="text-amber-500 text-xs">♦</span>
+                    <span class="w-8 h-[1px] bg-amber-500"></span>
+                </div>
+
+                <p class="text-sm md:text-base font-bold text-white uppercase tracking-wide">
+                    mahershimahi ashram Road, Shivpuri Ward No.-5, Saharsa - 852124 (Bihar)
+                </p>
+            </div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center gap-6 mt-6">
+            
+            <div class="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 px-6 py-1 rounded-full shadow-lg">
+                <span class="font-bold tracking-widest text-sm md:text-base">UDISE CODE :- 10120404402</span>
+            </div>
+
+            <div class="relative cursor-default">
+              <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-600 rounded-lg blur opacity-50"></div>
+    
+              <div class="relative bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 px-8 md:px-12 py-3 md:py-4 rounded-xl border-2 border-amber-300/50 shadow-2xl flex items-center justify-center gap-3">
+                   <span class="text-2xl md:text-3xl">📝</span>
+                   <div class="text-center">
+                      <p class="text-xs md:text-sm font-bold text-amber-100 uppercase tracking-widest mb-0.5">2026-27</p>
+                      <h3 class="text-xl md:text-3xl font-heading font-black text-white uppercase tracking-wider drop-shadow-md">
+                          Admission Form
+                      </h3>
+                   </div>
+                   <span class="text-2xl md:text-3xl">✨</span>
+              </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="bg-white p-4 md:p-10 pt-10 rounded-b-2xl shadow-2xl space-y-8 border border-t-0 border-slate-200 relative top-[-2px]" id="admissionForm">
+        
+        <div class="mb-10 p-6 md:p-8 bg-white border border-slate-200 rounded-xl shadow-sm relative">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            <div class="relative z-10 space-y-4 font-serif text-slate-800">
+                <div class="font-bold text-base md:text-lg leading-relaxed">
+                    <p>To,</p>
+                    <p class="pl-4">The Director,</p>
+                    <p class="pl-4 font-black text-blue-950">Lord Krishna Educational Academy.</p>
+                </div>
+                <p class="font-bold text-base md:text-lg mt-4">Dear Sir,</p>
+                <p class="text-sm md:text-base leading-relaxed text-justify text-slate-700">
+                    Please admit my ward in your institution. I agree to abide fully by the rules and regulations of the Institute. I solemnly declare that the particulars about my ward given below are true and correct.
+                </p>
+
+                <div class="flex flex-row justify-between items-end gap-2 pt-6 mt-4 border-t border-slate-100">
+                    
+                    <div class="w-[45%]">
+                        <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase mb-1">Date of Application</label>
+                        <input type="date" name="Application Date" id="appDate" required class="w-full bg-slate-50 border-b-2 border-slate-300 focus:border-blue-900 outline-none py-2 px-1 md:px-3 font-bold text-blue-950 rounded-t cursor-not-allowed text-sm">
+                    </div>
+
+                    <div class="w-[50%] flex flex-col items-end">
+                        <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase mb-2 text-right">Guardian's Signature</label>
+                        
+                        <label for="guardianSignature" class="cursor-pointer w-32 md:w-48 h-16 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center bg-slate-50 text-center relative overflow-hidden group hover:bg-slate-100 transition-colors">
+                            <input type="file" id="guardianSignature" accept="image/*" required class="hidden" onchange="previewSignature(event)">
+                            <img id="signaturePreview" class="absolute inset-0 w-full h-full object-contain hidden z-10" alt="Signature Preview">
+                            <div id="signaturePlaceholder" class="relative z-0">
+                                <span class="text-xl opacity-40 block mb-0.5 print:hidden">✍️</span>
+                                <p class="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase leading-tight print:hidden">Upload Signature</p>
+                            </div>
+                            <div class="absolute inset-0 bg-blue-950/70 hidden group-hover:flex items-center justify-center text-white text-[10px] font-bold transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20 print:hidden">Change</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8 flex flex-col items-center justify-center gap-3">
+            
+            <div class="print-only-text w-full text-center border-y-2 border-slate-200 py-3 mb-4">
+                <h3 class="text-lg font-black text-blue-950 uppercase tracking-widest">
+                    Admission Type: <span id="printAdmissionTypeValue" class="text-amber-600">Day Scholar</span>
+                </h3>
+            </div>
+
+            <div class="interactive-toggle flex flex-col items-center justify-center gap-3 w-full">
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-widest">Select Admission Type</label>
+                <div class="bg-slate-100 p-1.5 rounded-full inline-flex relative border border-slate-200 shadow-inner">
+                    <label class="cursor-pointer relative z-10">
+                        <input type="radio" id="typeDay" name="Admission Type" value="Day Scholar" class="peer sr-only" checked>
+                        <span class="block px-6 py-2.5 rounded-full text-sm font-bold text-slate-500 transition-all duration-300 peer-checked:bg-blue-950 peer-checked:text-white peer-checked:shadow-lg">
+                            Day Scholar
+                        </span>
+                    </label>
+
+                    <label class="cursor-pointer relative z-10">
+                        <input type="radio" id="typeHostel" name="Admission Type" value="Hostel" class="peer sr-only">
+                        <span class="block px-6 py-2.5 rounded-full text-sm font-bold text-slate-500 transition-all duration-300 peer-checked:bg-amber-500 peer-checked:text-blue-950 peer-checked:shadow-lg">
+                            Hostel (Boarding)
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        
+        <input type="hidden" name="access_key" value={access_key}>
+        <input type="hidden" name="subject" value="New Student Admission - LKEA">
+        <input type="hidden" name="from_name" value="LKEA Website">
+
+        <div class="space-y-8 animate-fade-in-up mt-8">
+            
+            <div>
+                <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-amber-500 pb-2 mb-6 mt-4">
+                    <span class="bg-amber-100 p-1.5 rounded text-xl">👶</span> Student Personal Details
+                </h3>
+                
+                <div class="flex flex-col md:flex-row print:flex-row gap-6 md:gap-8 items-start">
+                    
+                    <div class="w-full md:w-1/4 print:w-1/4 flex flex-col items-center md:items-start print:items-start">
+                        
+                        <div class="w-32 h-40 md:w-36 md:h-44 print:w-32 print:h-40 border-2 border-dashed border-slate-400 bg-slate-50 hover:bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center relative overflow-hidden group cursor-pointer shadow-inner transition-colors" onclick="document.getElementById('studentPhotoInput').click()">
+                            <input type="file" id="studentPhotoInput" accept="image/*" required class="hidden" onchange="previewStudentPhoto(event)">
+                            <img id="studentPhotoPreview" class="absolute inset-0 w-full h-full object-cover hidden z-10" alt="Student Photo">
+                            <div id="studentPhotoPlaceholder" class="p-2 relative z-0">
+                                <span class="text-3xl opacity-40 mb-1 block print:hidden">📷</span>
+                                <p class="text-[10px] font-bold text-slate-500 uppercase leading-tight print:hidden">Paste / Upload<br>Passport Photo</p>
+                                <p class="text-[9px] text-red-500 mt-1 print:hidden">* Required</p>
+                            </div>
+                            <div class="absolute inset-0 bg-blue-950/70 hidden group-hover:flex items-center justify-center text-white text-xs font-bold transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20 print:hidden">Change Photo</div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-full md:w-3/4 print:w-3/4 flex flex-col gap-5">
+                        
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Student Name <span class="text-red-500">*</span></label>
+                            <div class="flex flex-row gap-4">
+                                <input type="text" name="Student First Name" required class="w-1/2 bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="First Name" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')">
+                                <input type="text" name="Student Last Name" required class="w-1/2 bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="Last Name" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')">
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row gap-4">
+                            <div class="w-1/2">
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Gender <span class="text-red-500">*</span></label>
+                                <select name="Gender" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-blue-900 text-blue-950 font-bold shadow-sm">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="w-1/2">
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Blood Group <span class="text-red-500">*</span></label>
+                                <select name="Blood Group" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg text-blue-950 font-bold focus:border-blue-900 shadow-sm">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row gap-4">
+                            <div class="w-1/2">
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Date of Birth (DOB) <span class="text-red-500">*</span></label>
+                                <input type="date" name="DOB" id="dobInput" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-blue-900 text-blue-950 font-bold shadow-sm">
+                            </div>
+                            <div class="w-1/2">
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Age</label>
+                                <input type="text" name="Age" id="ageOutput" readonly class="w-full bg-slate-200 border border-slate-300 p-3 rounded-lg text-slate-600 font-bold shadow-inner" placeholder="Auto Calc">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Class Applying For <span class="text-red-500">*</span></label>
+                            <select name="Class" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg font-bold text-blue-950 focus:border-blue-900 shadow-sm">
+                                <option value="" disabled selected>Select Class</option>
+                                <option value="Nursery">Nursery</option>
+                                <option value="LKG">LKG</option>
+                                <option value="UKG">UKG</option>
+                                <option value="Class 1">Class 1</option>
+                                <option value="Class 2">Class 2</option>
+                                <option value="Class 3">Class 3</option>
+                                <option value="Class 4">Class 4</option>
+                                <option value="Class 5">Class 5</option>
+                                <option value="Class 6">Class 6</option>
+                                <option value="Class 7">Class 7</option>
+                                <option value="Class 8">Class 8</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Student Aadhaar (Optional)</label>
+                            <input type="text" name="Student Aadhaar" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest aadhaar-input" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                 <label class="text-xs font-bold text-blue-800 uppercase block mb-2">Has the student studied in a school before? <span class="text-red-500">*</span></label>
+                 <div class="flex gap-6 mb-3">
+                     <label class="flex items-center gap-2 cursor-pointer">
+                         <input type="radio" name="Previous School Status" value="Yes" class="accent-blue-900">
+                         <span class="text-sm font-bold text-slate-700">Yes</span>
+                     </label>
+                     <label class="flex items-center gap-2 cursor-pointer">
+                         <input type="radio" name="Previous School Status" value="No (First Admission)" class="accent-blue-900" onchange="togglePreviousSchool()">
+                         <span class="text-sm font-bold text-slate-700">No (First Time Admission)</span>
+                     </label>
+                 </div>
+                 
+                 <div id="previousSchoolDetails" class="hidden grid md:grid-cols-2 gap-5 animate-fade-in-up mt-4 border-t border-blue-100 pt-5">
+                     
+                     <div class="md:col-span-2">
+                         <label class="text-xs font-bold text-slate-500 uppercase">Previous School Name</label>
+                         <input type="text" name="Previous School Name" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="Enter school name" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')">
+                     </div>
+                     
+                     <div class="md:col-span-2 grid grid-cols-2 gap-5">
+                         <div>
+                             <label class="text-xs font-bold text-slate-500 uppercase">Studied From Year</label>
+                             <input type="text" name="Studied From Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let v = this.value.replace(/[^0-9]/g, ''); let cy = new Date().getFullYear(); if(v.length === 4 && parseInt(v) > cy) v = cy.toString(); this.value = v;">
+                         </div>
+                         
+                         <div>
+                             <label class="text-xs font-bold text-slate-500 uppercase">To Year</label>
+                             <input type="text" name="Studied To Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let v = this.value.replace(/[^0-9]/g, ''); let cy = new Date().getFullYear(); if(v.length === 4 && parseInt(v) > cy) v = cy.toString(); this.value = v;">
+                         </div>
+                     </div>
+                     
+                     <div class="md:col-span-2">
+                         <label class="text-xs font-bold text-slate-500 uppercase">Last Class Passed</label>
+                         <select name="Last Class" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 text-blue-950 font-bold shadow-sm">
+                             <option value="" disabled selected>Select Last Class</option>
+                             <option value="Nursery">Nursery</option>
+                             <option value="LKG">LKG</option>
+                             <option value="UKG">UKG</option>
+                             <option value="Class 1">Class 1</option>
+                             <option value="Class 2">Class 2</option>
+                             <option value="Class 3">Class 3</option>
+                             <option value="Class 4">Class 4</option>
+                             <option value="Class 5">Class 5</option>
+                             <option value="Class 6">Class 6</option>
+                             <option value="Class 7">Class 7</option>
+                         </select>
+                     </div>
+                     
+                </div>
+            
+            </div>
+        
+            <div id="parentsDetailsSection" class="transition-all duration-300 ">
+                <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-amber-500 pb-2 mb-6">
+                    <span class="bg-amber-100 p-1.5 rounded text-xl">👨‍👩‍👦</span> Parents Details
+                </h3>
+                
+                <div class="flex flex-col print:flex-row md:flex-row gap-6 md:gap-8">
+                    
+                    <div class="w-full print:w-1/2 md:w-1/2 bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-900"></div>
+                        <p class="font-bold text-blue-900 mb-4 border-b border-slate-200 pb-2 flex items-center gap-2">👨 Father's Info</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" name="Father Name" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="Father's Name" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Mobile Number <span class="text-red-500">*</span></label>
+                                <input type="tel" name="Father Mobile" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm tracking-wide" placeholder="10-Digit Mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Occupation</label>
+                                <input type="text" name="Father Occupation" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="e.g. Business, Teacher">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Aadhaar Number <span class="text-red-500">*</span></label>
+                                <input type="text" name="Father Aadhaar" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest aadhaar-input" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full print:w-1/2 md:w-1/2 bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-pink-800"></div>
+                        <p class="font-bold text-pink-900 mb-4 border-b border-slate-200 pb-2 flex items-center gap-2">👩 Mother's Info</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" name="Mother Name" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-pink-900 font-bold text-blue-950 shadow-sm" placeholder="Mother's Name" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Mobile Number <span class="text-red-500">*</span></label>
+                                <input type="tel" name="Mother Mobile" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-pink-900 font-bold text-blue-950 shadow-sm tracking-wide" placeholder="10-Digit Mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Occupation</label>
+                                <input type="text" name="Mother Occupation" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-pink-900 font-bold text-blue-950 shadow-sm" placeholder="e.g. Housewife, Doctor">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Aadhaar Number <span class="text-red-500">*</span></label>
+                                <input type="text" name="Mother Aadhaar" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-pink-900 font-bold text-blue-950 shadow-sm text-center tracking-widest aadhaar-input" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-red-500 pb-2 mb-6 mt-4">
+                    <span class="bg-red-100 p-1.5 rounded text-xl">🚨</span> Emergency & Digital Contact
+                </h3>
+                <div class="flex flex-col gap-5 bg-red-50/50 p-5 rounded-xl border border-red-100 shadow-sm relative overflow-hidden">
+                     <div class="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
+                     
+                     <div class="flex flex-col md:flex-row print:flex-row gap-5">
+                         <div class="w-full md:w-1/2 print:w-1/2">
+                             <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Emergency Contact Name <span class="text-red-500">*</span></label>
+                             <input type="text" name="Emergency Name" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-red-500 font-bold text-blue-950 shadow-sm" placeholder="Other than parents" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')">
+                         </div>
+                         
+                         <div class="w-full md:w-1/2 print:w-1/2">
+                             <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Relationship <span class="text-red-500">*</span></label>
+                             <input type="text" name="Emergency Relation" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-red-500 font-bold text-blue-950 shadow-sm" placeholder="e.g. Uncle, Grandfather">
+                         </div>
+                     </div>
+                     
+                     <div class="w-full md:w-1/2 print:w-1/2">
+                         <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Emergency Mobile <span class="text-red-500">*</span></label>
+                         <input type="tel" name="Emergency Mobile" required class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-red-500 font-bold text-blue-950 shadow-sm tracking-wide" placeholder="10 Digits" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                     </div>
+
+                     <div class="w-full border-t border-red-200 pt-4 mt-1">
+                         <label class="text-xs font-bold text-green-700 uppercase mb-1 block">WhatsApp Number (For School Notices) <span class="text-red-500">*</span></label>
+                         <input type="tel" name="WhatsApp Number" required class="w-full bg-green-50 border border-green-300 p-3 rounded-lg focus:border-green-600 font-bold text-green-900 shadow-sm tracking-wide md:w-1/2 print:w-1/2" placeholder="10-Digit WhatsApp Number" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                     </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6 w-full">
+                
+                <div class="w-full flex flex-col gap-6">
+                    
+                    <div class="print:break-inside-avoid" style="page-break-inside: avoid; break-inside: avoid;">
+                        <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-amber-500 pb-2 mb-4">
+                            <span class="bg-amber-100 p-1.5 rounded text-xl">📍</span> Residential Address
+                        </h3>
+                        
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                            <p class="font-bold text-blue-900 mb-5 border-b border-slate-200 pb-2 text-lg">Present / Temporary Address</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex flex-col md:flex-row print:flex-row gap-4 md:gap-6">
+                                    <div class="w-full md:w-1/3 print:w-1/3">
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">State <span class="text-red-500">*</span></label>
+                                        <select id="pre_state" name="Present State" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all cursor-pointer" onchange="updateDistricts('pre')">
+                                            <option value="" disabled selected>Loading States...</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-full md:w-1/3 print:w-1/3">
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">District <span class="text-red-500">*</span></label>
+                                        <select id="pre_district" name="Present District" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all cursor-pointer">
+                                            <option value="" disabled selected>Select State First</option>
+                                        </select>
+                                    </div>
+                                    <div class="relative w-full md:w-1/3 print:w-1/3">
+                                        <label class="text-xs font-bold text-blue-700 uppercase mb-1 block">PIN Code <span class="text-red-500">*</span></label>
+                                        <input type="text" id="pre_pin" name="Present PIN" required class="w-full bg-blue-50 border border-blue-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest transition-all" placeholder="000000" maxlength="6" oninput="fetchPinDetails(this, 'pre')">
+                                        <span class="absolute right-3 top-9 text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-1 rounded shadow-sm opacity-0 transition-opacity" id="pre_loading">Fetching... ✨</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex flex-col md:flex-row print:flex-row gap-4 md:gap-6">
+                                    <div class="w-full md:w-1/2 print:w-1/2">
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Post Office <span class="text-red-500">*</span></label>
+                                        <input type="text" id="pre_po" name="Present Post Office" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="P.O.">
+                                    </div>
+                                    <div class="w-full md:w-1/2 print:w-1/2">
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Police Station <span class="text-red-500">*</span></label>
+                                        <input type="text" id="pre_ps" name="Present Police Station" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="P.S.">
+                                    </div>
+                                </div>
+
+                                <div class="w-full">
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Village / Mohalla / Ward No <span class="text-red-500">*</span></label>
+                                    <input type="text" id="pre_address" name="Present Address" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm" placeholder="Full Street Address">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden print:break-inside-avoid" style="page-break-inside: avoid; break-inside: avoid;">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-200 pb-3 mb-5 gap-3">
+                            <p class="font-bold text-blue-900 text-lg">Permanent Address</p>
+                            <label class="flex items-center gap-2 cursor-pointer bg-blue-100 px-4 py-2 rounded-full hover:bg-blue-200 transition-colors shadow-sm border border-blue-200">
+                                <input type="checkbox" id="sameAddressBtn" class="w-4 h-4 accent-blue-900" onchange="copyAddress()">
+                                <span class="text-xs font-bold text-blue-900 uppercase tracking-wide">Same as Present</span>
+                            </label>
+                        </div>
+                        
+                        <div class="space-y-4" id="perm_wrapper">
+                            <div class="flex flex-col md:flex-row print:flex-row gap-4 md:gap-6">
+                                <div class="w-full md:w-1/3 print:w-1/3">
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">State <span class="text-red-500">*</span></label>
+                                    <select id="perm_state" name="Permanent State" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all cursor-pointer" onchange="updateDistricts('perm')">
+                                        <option value="" disabled selected>Loading States...</option>
+                                    </select>
+                                </div>
+                                <div class="w-full md:w-1/3 print:w-1/3">
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">District <span class="text-red-500">*</span></label>
+                                    <select id="perm_district" name="Permanent District" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all cursor-pointer">
+                                        <option value="" disabled selected>Select State First</option>
+                                    </select>
+                                </div>
+                                <div class="relative w-full md:w-1/3 print:w-1/3">
+                                    <label class="text-xs font-bold text-blue-700 uppercase mb-1 block">PIN Code <span class="text-red-500">*</span></label>
+                                    <input type="text" id="perm_pin" name="Permanent PIN" required class="w-full bg-blue-50 border border-blue-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest transition-all" placeholder="000000" maxlength="6" oninput="fetchPinDetails(this, 'perm')">
+                                    <span class="absolute right-3 top-9 text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-1 rounded shadow-sm opacity-0 transition-opacity" id="perm_loading">Fetching... ✨</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row print:flex-row gap-4 md:gap-6">
+                                <div class="w-full md:w-1/2 print:w-1/2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Post Office <span class="text-red-500">*</span></label>
+                                    <input type="text" id="perm_po" name="Permanent Post Office" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all" placeholder="P.O.">
+                                </div>
+                                <div class="w-full md:w-1/2 print:w-1/2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Police Station <span class="text-red-500">*</span></label>
+                                    <input type="text" id="perm_ps" name="Permanent Police Station" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all" placeholder="P.S.">
+                                </div>
+                            </div>
+
+                            <div class="w-full">
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Village / Mohalla / Ward No <span class="text-red-500">*</span></label>
+                                <input type="text" id="perm_address" name="Permanent Address" required class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm transition-all" placeholder="Full Street Address">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="sectionDayScholar" class="w-full animate-fade-in-up">
+                <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-cyan-500 pb-2 mb-4">
+                    <span class="bg-cyan-100 p-1.5 rounded text-xl">🚌</span> Day Scholar Details
+                </h3>
+                
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+                    
+                    <div class="w-full">
+                            <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">Mode of Transport <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 print:grid-cols-3 gap-4 mb-2">
+                                
+                                <label class="cursor-pointer group">
+                                    <input type="radio" name="Transport Mode" value="Self/Walk" class="peer sr-only transport-radio" required>
+                                    <div class="h-full p-3 rounded-xl border-2 border-slate-200 bg-white text-center font-bold text-slate-500 peer-checked:border-cyan-500 peer-checked:bg-cyan-50 peer-checked:text-cyan-800 group-hover:border-cyan-300 transition-all shadow-sm">
+                                        🚶‍♂️ Self / Walk
+                                    </div>
+                                </label>
+                                
+                                <label class="cursor-pointer group">
+                                    <input type="radio" name="Transport Mode" value="Parent Drop" class="peer sr-only transport-radio">
+                                    <div class="h-full p-3 rounded-xl border-2 border-slate-200 bg-white text-center font-bold text-slate-500 peer-checked:border-cyan-500 peer-checked:bg-cyan-50 peer-checked:text-cyan-800 group-hover:border-cyan-300 transition-all shadow-sm">
+                                        🚗 Parent Drop
+                                    </div>
+                                </label>
+                                
+                                <label class="cursor-pointer group">
+                                    <input type="radio" name="Transport Mode" value="School Van" class="peer sr-only transport-radio">
+                                    <div class="h-full p-3 rounded-xl border-2 border-slate-200 bg-white text-center font-bold text-slate-500 peer-checked:border-cyan-500 peer-checked:bg-cyan-50 peer-checked:text-cyan-800 group-hover:border-cyan-300 transition-all shadow-sm">
+                                        🚐 School Van
+                                    </div>
+                                </label>
+                                
+                            </div>
+                        </div>
+                    
+                    <div id="vanDetailsBox" class="hidden mt-6 animate-fade-in-up">
+                        <div class="bg-white p-5 rounded-xl border border-cyan-200 grid grid-cols-1 md:grid-cols-2 gap-6 shadow-sm">
+                            <div class="md:col-span-2">
+                                <p class="text-sm font-bold text-cyan-800 uppercase flex items-center gap-2 border-b border-cyan-100 pb-2">
+                                    <span class="text-lg">🚐</span> School Van Requirement
+                                </p>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Pickup Point / Stop Name <span class="text-red-500">*</span></label>
+                                <input type="text" name="Pickup Point" id="vanPickup" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-cyan-600 font-bold text-blue-950 shadow-inner" placeholder="Enter landmark or stop">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Approx Distance (KM) <span class="text-red-500">*</span></label>
+                                <input type="text" name="Distance" id="vanDistance" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-cyan-600 font-bold text-blue-950 shadow-inner" placeholder="e.g. 5" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label for="dayScholarConsent" class="flex items-start gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-md transition-all cursor-pointer group">
+                            <div class="pt-0.5">
+                                <input type="checkbox" id="dayScholarConsent" name="Day Scholar Consent" required class="w-5 h-5 accent-cyan-600 cursor-pointer">
+                            </div>
+                            <span class="text-sm text-slate-700 font-medium leading-relaxed group-hover:text-blue-950 transition-colors">
+                                I confirm that my child will commute daily from home and will strictly follow the school timing and discipline rules.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="sectionHostel" class="hidden w-full animate-fade-in-up">
+                    <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-amber-500 pb-2 mb-4 print:break-after-avoid">
+                        <span class="bg-amber-100 p-1.5 rounded text-xl">🏠</span> Extra details for Hostel
+                    </h3>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Hostel Type <span class="text-red-500">*</span></label>
+                                <select name="Hostel Type" id="hostelType" class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-sm transition-all cursor-pointer">
+                                    <option value="">Select</option>
+                                    <option value="Boys Hostel">Boys Hostel</option>
+                                    <option value="Girls Hostel">Girls Hostel</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Duration of Stay <span class="text-red-500">*</span></label>
+                                <select name="Hostel Duration" id="hostelDuration" class="w-full bg-white border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-sm transition-all cursor-pointer">
+                                    <option value="Full Academic Year">Full Academic Year</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm mb-6 print:break-inside-avoid">
+                            <h4 class="font-bold text-amber-900 mb-4 border-b border-amber-100 pb-2">🍽️ Food & Diet</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Food Preference <span class="text-red-500">*</span></label>
+                                    <select name="Food Preference" id="foodPref" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner">
+                                        <option value="Vegetarian">Vegetarian</option>
+                                        <option value="Non-Vegetarian">Non-Vegetarian</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Any Food Restrictions?</label>
+                                    <input type="text" name="Food Restrictions" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner" placeholder="e.g. No Brinjal, No Milk">
+                                </div>
+                            </div>
+                            <label class="flex items-center gap-3 mt-4 cursor-pointer group">
+                                <input type="checkbox" name="Mess Permission" class="accent-amber-600 w-5 h-5">
+                                <span class="text-sm text-slate-700 font-medium group-hover:text-amber-900 transition-colors">I give permission for my ward to eat hostel mess food.</span>
+                            </label>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-red-200 shadow-sm mb-6 print:break-inside-avoid">
+                            <h4 class="font-bold text-red-800 mb-4 border-b border-red-100 pb-2">🏥 Medical Details (Mandatory)</h4>
+                            
+                            <div class="space-y-5">
+                                <div class="flex flex-col md:flex-row print:flex-row gap-4 items-start md:items-center print:items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                    <span class="text-sm font-bold text-slate-700">Any Existing Illness? <span class="text-red-500">*</span></span>
+                                    <div class="flex gap-4">
+                                        <label class="cursor-pointer flex items-center gap-2"><input type="radio" name="Illness" value="No" checked class="accent-red-600 w-4 h-4"> <span class="font-medium">No</span></label>
+                                        <label class="cursor-pointer flex items-center gap-2"><input type="radio" name="Illness" value="Yes" class="accent-red-600 w-4 h-4"> <span class="font-medium">Yes</span></label>
+                                    </div>
+                                </div>
+                                <textarea name="Illness Details" id="illnessDetails" class="hidden w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:border-red-600 font-medium text-blue-950 shadow-inner" placeholder="Please describe the illness in detail..."></textarea>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6 pt-2">
+                                    <div>
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Allergies (Write 'None' if NA) <span class="text-red-500">*</span></label>
+                                        <input type="text" name="Allergies" id="allergyInput" required class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-red-600 font-bold text-blue-950 shadow-inner" placeholder="Food/Medicine Allergies">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Doctor Contact (Optional)</label>
+                                        <input type="text" name="Doctor Contact" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-red-600 font-bold text-blue-950 shadow-inner" placeholder="Name & Phone">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm mb-6 print:break-inside-avoid">
+                            <h4 class="font-bold text-amber-900 mb-4 border-b border-amber-100 pb-2">🛡️ Local Guardian (Saharsa)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Guardian Name <span class="text-red-500">*</span></label>
+                                    <input type="text" name="Local Guardian Name" id="lgName" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner" placeholder="Full Name">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Relationship <span class="text-red-500">*</span></label>
+                                    <input type="text" name="Local Guardian Relation" id="lgRel" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner" placeholder="e.g. Uncle">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Mobile Number <span class="text-red-500">*</span></label>
+                                    <input type="tel" name="Local Guardian Mobile" id="lgMob" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner tracking-wide" placeholder="10 Digits" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Full Saharsa Address <span class="text-red-500">*</span></label>
+                                    <input type="text" name="Local Guardian Address" id="lgAdd" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:border-amber-600 font-bold text-blue-950 shadow-inner" placeholder="Complete local address">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm mb-6 print:break-inside-avoid">
+                            <div class="flex justify-between items-center border-b border-amber-100 pb-3 mb-4">
+                                <h4 class="font-bold text-amber-900">📅 Authorized Visitors (Leave Permission)</h4>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-1 rounded font-bold uppercase tracking-wider print:hidden">Max 4 People</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-4 print:hidden">Please list the individuals who are authorized to meet or take the student out of the hostel.</p>
+
+                            <div class="space-y-3" id="visitor-container">
+                                <div class="grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-3 p-3 bg-slate-50/50 rounded-lg border border-slate-200 relative">
+                                    <div class="md:col-span-5 print:col-span-5">
+                                        <input type="text" name="Visitor 1 Name" placeholder="1. Full Name *" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                    </div>
+                                    <div class="md:col-span-3 print:col-span-3">
+                                        <input type="text" name="Visitor 1 Relation" placeholder="Relation *" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors">
+                                    </div>
+                                    <div class="md:col-span-4 print:col-span-4">
+                                        <input type="tel" name="Visitor 1 Mobile" placeholder="10-Digit Mobile *" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm tracking-wide transition-colors">
+                                    </div>
+                                </div>
+
+                                <div class="hidden grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-3 p-3 bg-slate-50/50 rounded-lg border border-slate-200 relative animate-fade-in-up" id="visitor-row-2">
+                                    <div class="md:col-span-5 print:col-span-5">
+                                        <input type="text" name="Visitor 2 Name" placeholder="2. Full Name" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                    </div>
+                                    <div class="md:col-span-3 print:col-span-3">
+                                        <input type="text" name="Visitor 2 Relation" placeholder="Relation" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors">
+                                    </div>
+                                    <div class="md:col-span-4 print:col-span-4">
+                                        <input type="tel" name="Visitor 2 Mobile" placeholder="10-Digit Mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm tracking-wide transition-colors">
+                                    </div>
+                                </div>
+
+                                <div class="hidden grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-3 p-3 bg-slate-50/50 rounded-lg border border-slate-200 relative animate-fade-in-up" id="visitor-row-3">
+                                    <div class="md:col-span-5 print:col-span-5">
+                                        <input type="text" name="Visitor 3 Name" placeholder="3. Full Name" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                    </div>
+                                    <div class="md:col-span-3 print:col-span-3">
+                                        <input type="text" name="Visitor 3 Relation" placeholder="Relation" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors">
+                                    </div>
+                                    <div class="md:col-span-4 print:col-span-4">
+                                        <input type="tel" name="Visitor 3 Mobile" placeholder="10-Digit Mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm tracking-wide transition-colors">
+                                    </div>
+                                </div>
+
+                                <div class="hidden grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-3 p-3 bg-slate-50/50 rounded-lg border border-slate-200 relative animate-fade-in-up" id="visitor-row-4">
+                                    <div class="md:col-span-5 print:col-span-5">
+                                        <input type="text" name="Visitor 4 Name" placeholder="4. Full Name" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                    </div>
+                                    <div class="md:col-span-3 print:col-span-3">
+                                        <input type="text" name="Visitor 4 Relation" placeholder="Relation" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm transition-colors">
+                                    </div>
+                                    <div class="md:col-span-4 print:col-span-4">
+                                        <input type="tel" name="Visitor 4 Mobile" placeholder="10-Digit Mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full bg-white border border-slate-300 p-2.5 text-sm font-bold text-blue-950 rounded-lg focus:border-amber-500 outline-none shadow-sm tracking-wide transition-colors">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="button" id="addVisitorBtn" onclick="revealNextVisitor()" class="mt-4 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-4 py-2 rounded-lg flex items-center gap-2 transition-colors print:hidden">
+                                <span class="bg-amber-200 text-amber-900 rounded-full w-4 h-4 flex items-center justify-center leading-none">+</span> Add Another Person
+                            </button>
+                        </div>
+
+                        <div class="bg-amber-50 p-5 rounded-xl border border-amber-300 space-y-4 print:break-inside-avoid">
+                            <label class="flex items-start gap-3 cursor-pointer group">
+                                <div class="pt-0.5">
+                                    <input type="checkbox" id="hostelConsent" required class="w-5 h-5 accent-amber-900">
+                                </div>
+                                <span class="text-sm text-amber-900 font-bold leading-relaxed group-hover:text-blue-950 transition-colors">
+                                    I agree to follow all hostel rules related to discipline, safety, food, routine, and leave policy. I understand that hostel facilities are governed by school regulations.
+                                </span>
+                            </label>
+                            
+                            <div class="flex flex-col md:flex-row print:flex-row gap-6 pt-4 border-t border-amber-200/50">
+                                <div class="w-full md:w-1/2 print:w-1/2">
+                                    <label class="text-xs font-bold text-amber-900 uppercase block mb-1">Parent Typed Name <span class="text-red-500">*</span></label>
+                                    <input type="text" name="Hostel Declaration Name" id="hostelDecName" class="w-full border-b-2 border-amber-400 focus:border-amber-700 bg-transparent py-2 font-bold text-blue-950 outline-none transition-colors">
+                                </div>
+                                <div class="w-full md:w-1/2 print:w-1/2">
+                                    <label class="text-xs font-bold text-amber-900 uppercase block mb-1">Date <span class="text-red-500">*</span></label>
+                                    <input type="date" name="Hostel Declaration Date" id="hostelDecDate" class="w-full border-b-2 border-amber-400 focus:border-amber-700 bg-transparent py-2 font-bold text-blue-950 outline-none transition-colors">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sectionDocuments" class="w-full animate-fade-in-up print:break-inside-avoid">
+                    <h3 class="flex items-center gap-2 text-blue-950 font-bold text-lg border-b-2 border-indigo-500 pb-2 mb-4">
+                        <span class="bg-indigo-100 p-1.5 rounded text-xl">📂</span> Upload Documents
+                    </h3>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
+                        
+                        <div class="mb-6">
+                            <span class="inline-block bg-red-50 border border-red-200 text-red-600 text-[11px] font-bold px-3 py-1.5 rounded-md shadow-sm">
+                                ⚠️ Note: Each file must be less than 2MB. (Total limit: 10MB)
+                            </span>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-2 block">Student Birth Cert / Aadhaar <span class="text-red-500">*</span></label>
+                                <div class="w-full border-2 border-dashed border-slate-300 p-6 rounded-xl bg-white text-center flex flex-col items-center justify-center gap-2 cursor-not-allowed opacity-80 transition-all hover:bg-slate-50">
+                                    <span class="text-2xl grayscale opacity-50">📄</span>
+                                    <p class="text-[10px] text-red-500 font-bold italic mt-1 leading-relaxed">Documents will be verified physically at the School Office<br>during admission confirmation</p>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-2 block">Parent's Aadhaar <span class="text-red-500">*</span></label>
+                                <div class="w-full border-2 border-dashed border-slate-300 p-6 rounded-xl bg-white text-center flex flex-col items-center justify-center gap-2 cursor-not-allowed opacity-80 transition-all hover:bg-slate-50">
+                                    <span class="text-2xl grayscale opacity-50">🪪</span>
+                                    <p class="text-[10px] text-red-500 font-bold italic mt-1 leading-relaxed">Documents will be verified physically at the School Office<br>during admission confirmation</p>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase mb-2 block">Address Proof <span class="text-red-500">*</span></label>
+                                <div class="w-full border-2 border-dashed border-slate-300 p-6 rounded-xl bg-white text-center flex flex-col items-center justify-center gap-2 cursor-not-allowed opacity-80 transition-all hover:bg-slate-50">
+                                    <span class="text-2xl grayscale opacity-50">🏠</span>
+                                    <p class="text-[10px] text-red-500 font-bold italic mt-1 leading-relaxed">Documents will be verified physically at the School Office<br>during admission confirmation</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div> <div class="pt-8 pb-10 print:hidden">
+            
+            <button type="button" id="reviewBtn" onclick="goToReviewPage()" class="w-full bg-blue-950 hover:bg-blue-900 text-white font-bold text-lg py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-3">
+                <span>👁️</span> Review Application Before Submit
+            </button>
+
+            <div id="submitOptions" class="hidden flex flex-col md:flex-row gap-4">
+                <button type="button" onclick="editForm()" class="w-full md:w-1/3 py-4 rounded-xl border-2 border-slate-300 font-bold text-slate-600 hover:bg-slate-100 flex items-center justify-center gap-2">
+                    <span>✏️</span> Edit Details
+                </button>
+                
+                <button type="button" id="confirmBtn" onclick="submitFinalForm()" class="w-full md:w-2/3 py-4 rounded-xl bg-green-600 text-white font-bold shadow-lg hover:bg-green-700 flex items-center justify-center gap-2 transition-transform transform hover:-translate-y-1">
+                    <span>✅</span> Confirm & Submit Data
+                </button>
+            </div>
+
+            <div id="successSection" class="hidden text-center space-y-4">
+                <div class="bg-green-100 border border-green-400 text-green-800 p-4 rounded-lg">
+                    <p class="font-bold text-lg">🎉 Submitted Successfully!</p>
+                    <p class="text-sm">Your application has been received. Please download the PDF below.</p>
+                </div>
+
+                <button 
+                  type="button" 
+                  onclick="downloadPDF(event)" 
+                  class="w-full bg-red-600 text-white font-bold py-4 rounded-xl">
+                    Download Application as PDF
+                </button>
+            </div>
+            
+        </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <div id="pdf-message" class="fixed top-0 left-0 w-full bg-green-600 text-white p-4 text-center z-50 hidden shadow-xl animate-bounce">
+    <p class="font-bold text-lg">✅ PDF Action Initiated!</p>
+    <p class="text-sm">If you clicked 'Save as PDF', please check your <span class="underline text-yellow-300">Downloads</span> or <span class="underline text-yellow-300">Documents</span> folder.</p>
+    <button onclick="this.parentElement.classList.add('hidden')" class="mt-2 bg-white text-green-800 px-4 py-1 rounded-full text-xs font-bold">OK, Close</button>
+  </div>
+
+ 
+
+ <script is:inline>
+    
+// ==========================================
+// 🚀 1. BULLETPROOF NATIVE PDF GENERATOR
+// ==========================================
+window.triggerNativePDF = function(btnElement, originalBtnText) {
+    const printableArea = document.getElementById('printableArea');
+    
+    // 1. Lock the form to make it look like a document
+    printableArea.classList.add('review-mode');
+    
+    // 2. Add a tiny delay so the CSS 'review-mode' has time to apply visually
+    setTimeout(() => {
+        // 3. Trigger the browser's native Print/Save as PDF dialog
+        window.print();
+        
+        // 4. Once they close the print dialog, unlock the form
+        printableArea.classList.remove('review-mode');
+        
+        if(btnElement) {
+            btnElement.innerHTML = originalBtnText;
+            btnElement.disabled = false;
+        }
+
+        // 5. Show the success banner
+        const msgBox = document.getElementById('pdf-message');
+        if(msgBox) {
+            msgBox.classList.remove('hidden');
+            setTimeout(() => msgBox.classList.add('hidden'), 8000);
+        }
+    }, 500);
+};
+// ==========================================
+// 🚀 2. FORM REVIEW, EDIT & SUBMIT LOGIC
+// ==========================================
+
+// A. Go to Review Mode
+window.goToReviewPage = function() {
+    const form = document.getElementById('admissionForm');
+    if (!form.checkValidity()) { 
+        form.reportValidity(); 
+        return; 
+    }
+    document.getElementById('printableArea').classList.add('review-mode');
+    document.getElementById('reviewBtn').classList.add('hidden');
+    document.getElementById('submitOptions').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    alert("📄 Review Mode:\nPlease check all details carefully. This is how your final PDF will look before submission.");
+};
+
+// B. Return to Edit Mode
+window.editForm = function() {
+    document.getElementById('printableArea').classList.remove('review-mode');
+    document.getElementById('submitOptions').classList.add('hidden');
+    document.getElementById('reviewBtn').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// C. Final Submit & Form Lock
+window.submitFinalForm = function() {
+    const form = document.getElementById('admissionForm');
+    const btn = document.getElementById('confirmBtn');
+    const originalText = btn.innerHTML;
+
+    // Double check validation
+    if (!form.checkValidity()) { 
+        form.reportValidity(); 
+        return; 
+    }
+
+    btn.innerHTML = "<span>⏳</span> Processing & Locking...";
+    btn.disabled = true;
+
+    // Temporarily remove review mode so FormData can capture values correctly
+    document.getElementById('printableArea').classList.remove('review-mode');
+    const formData = new FormData(form);
+    document.getElementById('printableArea').classList.add('review-mode');
+
+    // Send data to Web3Forms
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+    .then(response => {
+        if (response.status === 200) {
+            
+            // 1. Hide buttons & Show Success Message
+            document.getElementById('submitOptions').classList.add('hidden');
+            const successSection = document.getElementById('successSection');
+            if(successSection) {
+                successSection.classList.remove('hidden');
+                successSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // 2. 🚀 PERMANENT FORM LOCK: Makes everything strictly read-only & Disables toggles completely
+            form.querySelectorAll('input, select, textarea, label, .cursor-pointer, .group').forEach(el => {
+                el.style.pointerEvents = 'none'; 
+                if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.readOnly = true; 
+                    // 🚀 NEW: Completely disable radios & checkboxes so they can't be toggled by mouse OR keyboard
+                    if(el.type === 'radio' || el.type === 'checkbox') el.disabled = true;
+                }
+            });
+
+            // 3. Trigger the PDF download window immediately
+            setTimeout(() => {
+                window.triggerNativePDF(btn, originalText);
+            }, 1000);
+
+        } else {
+            alert("Error submitting to server. Please try again.");
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    })
+    .catch(error => {
+        alert("Network Error! Please check your connection.");
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    });
+};
+
+// ==========================================
+// 🚀 3. RED DOWNLOAD BUTTON (Direct Trigger)
+// ==========================================
+window.downloadPDF = function(e) {
+    if(e) e.preventDefault(); 
+    
+    const btn = e.currentTarget;
+    const originalText = btn.innerHTML;
+    
+    btn.innerHTML = "<span>⏳</span> Preparing Document...";
+    btn.disabled = true;
+
+    window.triggerNativePDF(btn, originalText);
+};
+
+    // ==========================================
+    // 2. EXISTING FORM LOGIC (Unchanged)
+    // ==========================================
+
+   // Admission Type Toggle
+    const radioDay = document.getElementById('typeDay');
+    const radioHostel = document.getElementById('typeHostel');
+    const sectionDay = document.getElementById('sectionDayScholar');
+    const sectionHostel = document.getElementById('sectionHostel');
+
+    function handleAdmissionTypeChange() {
+        const selectedType = (radioHostel && radioHostel.checked) ? "Hostel (Boarding)" : "Day Scholar";
+        if(document.getElementById('printAdmissionTypeValue')) document.getElementById('printAdmissionTypeValue').innerText = selectedType;
+
+        if (radioHostel && radioHostel.checked) {
+            // Show Hostel, Hide Day Scholar
+            sectionHostel.classList.remove('hidden');
+            sectionDay.classList.add('hidden');
+            
+            // 1. Remove 'required' from Day Scholar fields
+            document.querySelectorAll('.transport-radio').forEach(r => r.required = false);
+            if(document.getElementById('dayScholarConsent')) document.getElementById('dayScholarConsent').required = false;
+            
+            // 2. Add 'required' to Hostel fields
+            if(document.getElementById('hostelType')) document.getElementById('hostelType').required = true;
+            if(document.getElementById('hostelDuration')) document.getElementById('hostelDuration').required = true;
+            if(document.getElementById('allergyInput')) document.getElementById('allergyInput').required = true;
+            if(document.getElementById('hostelConsent')) document.getElementById('hostelConsent').required = true;
+            
+        } else {
+            // Show Day Scholar, Hide Hostel
+            sectionHostel.classList.add('hidden');
+            sectionDay.classList.remove('hidden');
+            
+            // 1. Add 'required' to Day Scholar fields
+            document.querySelectorAll('.transport-radio').forEach(r => r.required = true);
+            if(document.getElementById('dayScholarConsent')) document.getElementById('dayScholarConsent').required = true;
+            
+            // 2. Remove 'required' from Hostel fields so they don't block the form silently
+            if(document.getElementById('hostelType')) document.getElementById('hostelType').required = false;
+            if(document.getElementById('hostelDuration')) document.getElementById('hostelDuration').required = false;
+            if(document.getElementById('allergyInput')) document.getElementById('allergyInput').required = false;
+            if(document.getElementById('hostelConsent')) document.getElementById('hostelConsent').required = false;
+        }
+    }
+    if(radioDay) radioDay.addEventListener('change', handleAdmissionTypeChange);
+    if(radioHostel) radioHostel.addEventListener('change', handleAdmissionTypeChange);
+    handleAdmissionTypeChange(); 
+
+    // Previous School Logic (With Smart PDF Page Breaks)
+    const radioPrevYes = document.querySelector('input[name="Previous School Status"][value="Yes"]');
+    const prevSchoolBox = document.getElementById('previousSchoolDetails');
+    
+    function togglePreviousSchool() {
+        const parentsSection = document.getElementById('parentsDetailsSection');
+        
+        if (radioPrevYes && radioPrevYes.checked) {
+            // Show Previous School Details
+            prevSchoolBox.classList.remove('hidden');
+            prevSchoolBox.querySelectorAll('input, select').forEach(i => i.required = true);
+            
+            // 🚀 MAGIC: Push Parents Details to the next page!
+            if(parentsSection) parentsSection.classList.add('dynamic-page-break');
+        } else {
+            // Hide Previous School Details
+            prevSchoolBox.classList.add('hidden');
+            prevSchoolBox.querySelectorAll('input, select').forEach(i => i.required = false);
+            
+            // 🚀 MAGIC: Keep Parents Details on the same page!
+            if(parentsSection) parentsSection.classList.remove('dynamic-page-break');
+        }
+    }
+    document.querySelectorAll('input[name="Previous School Status"]').forEach(radio => {
+        radio.addEventListener('change', togglePreviousSchool);
+    });
+
+// Van Logic (Upgraded for Radio Cards)
+    const transportRadios = document.querySelectorAll('.transport-radio');
+    const vanBox = document.getElementById('vanDetailsBox');
+    
+    transportRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if(this.value === 'School Van') {
+                vanBox.classList.remove('hidden');
+                vanBox.querySelectorAll('input').forEach(i => i.required = true);
+            } else {
+                vanBox.classList.add('hidden');
+                vanBox.querySelectorAll('input').forEach(i => i.required = false);
+            }
+        });
+    });
+
+    // Illness Logic
+    document.querySelectorAll('input[name="Illness"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const details = document.getElementById('illnessDetails');
+            if(this.value === 'Yes') {
+                details.classList.remove('hidden');
+                details.required = true;
+            } else {
+                details.classList.add('hidden');
+                details.required = false;
+            }
+        });
+    });
+
+    // Age Calc
+    const dobInput = document.getElementById('dobInput');
+    const ageOutput = document.getElementById('ageOutput');
+    if(dobInput) {
+        dobInput.addEventListener('change', function() {
+            if(this.value) {
+                const dob = new Date(this.value);
+                const age = Math.abs(new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970);
+                ageOutput.value = age + " Years";
+            }
+        });
+    }
+    if(document.getElementById('appDate')) document.getElementById('appDate').valueAsDate = new Date();
+    if(document.getElementById('hostelDecDate')) document.getElementById('hostelDecDate').valueAsDate = new Date();
+
+    // Review & Submit
+    window.goToReviewPage = function() {
+        const form = document.getElementById('admissionForm');
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        document.getElementById('printableArea').classList.add('review-mode');
+        document.getElementById('reviewBtn').classList.add('hidden');
+        document.getElementById('submitOptions').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        alert("📄 Review Mode:\nCheck details. This is how your PDF will look.");
+    }
+    window.editForm = function() {
+        document.getElementById('printableArea').classList.remove('review-mode');
+        document.getElementById('submitOptions').classList.add('hidden');
+        document.getElementById('reviewBtn').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.submitFinalForm = function() {
+        const form = document.getElementById('admissionForm');
+        const btn = document.getElementById('confirmBtn');
+        const originalText = btn.innerText;
+        btn.innerText = "Submitting...";
+        btn.disabled = true;
+
+        document.getElementById('printableArea').classList.remove('review-mode');
+        const formData = new FormData(form);
+        document.getElementById('printableArea').classList.add('review-mode');
+
+        fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+        .then(response => {
+            if (response.status === 200) {
+                document.getElementById('submitOptions').classList.add('hidden');
+                document.getElementById('successSection').classList.remove('hidden');
+                document.getElementById('successSection').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Error submitting. Please try again.");
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
+        })
+        .catch(error => {
+            alert("Network Error!");
+            btn.disabled = false;
+            btn.innerText = originalText;
+        });
+    }
+
+    // Interactive Photo Upload Preview Logic
+    window.previewStudentPhoto = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('studentPhotoPreview');
+                const placeholder = document.getElementById('studentPhotoPlaceholder');
+                
+                // Show the image and hide the placeholder text
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Guardian Signature Upload Preview Logic
+    window.previewSignature = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('signaturePreview');
+                const placeholder = document.getElementById('signaturePlaceholder');
+                
+                // Show the image and hide the placeholder text
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+// Ultimate Aadhaar Auto-Formatting Logic (Astro-Safe)
+    document.querySelectorAll('.aadhaar-input').forEach(function(input) {
+        input.addEventListener('input', function(e) {
+            // 1. Remove everything except numbers
+            let rawValue = this.value.replace(/\D/g, '');
+            
+            // 2. Limit to exactly 12 digits
+            rawValue = rawValue.substring(0, 12);
+            
+            // 3. Rebuild the string with dashes every 4 digits
+            let formattedValue = '';
+            for (let i = 0; i < rawValue.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += '-';
+                }
+                formattedValue += rawValue[i];
+            }
+            
+            // 4. Update the input field seamlessly
+            this.value = formattedValue;
+        });
+    });
+
+// ==========================================
+    // JEE-STYLE SMART ADDRESS SYSTEM (Open Source APIs)
+    // ==========================================
+    
+    window.indiaLocationData = []; // Store the API data globally
+
+    // 1. Open Source API: Fetch all 28 States & Districts securely via JSDelivr CDN
+    fetch('https://cdn.jsdelivr.net/gh/sab99r/Indian-States-And-Districts@master/states-and-districts.json')
+        .then(response => response.json())
+        .then(data => {
+            window.indiaLocationData = data.states;
+            const preState = document.getElementById('pre_state');
+            const permState = document.getElementById('perm_state');
+            
+            // Clear "Loading..." and set default
+            preState.innerHTML = '<option value="" disabled selected>Select State</option>';
+            permState.innerHTML = '<option value="" disabled selected>Select State</option>';
+            
+            // Populate all states dynamically
+            data.states.forEach(item => {
+                preState.add(new Option(item.state, item.state));
+                permState.add(new Option(item.state, item.state));
+            });
+        })
+        .catch(error => {
+            console.error("Error loading States API", error);
+            document.getElementById('pre_state').innerHTML = '<option value="" disabled>Error loading states</option>';
+            document.getElementById('perm_state').innerHTML = '<option value="" disabled>Error loading states</option>';
+        });
+
+    // 2. Auto-Populate District Dropdown when a State is selected
+    window.updateDistricts = function(prefix) {
+        const stateSelect = document.getElementById(prefix + '_state');
+        const districtSelect = document.getElementById(prefix + '_district');
+        const selectedState = stateSelect.value;
+        
+        districtSelect.innerHTML = '<option value="" disabled selected>Select District</option>';
+        
+        const stateObj = window.indiaLocationData.find(s => s.state === selectedState);
+        if (stateObj && stateObj.districts) {
+            stateObj.districts.forEach(district => {
+                districtSelect.add(new Option(district, district));
+            });
+        }
+    };
+
+    // 3. Indian Postal API: Live PIN Code Recognition
+    window.fetchPinDetails = function(inputElement, prefix) {
+        let pin = inputElement.value.replace(/[^0-9]/g, '').substring(0, 6);
+        inputElement.value = pin;
+        
+        const districtSelect = document.getElementById(prefix + '_district');
+        const stateSelect = document.getElementById(prefix + '_state');
+        const loadingIndicator = document.getElementById(prefix + '_loading');
+
+        if (pin.length === 6) {
+            loadingIndicator.classList.remove('opacity-0');
+            inputElement.classList.replace('bg-blue-50', 'bg-amber-100');
+            
+            fetch(`https://api.postalpincode.in/pincode/${pin}`)
+            .then(response => response.json())
+            .then(data => {
+                loadingIndicator.classList.add('opacity-0');
+                inputElement.classList.replace('bg-amber-100', 'bg-blue-50');
+                
+                if (data && data[0] && data[0].Status === 'Success') {
+                    let fetchedState = data[0].PostOffice[0].State;
+                    let fetchedDistrict = data[0].PostOffice[0].District;
+
+                    // Match state name exactly with the JSON API
+                    const stateObj = window.indiaLocationData.find(s => s.state.toLowerCase() === fetchedState.toLowerCase());
+                    if (stateObj) {
+                        stateSelect.value = stateObj.state;
+                        window.updateDistricts(prefix); // Load its districts
+                    } else {
+                        // Fallback if name slightly differs
+                        let stateExists = Array.from(stateSelect.options).some(opt => opt.value === fetchedState);
+                        if(!stateExists) stateSelect.add(new Option(fetchedState, fetchedState));
+                        stateSelect.value = fetchedState;
+                        window.updateDistricts(prefix);
+                    }
+
+                    // Set district
+                    let districtExists = Array.from(districtSelect.options).some(opt => opt.value === fetchedDistrict);
+                    if(!districtExists) districtSelect.add(new Option(fetchedDistrict, fetchedDistrict));
+                    districtSelect.value = fetchedDistrict;
+
+                    // Green Success Glow
+                    districtSelect.classList.add('ring-2', 'ring-green-400', 'bg-green-50');
+                    stateSelect.classList.add('ring-2', 'ring-green-400', 'bg-green-50');
+                    setTimeout(() => {
+                        districtSelect.classList.remove('ring-2', 'ring-green-400', 'bg-green-50');
+                        stateSelect.classList.remove('ring-2', 'ring-green-400', 'bg-green-50');
+                    }, 1500);
+                }
+            })
+            .catch(() => {
+                loadingIndicator.classList.add('opacity-0');
+                inputElement.classList.replace('bg-amber-100', 'bg-blue-50');
+            });
+        }
+    };
+
+    // 4. "Same as Present Address" Flawless Copy Logic
+    window.copyAddress = function() {
+        const isChecked = document.getElementById('sameAddressBtn').checked;
+        const fields = ['state', 'district', 'pin', 'address', 'po', 'ps']; 
+        
+        fields.forEach(f => {
+            const preField = document.getElementById('pre_' + f);
+            const permField = document.getElementById('perm_' + f);
+            
+            if (isChecked) {
+                if(f === 'state') {
+                    let optionExists = Array.from(permField.options).some(opt => opt.value === preField.value);
+                    if(!optionExists && preField.value) permField.add(new Option(preField.value, preField.value));
+                    permField.value = preField.value;
+                    window.updateDistricts('perm'); 
+                } 
+                else if (f === 'district') {
+                    let optionExists = Array.from(permField.options).some(opt => opt.value === preField.value);
+                    if(!optionExists && preField.value) permField.add(new Option(preField.value, preField.value));
+                    permField.value = preField.value;
+                } 
+                else {
+                    permField.value = preField.value;
+                }
+                
+                permField.style.pointerEvents = 'none';
+                permField.classList.add('bg-slate-100', 'text-slate-500');
+                permField.classList.remove('bg-white', 'bg-blue-50');
+            } else {
+                permField.style.pointerEvents = 'auto';
+                permField.classList.remove('bg-slate-100', 'text-slate-500');
+                if (f === 'pin') permField.classList.add('bg-blue-50');
+                else permField.classList.add('bg-white');
+                permField.value = ''; 
+                if(f === 'district') permField.innerHTML = '<option value="" disabled selected>Select State First</option>';
+            }
+        });
+    };
+
+// Smart Leave Permission Logic (Progressive Disclosure)
+    let currentVisitorCount = 1;
+    window.revealNextVisitor = function() {
+        currentVisitorCount++;
+        
+        // Reveal the next row
+        const nextRow = document.getElementById('visitor-row-' + currentVisitorCount);
+        if(nextRow) {
+            nextRow.classList.remove('hidden');
+        }
+        
+        // Hide the button if we reach the max limit of 4
+        if(currentVisitorCount >= 4) {
+            document.getElementById('addVisitorBtn').classList.add('hidden');
+        }
+    };
+
+    // Make Visitor 1 required ONLY if Hostel is selected
+    const hostelTypeInput = document.getElementById('typeHostel');
+    const dayTypeInput = document.getElementById('typeDay');
+    
+    function toggleVisitorRequirement() {
+        const v1Inputs = document.querySelectorAll('input[name^="Visitor 1"]');
+        if(hostelTypeInput && hostelTypeInput.checked) {
+            v1Inputs.forEach(i => i.required = true);
+        } else {
+            v1Inputs.forEach(i => i.required = false);
+        }
+    }
+    
+    if(hostelTypeInput) hostelTypeInput.addEventListener('change', toggleVisitorRequirement);
+    if(dayTypeInput) dayTypeInput.addEventListener('change', toggleVisitorRequirement);
+
+
+</script>
+
+<style is:global>
+    footer {
+        display: none !important;
+    }
+</style>

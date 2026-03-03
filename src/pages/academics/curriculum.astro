@@ -1,0 +1,279 @@
+---
+import Layout from '../../layouts/layout.astro';
+
+// SEO Metadata
+const pageTitle = "Curriculum & Methodology | Top School in Saharsa - LKEA";
+const pageDescription = "Explore Lord Krishna Educational Academy's structured curriculum from Nursery to Class 8. Focusing on concept-based learning, holistic development, and competitive exam preparation in Saharsa.";
+
+// Data: Academic Stages
+const stages = [
+  {
+    title: "Foundation Stage",
+    classes: "Nursery – UKG",
+    icon: "🌱",
+    desc: "We focus on motor skills, phonics, and the joy of learning through play-way methods.",
+    features: [
+      "Phonics-based reading skills",
+      "Fine & Gross motor skill development",
+      "Storytelling & Moral values",
+      "Activity-based number recognition"
+    ]
+  },
+  {
+    title: "Primary Stage",
+    classes: "Class 1 – 5",
+    icon: "📘",
+    desc: "Building a robust academic structure with a focus on languages, mathematics, and environmental awareness.",
+    features: [
+      "Strong basics in English, Hindi & Math",
+      "Environmental awareness & Science",
+      "Regular reading & writing discipline",
+      "Introduction to Smart Class learning"
+    ]
+  },
+  {
+    title: "Upper Primary",
+    classes: "Class 6 – 8",
+    icon: "🚀",
+    desc: "Preparing students for the future with subject specialization and competitive exam foundations.",
+    features: [
+      "Subject specialization (Science/SST)",
+      "Logical reasoning & Critical thinking",
+      "Foundation for Sainik/Navodaya",
+      "Exam-oriented rigorous practice"
+    ]
+  }
+];
+
+// Data: Teaching Methodology Pillars
+const pillars = [
+  {
+    title: "Concept-Based Learning",
+    desc: "We move beyond rote memorization. We focus on 'Why' and 'How' to ensure deep understanding of concepts.",
+    iconPath: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+  },
+  {
+    title: "Activity-Based Teaching",
+    desc: "Learning by doing. We use experiments, group projects, and class presentations to make learning active.",
+    iconPath: "M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+  },
+  {
+    title: "Regular Assessment",
+    desc: "Weekly tests and monthly reviews help us track individual progress and identify areas for improvement early.",
+    iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"
+  },
+  {
+    title: "Interactive Classrooms",
+    desc: "Two-way communication is key. We encourage students to ask questions and participate in discussions.",
+    iconPath: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+  },
+  {
+    title: "Language Mastery",
+    desc: "A specific focus on English and Hindi reading, writing, and speaking discipline for superior communication skills.",
+    iconPath: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+  },
+  {
+    title: "Moral & Value Education",
+    desc: "Education without values is incomplete. We integrate character building and discipline into daily school life.",
+    iconPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  
+<section class="relative bg-blue-950 text-white pt-6 pb-20 md:pt-10 md:pb-28 overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+    <div class="absolute -bottom-8 left-0 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="flex justify-start mb-6 md:mb-8">
+        <a href="javascript:history.back()" class="group flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-amber-500 transition-colors duration-300 bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-full border border-white/10 hover:border-amber-500/50 backdrop-blur-md w-fit shadow-sm cursor-pointer">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back
+        </a>
+      </div>
+
+      <div class="text-center">
+        <h1 class="text-amber-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
+          Academic Excellence Framework
+        </h1>
+        <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+          Our Curriculum & <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Teaching Methodology</span>
+        </h2>
+        <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+          Designed to build strong foundations from Nursery to Class 8. We don't just teach chapters; we shape minds for the future.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="relative z-20 py-12 bg-white" style="margin-top: -3rem; border-top-left-radius: 50px; border-top-right-radius: 50px;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-3xl font-bold text-blue-950 mb-6">A Structured Learning Approach</h3>
+      <div class="w-24 h-1 bg-amber-500 mx-auto mb-8 rounded-full"></div>
+      <p class="text-slate-600 text-lg leading-relaxed mb-6">
+        At <span class="font-bold text-blue-950">Lord Krishna Educational Academy</span>, our curriculum is thoughtfully designed for students from Nursery to Class 8, ensuring a strong academic foundation aligned with character development.
+      </p>
+      <p class="text-slate-600 text-lg leading-relaxed">
+        We follow a structured syllabus aligned with modern educational standards (CBSE pattern), focusing on <span class="font-semibold text-blue-900">conceptual clarity, discipline, and real-world understanding</span>. We believe that every child learns differently, and our methodology respects that pace while encouraging consistent growth.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-16 pt-4 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl md:text-4xl font-bold text-blue-950">Stage-wise Curriculum Breakdown</h3>
+        <p class="mt-4 text-slate-600">How we nurture your child at every age.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {stages.map((stage) => (
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-amber-500 relative group">
+            <div class="absolute top-6 right-6 text-4xl group-hover:scale-110 transition-transform">{stage.icon}</div>
+            <h4 class="text-xl font-bold text-blue-950 mb-1">{stage.title}</h4>
+            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded mb-4">{stage.classes}</span>
+            <p class="text-slate-600 mb-6 text-sm italic">"{stage.desc}"</p>
+            <ul class="space-y-3">
+              {stage.features.map((feature) => (
+                <li class="flex items-start text-slate-700 text-sm">
+                  <svg class="w-5 h-5 text-amber-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 pt-6 pb-40 -mt-8 bg-amber-50 overflow-hidden" style="background-color: #FFF0D1; border-top-left-radius: 60px; border-top-right-radius: 60px;">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-amber-100 blur-3xl rounded-full pointer-events-none opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="text-amber-600 font-bold tracking-widest uppercase text-xs md:text-sm">Our Philosophy</span>
+        
+        <h3 class="text-4xl md:text-5xl font-bold font-serif text-blue-950 mt-3 mb-4">
+          Core <span class="text-amber-500 italic">Teaching Methodology</span>
+        </h3>
+        
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+          Designed to build strong foundations. We don't just teach chapters; we shape minds for the future.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12">
+        {pillars.map((pillar) => (
+          <div class="flex flex-col items-center text-center group bg-white p-4 rounded-xl shadow-sm md:shadow-none md:bg-transparent">
+            
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 text-blue-900 rounded-2xl flex items-center justify-center mb-3 md:mb-6 group-hover:bg-blue-950 group-hover:text-amber-400 transition-colors duration-300 shadow-md">
+              <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={pillar.iconPath}></path>
+              </svg>
+            </div>
+
+            <h4 class="text-sm md:text-xl font-bold text-blue-950 mb-2 md:mb-3 leading-tight">{pillar.title}</h4>
+            
+            <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+              {pillar.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-20 -mt-32 py-10 bg-blue-950 text-white overflow-hidden mx-4 md:mx-auto max-w-7xl rounded-[3rem] shadow-2xl mb-12">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-10">
+      <div class="md:w-3/5">
+        <div class="inline-block bg-amber-500 text-blue-950 font-bold px-3 py-1 rounded-sm text-xs mb-4 uppercase tracking-widest">
+          The Competitive Edge
+        </div>
+        <h3 class="text-2xl md:text-5xl font-bold mb-6 text-white">Building Future Leaders</h3>
+        <p class="text-blue-100 text-lg mb-6 leading-relaxed">
+            We don't just prepare students for school exams; we prepare them for life and competitive success. Our curriculum integrates logical reasoning and aptitude building from an early age.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-blue-800/50 p-4 rounded-lg border border-blue-700">
+                <h5 class="font-bold text-amber-400 mb-1">Sainik & Navodaya Prep</h5>
+                <p class="text-sm text-blue-200">Dedicated foundation classes for Class 5 & 6 students.</p>
+            </div>
+            <div class="bg-blue-800/50 p-4 rounded-lg border border-blue-700">
+                <h5 class="font-bold text-amber-400 mb-1">Olympiad Level Math</h5>
+                <p class="text-sm text-blue-200">Strengthening problem-solving skills beyond textbooks.</p>
+            </div>
+        </div>
+      </div>
+      <div class="md:w-2/5 flex justify-center">
+        <div class="relative w-64 h-64 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-2xl">
+            <div class="text-center">
+                <span class="block text-5xl font-black text-amber-400 mb-2">100%</span>
+                <span class="block text-sm uppercase tracking-widest font-semibold">Focus on <br/>Growth</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-8 md:p-12">
+                <h3 class="text-2xl font-bold text-blue-950 mb-6">Why Our Curriculum is Different</h3>
+                <ul class="space-y-4">
+                    {[
+                        "Strong foundation focus from early classes",
+                        "Balanced focus on academics & discipline",
+                        "Personalized attention for every child",
+                        "Affordable fees with premium quality education",
+                        "Focus on both rural and urban student upliftment"
+                    ].map(item => (
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div class="bg-blue-950 p-8 md:p-12 flex flex-col justify-center text-center md:text-left text-white">
+                <h3 class="text-2xl font-bold text-amber-400 mb-4">Ready to Start?</h3>
+                <p class="text-blue-100 mb-8 leading-relaxed">
+                    At Lord Krishna Educational Academy, education is not limited to textbooks. We nurture responsible, confident, and capable individuals ready to face future challenges with discipline and integrity.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="/admission" class="px-6 py-3 bg-amber-500 text-blue-950 font-bold rounded-lg hover:bg-amber-400 transition-colors text-center">
+                        Apply for Admission
+                    </a>
+                    <a href="/contact" class="px-6 py-3 border border-white text-white font-bold rounded-lg hover:bg-white hover:text-blue-950 transition-colors text-center">
+                        Visit Campus
+                    </a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+  /* is:global lagane se ye ab Layout ke footer ko bhi hide karega */
+  footer {
+    display: none !important;
+  }
+</style>
