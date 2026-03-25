@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/layout.astro'; // Ensure this path matches your layouts file (check case sensitivity)
 import { Image } from 'astro:assets';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo.png'; // Ensure your logo file is here
 ---
 
 <Layout title="About Us - Lord Krishna Educational Academy">
@@ -25,7 +25,7 @@ import logoImg from '../assets/logo.png';
           </div>
           
           <h1 class="text-5xl md:text-7xl font-heading font-black text-white uppercase tracking-tight leading-none mb-6 drop-shadow-2xl">
-              center of <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">Excellence</span>
+              Center of <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">Excellence</span>
           </h1>
           
           <div class="w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-6"></div>
@@ -37,7 +37,7 @@ import logoImg from '../assets/logo.png';
   </div>
 
   <section class="relative z-20 -mt-10 px-4 pb-20">
-      <div class="max-w-6xl mx-auto bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 overflow-hidden relative">
+      <div class="max-w-6xl mx-auto bg-white rounded-[3.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 overflow-hidden relative">
           
           <div class="h-3 bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900"></div>
 
@@ -75,23 +75,23 @@ import logoImg from '../assets/logo.png';
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-amber-500 hover:shadow-lg transition-all duration-300">
-                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Govt. Registration No.</p>
-                          <p class="text-sm font-black text-blue-950 break-all group-hover:text-blue-700">SAHPRIVATESCHOOL/<br>L.K.E.A-38/2014</p>
+                          <p class="text-[15px] font-bold text-slate-400 uppercase tracking-wider mb-1">Govt. Registration No.</p>
+                          <p class="inline-block text-[11px] sm:text-[12px] md:text-[13px] lg:text-sm font-black text-blue-950 whitespace-nowrap transition-all duration-300 hover:text-amber-600 hover:scale-110 origin-left hover:drop-shadow-md cursor-default">SAHPRIVATESCHOOL/L.K.E.A-38/2014</p>
                       </div>
 
                       <div class="group bg-gradient-to-br from-amber-50 to-white border border-amber-200 p-4 rounded-xl hover:shadow-lg transition-all duration-300">
-                          <p class="text-[10px] font-bold text-amber-700/60 uppercase tracking-wider mb-1">UDISE Code</p>
+                          <p class="text-[15px] font-bold text-amber-700/60 uppercase tracking-wider mb-1">UDISE Code</p>
                           <p class="text-xl font-black text-amber-600 group-hover:scale-105 transition-transform origin-left">10120404402</p>
                       </div>
 
                       <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300">
-                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Academic Levels</p>
+                          <p class="text-[15px] font-bold text-slate-400 uppercase tracking-wider mb-1">Academic Levels</p>
                           <p class="text-lg font-black text-blue-950">Nursery <span class="text-slate-300">to</span> 8th Grade</p>
                       </div>
 
                       <div class="group bg-white border border-slate-200 p-4 rounded-xl hover:border-green-500 hover:shadow-lg transition-all duration-300">
-                          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Campus Location</p>
-                          <p class="text-sm font-black text-blue-950">Ward No. 14,maharshi mehi Ashram road, Shivpuri, Saharsa</p>
+                          <p class="text-[15px] font-bold text-slate-400 uppercase tracking-wider mb-1">Campus Location</p>
+                          <p class="text-sm font-black text-blue-950">Ward No. 14, Maharshi Mehi Ashram road, Shivpuri, Saharsa</p>
                       </div>
                   </div>
               </div>
@@ -221,10 +221,10 @@ import logoImg from '../assets/logo.png';
                   <div class="z-20 flex items-center order-1 bg-amber-500 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1">
                       <h1 class="mx-auto font-bold text-lg text-white">07</h1>
                   </div>
-                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-amber-500 transition-colors">
-                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-10">2007</span>
-                      <h3 class="mb-2 font-bold text-blue-950 text-xl">The Beginning</h3>
-                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-amber-500 transition-colors relative">
+                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-0 opacity-40">2007</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl relative z-10">The Beginning</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600 relative z-10">
                           Foundation laid by <span class="font-bold text-amber-600">Bina Memorial Educational Trust</span> with a humble vision: to bring quality education to every child in Ward No. 14, Saharsa.
                       </p>
                   </div>
@@ -235,10 +235,10 @@ import logoImg from '../assets/logo.png';
                   <div class="z-20 flex items-center order-1 bg-blue-900 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1">
                       <h1 class="mx-auto font-bold text-lg text-white">14</h1>
                   </div>
-                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:mr-0 hover:border-blue-900 transition-colors text-left md:text-right">
-                      <span class="font-black text-5xl text-slate-100 absolute left-6 md:left-auto md:right-auto md:left-6 top-6 -z-10">2014</span>
-                      <h3 class="mb-2 font-bold text-blue-950 text-xl">Official Recognition</h3>
-                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:mr-0 hover:border-blue-900 transition-colors text-left md:text-right relative">
+                      <span class="font-black text-5xl text-slate-100 absolute left-6 md:left-auto md:right-auto md:left-6 top-6 -z-0 opacity-40">2014</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl relative z-10">Official Recognition</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600 relative z-10">
                           A milestone year. We received Govt. Registration <span class="font-bold text-blue-800">(L.K.E.A-38/2014)</span> & UDISE Code, validating our commitment to standards and excellence.
                       </p>
                   </div>
@@ -249,10 +249,10 @@ import logoImg from '../assets/logo.png';
                   <div class="z-20 flex items-center order-1 bg-green-600 shadow-xl w-12 h-12 rounded-full border-4 border-white md:order-1 animate-pulse">
                       <h1 class="mx-auto font-bold text-lg text-white">26</h1>
                   </div>
-                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-green-600 transition-colors">
-                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-10">2026</span>
-                      <h3 class="mb-2 font-bold text-blue-950 text-xl">Digital Revolution</h3>
-                      <p class="text-sm leading-snug tracking-wide text-slate-600">
+                  <div class="order-1 bg-white border border-slate-100 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 ml-12 md:ml-0 hover:border-green-600 transition-colors relative">
+                      <span class="font-black text-5xl text-slate-100 absolute right-6 top-6 -z-0 opacity-40">2026</span>
+                      <h3 class="mb-2 font-bold text-blue-950 text-xl relative z-10">Digital Revolution</h3>
+                      <p class="text-sm leading-snug tracking-wide text-slate-600 relative z-10">
                           Launching our <span class="font-bold text-green-600">Premium Website</span>, implementing Smart Classes, and expanding our Hostel facilities to serve students better.
                       </p>
                   </div>
