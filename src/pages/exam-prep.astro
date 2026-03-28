@@ -1,25 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-
 <Layout title="Exam Preparation | Lord Krishna Educational Academy">
-    
-    <section class="relative pt-6 pb-32 md:pt-10 md:pb-48 bg-blue-950 overflow-hidden">
-        
+
+    <section class="relative pt-2 pb-32 md:pt-4 md:pb-48 bg-blue-950 overflow-hidden z-10">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             
-            <div class="flex justify-start mb-6 md:mb-8">
-                <a href="javascript:history.back()" class="group flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-slate-300 hover:text-amber-500 transition-colors duration-300 bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-full border border-white/10 hover:border-amber-500/50 backdrop-blur-md w-fit shadow-sm cursor-pointer">
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                    Back
-                </a>
-            </div>
-
-            <div class="text-center">
+            <div class="text-center mt-6">
                 <div class="inline-flex items-center gap-3 border border-amber-500 bg-blue-950 px-6 py-2 rounded-full mb-8 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                     <span class="text-amber-400 text-xs md:text-sm animate-pulse">✦</span>
                     <span class="text-amber-400 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Specialized Entrance Coaching</span>
@@ -27,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] mb-6 drop-shadow-2xl tracking-tight">
-                    Shaping Champions for <br class="hidden md:block" />
+                    Shaping Children for <br />
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500">India's Elite Schools</span>
                 </h1>
                 
@@ -35,29 +24,34 @@ import Layout from '../layouts/Layout.astro';
                     "We do not just teach the syllabus; we prepare your child for greatness. A proud legacy of producing top results in the toughest school entrance exams."
                 </p>
 
-                <div class="grid grid-cols-3 gap-2 md:gap-8 max-w-3xl mx-auto">
-                    
+                <div class="grid grid-cols-3 gap-2 md:gap-8 max-w-3xl mx-auto mb-12">
                     <div class="bg-blue-900 border border-amber-500/40 px-1 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl text-center shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:border-amber-400 transition-all duration-300 flex flex-col justify-center">
                         <span class="block text-3xl md:text-4xl font-black text-white mb-1 drop-shadow-md">50+</span>
                         <span class="text-[10px] md:text-xs font-bold text-amber-400 uppercase tracking-widest">Students Selected</span>
                     </div>
-                    
                     <div class="bg-blue-900 border border-amber-500/40 px-1 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl text-center shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:border-amber-400 transition-all duration-300 flex flex-col justify-center">
                         <span class="block text-3xl md:text-4xl font-black text-white mb-1 drop-shadow-md">Expert</span>
                         <span class="text-[10px] md:text-xs font-bold text-amber-400 uppercase tracking-widest">Dedicated Faculty</span>
                     </div>
-                    
                     <div class="bg-blue-900 border border-amber-500/40 px-1 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl text-center shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:border-amber-400 transition-all duration-300 flex flex-col justify-center">
                         <span class="block text-3xl md:text-4xl font-black text-white mb-1 drop-shadow-md">Daily</span>
                         <span class="text-[10px] md:text-xs font-bold text-amber-400 uppercase tracking-widest">Mock Practice</span>
                     </div>
-
                 </div>
             </div>
+
+            <div id="jnv-inline-banner" class="hidden w-full bg-gradient-to-br from-blue-900 to-blue-950 border-2 border-amber-400/80 rounded-3xl px-1 py-5 md:p-10 shadow-2xl opacity-0 transform translate-y-4 transition-all duration-700 mt-4 md:mt-8">
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-amber-500 text-blue-950 font-black px-4 py-1.5 rounded-full text-[10px] md:text-sm mb-4 uppercase tracking-widest">🌟 2025-26 Selections 🌟</div>
+                    <h2 class="text-2xl md:text-4xl font-black text-white mb-2">PM SHRI Jawahar Navodaya Vidyalaya</h2>
+                </div>
+                <div id="inline-students-container" class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 pb-4"></div>
+            </div>
+
         </div>
     </section>
 
-    <section class="pt-10 pb-16 md:pt-15 md:pb-24 bg-slate-50 relative z-20 -mt-16 md:-mt-24 rounded-t-[4rem] md:rounded-t-[5rem] shadow-[0_-15px_30px_-15px_rgba(0,0,0,0.1)]">
+    <section class="pt-5 pb-10 md:pt-1 md:pb-2 bg-slate-50 relative z-20 -mt-16 md:-mt-35 rounded-t-[4rem] md:rounded-t-[5rem] shadow-[0_-15px_30px_-15px_rgba(0,0,0,0.1)]">
         <div class="max-w-7xl mx-auto px-4">
             
             <div class="text-center mb-16">
@@ -69,13 +63,9 @@ import Layout from '../layouts/Layout.astro';
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <div class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-amber-500 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                        🏫
-                    </div>
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors">🏫</div>
                     <h3 class="text-2xl font-bold text-blue-950 mb-3">PM SHRI Jawahar Navodaya Vidyalaya (JNV)</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">
-                        Securing a seat in JNV guarantees top-tier CBSE education absolutely free. Our specialized coaching focuses on Mental Ability, Arithmetic, and Language skills to ensure your child easily cracks the JNVST.
-                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">Securing a seat in JNV guarantees top-tier CBSE education absolutely free. Our specialized coaching focuses on Mental Ability, Arithmetic, and Language skills to ensure your child easily cracks the JNVST.</p>
                     <ul class="space-y-2 text-sm font-bold text-slate-700">
                         <li class="flex items-center gap-2"><span class="text-amber-500">✓</span> Mental Ability Drills</li>
                         <li class="flex items-center gap-2"><span class="text-amber-500">✓</span> Speed Math Techniques</li>
@@ -83,13 +73,9 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <div class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-blue-600 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        🎯
-                    </div>
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">🎯</div>
                     <h3 class="text-2xl font-bold text-blue-950 mb-3">Simultala Awasiya Vidyalaya</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">
-                        Known as the "Toppers' Factory" of Bihar, Simultala requires intense preparation. We provide rigorous training in Science, Math, and Social Studies tailored to the exact pattern of the preliminary and mains exams.
-                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">Known as the "Toppers' Factory" of Bihar, Simultala requires intense preparation. We provide rigorous training in Science, Math, and Social Studies tailored to the exact pattern of the preliminary and mains exams.</p>
                     <ul class="space-y-2 text-sm font-bold text-slate-700">
                         <li class="flex items-center gap-2"><span class="text-blue-600">✓</span> Pre & Mains Strategy</li>
                         <li class="flex items-center gap-2"><span class="text-blue-600">✓</span> State-Board Aligned Syllabus</li>
@@ -97,13 +83,9 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <div class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-green-600 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
-                        ⚔️
-                    </div>
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">⚔️</div>
                     <h3 class="text-2xl font-bold text-blue-950 mb-3">All India Sainik Schools (AISSEE)</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">
-                        Preparing future officers for the NDA requires academic excellence and sharp intellect. Our faculty provides intensive coaching for Mathematics, Intelligence, Language, and General Knowledge.
-                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">Preparing future officers for the NDA requires academic excellence and sharp intellect. Our faculty provides intensive coaching for Mathematics, Intelligence, Language, and General Knowledge.</p>
                     <ul class="space-y-2 text-sm font-bold text-slate-700">
                         <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Intelligence & Reasoning Focus</li>
                         <li class="flex items-center gap-2"><span class="text-green-600">✓</span> GK & Current Affairs Updates</li>
@@ -111,13 +93,9 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <div class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-red-600 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                        👑
-                    </div>
+                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">👑</div>
                     <h3 class="text-2xl font-bold text-blue-950 mb-3">Netarhat Residential School</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">
-                        A highly prestigious institution with a rich legacy. The entrance test demands deep conceptual clarity. Our dedicated batches ensure students master the subjective and objective testing patterns.
-                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-sm">A highly prestigious institution with a rich legacy. The entrance test demands deep conceptual clarity. Our dedicated batches ensure students master the subjective and objective testing patterns.</p>
                     <ul class="space-y-2 text-sm font-bold text-slate-700">
                         <li class="flex items-center gap-2"><span class="text-red-600">✓</span> Conceptual Depth</li>
                         <li class="flex items-center gap-2"><span class="text-red-600">✓</span> Previous Years' Question Analysis</li>
@@ -178,11 +156,122 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </section>
+
+    <div id="jnv-popup-overlay" class="fixed inset-0 z-[100] flex justify-center items-start pt-16 px-4 pb-4 bg-blue-950/90 backdrop-blur-sm transition-opacity duration-500 opacity-100 overflow-y-auto">
+        
+        <div id="jnv-popup-card" class="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto overflow-x-hidden bg-gradient-to-br from-blue-900 to-blue-950 border-2 border-amber-400 rounded-3xl px-2 pt-10 pb-4 md:px-10 md:pt-10 md:pb-2 shadow-[0_0_50px_rgba(245,158,11,0.5)] transition-transform duration-500 scale-100">
+            
+            <button id="close-jnv-btn" class="absolute top-3 right-3 md:top-5 md:right-5 text-white bg-white/10 hover:bg-red-500 p-2 md:p-3 rounded-full transition-colors z-50 shadow-lg cursor-pointer">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center mb-5 md:mb-8 mt-0">
+                <div class="inline-block bg-amber-500 text-blue-950 font-black px-4 py-1.5 rounded-full text-[10px] md:text-sm mb-3 uppercase tracking-widest shadow-lg animate-bounce">🌟 2025-26 Selections 🌟</div>
+                <h2 class="text-[17px] sm:text-2xl md:text-4xl lg:text-5xl font-heading font-black text-white mb-1 md:mb-2 whitespace-nowrap tracking-tight overflow-hidden text-ellipsis">PM SHRI Jawahar Navodaya Vidyalaya</h2>
+                <p class="text-amber-400 font-bold text-[10px] sm:text-xs md:text-xl tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">Outstanding Performance by LKEA Students! (5 Selected)</p>
+            </div>
+
+            <div id="popup-students-container" class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 pb-0"></div>
+        </div>
+    </div>
+    
+
 </Layout>
 
 <style is:global>
     footer {
         display: none !important;
     }
+    
+    /* Scrollbar hidden for premium look */
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
-</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- STUDENT DATA WITH PHOTO PATHS (from public/students/) ---
+        const students = [
+            { name: "Seema Bharti",   roll: "1045231", photo: "/students/seema.png" },
+            { name: "Srishti Kumari", roll: "1045232", photo: "/students/srishti.png" },
+            { name: "Ankita Kumari",  roll: "1220726", photo: "/students/ankita.png" },
+            { name: "Sonali Kumari",  roll: "1220754", photo: "/students/sonali.png" },
+            { name: "Sushant Kumar",  roll: "1045235", photo: "/students/sushant.png" }
+        ];
+
+        // --- HTML GENERATOR (Maximized Photo & Vertical lambai) ---
+        const generateCards = () => {
+            return students.map((s, index) => `
+                <div class="bg-blue-950/50 border border-white/10 rounded-2xl px-2 pt-0.5 pb-3 md:p-5 text-center hover:border-amber-400 hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden shadow-lg flex flex-col justify-start items-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <div class="w-36 h-36 md:w-40 md:h-40 mx-auto bg-slate-200 rounded-full border-4 border-amber-400 mt-0 mb-1.5 overflow-hidden shadow-lg relative z-10 flex items-center justify-center">
+                        <img 
+                          src="${s.photo}" 
+                          alt="Photo of ${s.name}" 
+                          class="w-full h-full object-cover rounded-full"
+                          loading="lazy" 
+                        />
+                    </div>
+                    
+                    <h4 class="text-white font-bold text-[13px] sm:text-sm md:text-lg relative z-10 mb-0 whitespace-nowrap overflow-hidden text-ellipsis">${s.name}</h4>
+                    
+                    <div class="bg-amber-500/20 text-amber-400 text-[10px] sm:text-xs md:text-xs font-bold py-1.5 px-2 mt-0.5 rounded border border-amber-500/30 inline-block relative z-10 w-full whitespace-nowrap">
+                        Roll: ${s.roll}
+                    </div>
+                </div>
+            `).join('');
+        };
+
+
+        // Inject data
+        document.getElementById('popup-students-container').innerHTML = generateCards();
+        document.getElementById('inline-students-container').innerHTML = generateCards();
+
+        // --- SAFE ANIMATION LOGIC ---
+        const popupOverlay = document.getElementById('jnv-popup-overlay');
+        const popupCard = document.getElementById('jnv-popup-card');
+        const inlineBanner = document.getElementById('jnv-inline-banner');
+        const closeBtn = document.getElementById('close-jnv-btn');
+
+        if(popupOverlay && inlineBanner) {
+            
+            // Reusable close function
+            const closePopup = () => {
+                // Phase 1: Fade out Popup
+                popupOverlay.classList.remove('opacity-100');
+                popupOverlay.classList.add('opacity-0');
+                if(popupCard) {
+                    popupCard.classList.remove('scale-100');
+                    popupCard.classList.add('scale-95');
+                }
+
+                // Phase 2: Switch to Inline Banner safely after fade
+                setTimeout(() => {
+                    popupOverlay.style.display = 'none'; // Hide overlay completely
+                    inlineBanner.classList.remove('hidden'); // Enable Inline Banner in DOM
+                    
+                    // Tiny delay to allow CSS to process the "un-hide" before animating
+                    setTimeout(() => {
+                        inlineBanner.classList.remove('opacity-0', 'translate-y-4');
+                        inlineBanner.classList.add('opacity-100', 'translate-y-0');
+                    }, 50);
+
+                }, 500); // 500ms transition time
+            };
+
+            // 1. Close when clicking the 'X' Button
+            if(closeBtn) {
+                closeBtn.addEventListener('click', closePopup);
+            }
+
+            // 2. Close when clicking the blurred background (Overlay)
+            popupOverlay.addEventListener('click', (e) => {
+                // Check if the actual click was on the overlay background, NOT inside the card
+                if(e.target === popupOverlay) {
+                    closePopup();
+                }
+            });
+        }
+    });
+</script>

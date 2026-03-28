@@ -4,8 +4,8 @@ import { Image } from 'astro:assets';
 
 // REPLACE THESE WITH YOUR ACTUAL IMAGE PATHS
 // If you don't have images yet, these placeholders will work, but replace them asap!
-import regularUniformImg from '../../assets/student.png'; // Replace with lkea-regular-uniform.jpg
-import sportsUniformImg from '../../assets/student.png';  // Replace with lkea-sports-uniform.jpg
+import regularUniform from '../../assets/regularUniform.png'; // Replace with lkea-regular-uniform.jpg
+import sportsUniform from '../../assets/sportsUniform.png';  // Replace with lkea-sports-uniform.jpg
 
 // SEO Metadata
 const pageTitle = "School Uniform & Dress Code | Lord Krishna Educational Academy, Saharsa";
@@ -58,18 +58,24 @@ const schedule = [
         
         <div class="group relative bg-slate-50 rounded-[2.5rem] p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden">
           <div class="absolute top-0 left-0 w-full h-2 bg-blue-900"></div>
-          <div class="flex flex-col md:flex-row items-center gap-6">
-            <div class="w-full md:w-1/2 overflow-hidden rounded-2xl">
-              <Image 
-                src={regularUniformImg} 
-                alt="LKEA Regular School Uniform Saharsa - Check Shirt and Navy Pant" 
-                class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500" 
-              />
+          <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6">
+            <div class="w-full md:w-1/2 relative">
+              <div class="overflow-hidden rounded-2xl bg-white shadow-inner flex items-center justify-center">
+                <Image 
+                  id="regular-img"
+                  src={regularUniform} 
+                  alt="LKEA Regular School Uniform Saharsa" 
+                  class="w-full h-72 md:h-96 object-contain p-4 group-hover:scale-105 transition-transform duration-500 cursor-pointer" 
+                />
+              </div>
+              <button id="regular-btn" class="absolute bottom-4 right-4 z-10 bg-blue-950/80 hover:bg-blue-900 text-white p-2 rounded-full backdrop-blur-sm shadow-lg transition-all group/btn" title="Full View">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover/btn:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
+              </button>
             </div>
             <div class="w-full md:w-1/2 text-left">
-              <h3 class="text-2xl font-bold text-blue-950 mb-2">Regular Uniform</h3>
-              <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-4">Monday – Thursday</p>
-              <ul class="space-y-2 text-slate-700 text-sm md:text-base">
+              <h3 class="text-2xl font-bold text-blue-950 mb-1 md:mb-2">Regular Uniform</h3>
+              <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-2 md:mb-4">Monday – Thursday</p>
+              <ul class="space-y-1 md:space-y-2 text-slate-700 text-sm md:text-base">
                 <li class="flex items-center"><span class="text-amber-500 mr-2">✓</span> Check Pattern Shirt</li>
                 <li class="flex items-center"><span class="text-amber-500 mr-2">✓</span> Deep Navy Blue Pant/Skirt</li>
                 <li class="flex items-center"><span class="text-amber-500 mr-2">✓</span> School Tie & Badge</li>
@@ -80,18 +86,24 @@ const schedule = [
 
         <div class="group relative bg-slate-50 rounded-[2.5rem] p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden">
           <div class="absolute top-0 left-0 w-full h-2 bg-amber-500"></div>
-          <div class="flex flex-col md:flex-row items-center gap-6">
-            <div class="w-full md:w-1/2 overflow-hidden rounded-2xl">
-              <Image 
-                src={sportsUniformImg} 
-                alt="LKEA Sports Uniform Saharsa - T-Shirt and Lower" 
-                class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500" 
-              />
+          <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6">
+            <div class="w-full md:w-1/2 relative">
+              <div class="overflow-hidden rounded-2xl bg-white shadow-inner flex items-center justify-center">
+                <Image 
+                  id="sports-img"
+                  src={sportsUniform} 
+                  alt="LKEA Sports Uniform Saharsa" 
+                  class="w-full h-72 md:h-96 object-contain p-4 group-hover:scale-105 transition-transform duration-500 cursor-pointer" 
+                />
+              </div>
+              <button id="sports-btn" class="absolute bottom-4 right-4 z-10 bg-amber-500/90 hover:bg-amber-600 text-blue-950 p-2 rounded-full backdrop-blur-sm shadow-lg transition-all group/btn" title="Full View">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover/btn:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
+              </button>
             </div>
             <div class="w-full md:w-1/2 text-left">
-              <h3 class="text-2xl font-bold text-blue-950 mb-2">Sports Uniform</h3>
-              <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-4">Friday – Saturday</p>
-              <ul class="space-y-2 text-slate-700 text-sm md:text-base">
+              <h3 class="text-2xl font-bold text-blue-950 mb-1 md:mb-2">Sports Uniform</h3>
+              <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-2 md:mb-4">Friday – Saturday</p>
+              <ul class="space-y-1 md:space-y-2 text-slate-700 text-sm md:text-base">
                 <li class="flex items-center"><span class="text-blue-900 mr-2">✓</span> Color T-Shirt</li>
                 <li class="flex items-center"><span class="text-blue-900 mr-2">✓</span> Comfortable Lower</li>
                 <li class="flex items-center"><span class="text-blue-900 mr-2">✓</span> White Sports Shoes</li>
@@ -270,7 +282,12 @@ const schedule = [
       </div>
     </div>
   </section>
-
+<div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-blue-950/70 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <button id="close-lightbox-btn" class="absolute top-6 right-6 md:top-10 md:right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-colors z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Full Screen Uniform" class="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl transform scale-95 transition-transform duration-300">
+</div>
 </Layout>
 
 <style is:global>
@@ -279,3 +296,58 @@ const schedule = [
     display: none !important;
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('close-lightbox-btn');
+      
+      // Function to open Modal
+      const openModal = (imgId) => {
+          const imgSrc = document.getElementById(imgId).src;
+          lightboxImg.src = imgSrc;
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          
+          setTimeout(() => {
+              lightbox.classList.remove('opacity-0');
+              lightbox.classList.add('opacity-100');
+              lightboxImg.classList.remove('scale-95');
+              lightboxImg.classList.add('scale-100');
+          }, 10);
+          
+          document.body.style.overflow = 'hidden'; 
+      };
+
+      // Function to close Modal
+      const closeModal = () => {
+          lightbox.classList.remove('opacity-100');
+          lightbox.classList.add('opacity-0');
+          lightboxImg.classList.remove('scale-100');
+          lightboxImg.classList.add('scale-95');
+          
+          setTimeout(() => {
+              lightbox.classList.add('hidden');
+              lightbox.classList.remove('flex');
+              document.body.style.overflow = 'auto'; 
+          }, 300); 
+      };
+
+      // Click Listeners for Regular Uniform
+      document.getElementById('regular-btn')?.addEventListener('click', () => openModal('regular-img'));
+      document.getElementById('regular-img')?.addEventListener('click', () => openModal('regular-img'));
+
+      // Click Listeners for Sports Uniform
+      document.getElementById('sports-btn')?.addEventListener('click', () => openModal('sports-img'));
+      document.getElementById('sports-img')?.addEventListener('click', () => openModal('sports-img'));
+
+      // Click Listeners for Closing (Button and Background)
+      closeBtn?.addEventListener('click', closeModal);
+      lightbox?.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+              closeModal();
+          }
+      });
+  });
+</script>
