@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">RTE Act - Check Eligibility</span>
                 </h1>
                 <p class="text-slate-300 md:text-lg leading-relaxed max-w-3xl mx-auto font-medium bg-blue-900/40 p-4 md:p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
-                    Under the Right to Education (RTE) Act, 25% seats are reserved for the admission of children in entry-level classes (<strong class="text-white">Nursery to Class 1</strong>), belonging to economically weaker and disadvantaged sections. Eligible students receive <strong class="text-amber-400">100% free education up to Class 8</strong> at Lord Krishna Educational Academy.
+                    Under the Right to Education (RTE) Act, 25% seats are reserved for the admission of children in entry-level classes (<strong class="text-white">Class 1</strong>), belonging to economically weaker and disadvantaged sections. Eligible students receive <strong class="text-amber-400">100% free education up to Class 8</strong> at Lord Krishna Educational Academy.
                 </p>
             </div>
         </section>
@@ -36,10 +36,8 @@ import Layout from '../layouts/Layout.astro';
                     <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-2xl mb-4 border border-amber-200">🎂</div>
                     <h3 class="text-lg font-bold text-blue-950 mb-3">Child Age Criteria</h3>
                     <ul class="space-y-2 text-sm text-slate-600 font-medium">
-                        <li class="flex items-center gap-2"><span class="text-green-500">✔</span> <strong>Nursery:</strong> 3–4 Years</li>
-                        <li class="flex items-center gap-2"><span class="text-green-500">✔</span> <strong>LKG:</strong> 4–5 Years</li>
-                        <li class="flex items-center gap-2"><span class="text-green-500">✔</span> <strong>UKG:</strong> 5-6 Years</li>
-                        <li class="flex items-center gap-2"><span class="text-green-500">✔</span> <strong>Class 1:</strong> 6-7 Years</li>
+                     
+                        <li class="flex items-center gap-2"><span class="text-green-500">✔</span> <strong>Class 1:</strong> 7-8 Years</li>
                     </ul>
                     <p class="text-[10px] text-slate-400 mt-3 italic">*Age calculated as of 1 April 2026</p>
                 </div>
@@ -85,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center group hover:border-amber-500 transition-colors">
                         <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">👦</div>
-                        <p class="font-bold text-blue-950 text-xs md:text-sm">Child Aadhaar</p>
+                        <p class="font-bold text-blue-950 text-xs md:text-sm">Child Aadhaar(optional)</p>
                     </div>
                     <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center group hover:border-amber-500 transition-colors">
                         <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">👨‍👩‍👦</div>
@@ -126,13 +124,10 @@ import Layout from '../layouts/Layout.astro';
                         
                         <div class="space-y-2">
                             <label class="text-white text-sm font-bold ml-1">Admission Class</label>
-                            <select id="child-class" required class="w-full bg-white border border-slate-200 text-blue-950 rounded-xl px-4 py-3 outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all appearance-none">
-                                <option value="" disabled selected>Select Class...</option>
-                                <option value="Nursery">Nursery</option>
-                                <option value="LKG">LKG</option>
-                                <option value="UKG">UKG</option>
-                                <option value="Class 1">Class 1</option>
+                            <select id="child-class" required class="w-full bg-slate-100 border border-slate-200 text-blue-950 rounded-xl px-4 py-3 outline-none transition-all appearance-none pointer-events-none font-bold">
+                                <option value="Class 1" selected>Class 1 (Entry Level)</option>
                             </select>
+                            <p class="text-[10px] text-amber-200/80 ml-1 font-medium">RTE admissions are strictly for Class 1 only.</p>
                         </div>
 
                         <div class="space-y-2">
@@ -178,7 +173,7 @@ import Layout from '../layouts/Layout.astro';
                             <div class="grid md:grid-cols-2 gap-4 text-slate-300">
                                 <label class="flex items-center gap-3 bg-white border border-slate-200 p-4 rounded-xl text-blue-950 group hover:border-amber-500 transition-colors">
                                     <input type="checkbox" id="doc-child-aadhaar" class="h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-500 accent-amber-500">
-                                    Child Aadhaar
+                                    Child Aadhaar(Optional)
                                 </label>
                                 <label class="flex items-center gap-3 bg-white border border-slate-200 p-4 rounded-xl text-blue-950 group hover:border-amber-500 transition-colors">
                                     <input type="checkbox" id="doc-parent-aadhaar" class="h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-500 accent-amber-500">
@@ -187,7 +182,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label class="flex items-center gap-3 bg-white border border-slate-200 p-4 rounded-xl text-blue-950 group hover:border-amber-500 transition-colors">
                                     <input type="checkbox" id="doc-income" class="h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-500 accent-amber-500">
                                     Income Certificate
-                                0</label>
+                                </label>
                                 <label class="flex items-center gap-3 bg-white border border-slate-200 p-4 rounded-xl text-blue-950 group hover:border-amber-500 transition-colors">
                                     <input type="checkbox" id="doc-residence" class="h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-500 accent-amber-500">
                                     Residence Proof
@@ -292,10 +287,9 @@ import Layout from '../layouts/Layout.astro';
 
             let isEligible = true;
 
-            // 1. Check Age Criteria (Simplified)
-            // अगर बच्चे की उम्र 3 साल से कम है या 7 साल से ज्यादा है, सिर्फ तभी उसे रोकें।
-            // 3 से 7 साल के बीच के सभी बच्चे पास हो जाएंगे, चाहे वो कोई भी क्लास चुनें।
-            if (childAge < 3 || childAge > 7) {
+            // 1. Check Age Criteria (Strict for Class 1)
+            // बच्चे की उम्र 1 अप्रैल 2026 को 7 साल से कम नहीं होनी चाहिए और 8 साल से ज्यादा नहीं होनी चाहिए।
+            if (childAge < 7 || childAge > 8) {
                 isEligible = false;
             }
 
@@ -313,7 +307,7 @@ import Layout from '../layouts/Layout.astro';
             if (category === 'General') isEligible = false;
 
             // 5. Document Checkbox Verification
-            const documents = ['child-aadhaar', 'parent-aadhaar', 'income', 'residence', 'birth'];
+            const documents = ['parent-aadhaar', 'income', 'residence', 'birth'];
             // Cateogry check to ensure it handles if Caste certificate is actually needed or not
             if (category === 'SC_ST' || category === 'OBC_NCL' ) documents.push('caste');
 

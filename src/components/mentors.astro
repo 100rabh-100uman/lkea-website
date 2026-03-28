@@ -1,0 +1,148 @@
+---
+// 1. ASTRO IMPORTS
+import { Image } from 'astro:assets';
+
+import abdhesh from '../assets/abdhesh.png';
+import kamleshSir from '../assets/kamleshsir.png';
+import anilsir from '../assets/anilsir.png';
+
+---
+
+<section id="MentorsSection" class="relative bg-blue-950 py-1 md:py-4 overflow-hidden z-20 border-t border-white/5">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        
+        <div class="text-center mb-5 md:mb-5">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-lg border border-amber-500/30 rounded-full px-4 py-1.5 mb-4 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="text-amber-300 font-bold tracking-[0.2em] uppercase text-[9px] md:text-xs">Guiding Lights</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-heading font-black text-white leading-tight drop-shadow-2xl">
+                Our Esteemed <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">Mentors</span>
+            </h2>
+            <p class="text-slate-400 text-sm md:text-base mt-4 max-w-2xl mx-auto font-medium">
+                Guided by experience, driven by vision. Meet the pillars of wisdom shaping the future of LKEA
+            </p>
+        </div>
+
+        <div class="relative group-hover-container">
+    <div id="mentors-scroll" class="flex overflow-x-auto md:flex-wrap md:justify-center gap-6 md:gap-8 px-4 md:px-0 pb-12 pt-4 snap-x snap-mandatory scrollbar-hide w-full scroll-smooth">
+
+            <div class="min-w-[300px] w-[70vw] md:w-[360px] shrink-0 snap-center relative bg-gradient-to-b from-blue-900/40 to-blue-950/80 backdrop-blur-md border border-white/10 rounded-[2rem] px-8 pt-8 pb-5 md:px-10 md:pt-10 md:pb-6 text-center shadow-2xl hover:border-amber-500/40 hover:-translate-y-2 transition-all duration-500 group mt-12">
+                
+                <div class="absolute -top-14 left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-amber-500/50 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full border-4 border-blue-950 bg-slate-200 overflow-hidden relative z-10 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500">
+                        
+                        <Image src={abdhesh} alt="Kamlesh Prasad Yadav" class="w-full h-full object-cover" />
+                        
+                    </div>
+                </div>
+
+                <div class="text-amber-500/10 text-8xl font-serif font-black absolute top-6 left-6 pointer-events-none leading-none">"</div>
+
+                <div class="pt-10 relative z-10">
+                    <p class="text-slate-300 italic text-sm md:text-base leading-relaxed mb-6 font-medium">
+                        "Education is the truest form of justice. It empowers young minds to build a fairer, stronger, and more progressive society."
+                    </p>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-5 opacity-50"></div>
+                    <h3 class="text-lg md:text-xl font-black text-white tracking-wide mb-1">Abdhesh Kumar Singh</h3>
+                    <p class="text-amber-400 text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Advocate, Saharsa District Court</p>
+                </div>
+            </div>
+
+            <div class="min-w-[280px] w-[80vw] min-[400px]:w-[75vw] md:w-[360px] shrink-0 snap-center relative bg-gradient-to-b from-blue-900/40 to-blue-950/80 backdrop-blur-md border border-white/10 rounded-[2rem] px-8 pt-8 pb-5 md:px-10 md:pt-10 md:pb-6 text-center shadow-2xl hover:border-amber-500/40 hover:-translate-y-2 transition-all duration-500 group mt-12">
+                
+                <div class="absolute -top-14 left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-amber-500/50 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full border-4 border-blue-950 bg-slate-200 overflow-hidden relative z-10 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500">
+                        
+                        <Image src={kamleshSir} alt="Abdhesh Kumar Singh" class="w-full h-full object-cover" />
+                        
+                    </div>
+                </div>
+
+                <div class="text-amber-500/10 text-8xl font-serif font-black absolute top-6 left-6 pointer-events-none leading-none">"</div>
+
+                <div class="pt-10 relative z-10">
+                    <p class="text-slate-300 italic text-sm md:text-base leading-relaxed mb-6 font-medium">
+                        "True leadership is nurtured in the classroom. At LKEA, we are shaping not just students, but the visionaries of tomorrow."
+                    </p>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-5 opacity-50"></div>
+                    <h3 class="text-lg md:text-xl font-black text-white tracking-wide mb-1">Kamlesh Prasad Yadav</h3>
+                    <p class="text-amber-400 text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Secretary, B.S. College</p>
+                </div>
+            </div>
+
+            <div class="min-w-[300px] w-[85vw] md:w-[360px] shrink-0 snap-center relative bg-gradient-to-b from-blue-900/40 to-blue-950/80 backdrop-blur-md border border-white/10 rounded-[2rem] px-8 pt-8 pb-5 md:px-10 md:pt-10 md:pb-2 text-center shadow-2xl hover:border-amber-500/40 hover:-translate-y-2 transition-all duration-500 group mt-12">
+                
+                <div class="absolute -top-14 left-1/2 -translate-x-1/2 w-28 h-28 md:w-32 md:h-32">
+                    <div class="absolute inset-0 rounded-full border border-dashed border-amber-500/50 animate-spin-slow"></div>
+                    <div class="w-full h-full rounded-full border-4 border-blue-950 bg-slate-200 overflow-hidden relative z-10 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500">
+                        
+                        <Image src={anilsir} alt="Anil Kumar Yadav" class="w-full h-full object-cover" />
+                        
+                    </div>
+                </div>
+
+                <div class="text-amber-500/10 text-8xl font-serif font-black absolute top-6 left-6 pointer-events-none leading-none">"</div>
+
+                <div class="pt-10 relative z-10">
+                    <p class="text-slate-300 italic text-sm md:text-base leading-relaxed mb-6 font-medium">
+                        "Academic excellence is built on curiosity and discipline. We aim to instill a lifelong passion for learning that prepares students for the highest levels of education."
+                    </p>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-5 opacity-50"></div>
+                    <h3 class="text-lg md:text-xl font-black text-white tracking-wide mb-1">Anil Kumar Yadav</h3>
+                    
+                    <p class="text-amber-400 text-[10px] md:text-[11px] font-bold uppercase tracking-widest">Ex. Prof. ,  Ramesh jha Mahila College</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+<script>
+    const mentorScrollContainer = document.getElementById('mentors-scroll');
+    const mentorScrollBtn = document.getElementById('mentor-scroll-btn');
+    const mentorScrollIcon = document.getElementById('mentor-scroll-icon');
+
+    if (mentorScrollContainer && mentorScrollBtn && mentorScrollIcon) {
+        const mentorScrollAmount = window.innerWidth < 768 ? 250 : 350; 
+
+        mentorScrollBtn.addEventListener('click', () => {
+            const maxScrollLeft = mentorScrollContainer.scrollWidth - mentorScrollContainer.clientWidth;
+            if (mentorScrollContainer.scrollLeft >= maxScrollLeft - 10) {
+                mentorScrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                mentorScrollContainer.scrollBy({ left: mentorScrollAmount, behavior: 'smooth' });
+            }
+        });
+
+        mentorScrollContainer.addEventListener('scroll', () => {
+            const maxScrollLeft = mentorScrollContainer.scrollWidth - mentorScrollContainer.clientWidth;
+            if (mentorScrollContainer.scrollLeft >= maxScrollLeft - 10) {
+                mentorScrollIcon.style.transform = 'rotate(180deg)';
+            } else {
+                mentorScrollIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+</script>
+
+</section>
