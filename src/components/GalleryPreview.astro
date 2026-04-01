@@ -4,8 +4,8 @@ import { Image } from 'astro:assets';
 // -----------------------------------------------------------------
 // STEP 1: JAB PHOTOS AA JAYE TO INHE UNCOMMENT KAREIN
 // -----------------------------------------------------------------
-// import gallery1 from '../assets/gallery1.png'; // Cultural photo (Big Photo)
-// import gallery2 from '../assets/gallery2.png'; // Science Lab
+
+import campusin from '../assets/campusin.png'; // Science Lab
 // import gallery3 from '../assets/gallery3.png'; // Cultural
 // import gallery4 from '../assets/gallery4.png'; // Sports
 ---
@@ -56,13 +56,15 @@ import { Image } from 'astro:assets';
     </div>
 
     <div class="col-span-1 row-span-1 relative group rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer min-h-[150px] bg-blue-900/50 border border-white/5">
-        <div class="w-full h-full flex items-center justify-center">
-            <span class="text-4xl opacity-20 grayscale">⚗️</span>
-        </div>
+    
+        <Image 
+            src={campusin} 
+            alt="LKEA Activity" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-        <div class="absolute bottom-2 left-2 md:bottom-4 md:left-4">
-            <p class="text-white font-bold text-xs md:text-sm drop-shadow-md">Activity</p>
-        </div>
+        
     </div>
 
     <div class="col-span-1 row-span-1 relative group rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer min-h-[150px] bg-blue-900/50 border border-white/5">
@@ -87,7 +89,7 @@ import { Image } from 'astro:assets';
 
     <a href="/gallery" class="hidden md:flex col-span-1 row-span-1 relative group rounded-3xl overflow-hidden cursor-pointer bg-amber-500 flex-col items-center justify-center p-4 text-center hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-500/40">
         <span class="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">📸</span>
-        <p class="text-white font-black text-xl leading-tight">500+ <br>Photos</p>
+        <p class="text-white font-black text-xl leading-tight"> <br>Photos</p>
         <p class="text-white/80 text-xs mt-1 group-hover:text-white transition-colors">Explore Gallery →</p>
     </a>
 
