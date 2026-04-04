@@ -121,7 +121,7 @@ import schoolPhoto from '../assets/schoolphoto.jpeg';
           <div id="hero-slider" class="aspect-[4/3] md:aspect-[1.3/1] lg:aspect-[1.45/1] bg-gradient-to-b from-slate-700 to-slate-800 md:rounded-2xl flex overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth md:p-1.5 w-full">
             
             <div class="min-w-full h-full relative snap-center flex-shrink-0 overflow-hidden md:rounded-xl">
-              <Image src={schoolPhoto} alt="School Campus" class="w-full h-full object-cover transition-all duration-[1000ms] md:rounded-xl border-t border-blue-600/10 md:group-hover:scale-[1.03] group-hover:border-blue-400/70 group-hover:shadow-[inset_0_0_20px_8px_rgba(59,130,246,0.5)]" />
+              <Image src={schoolPhoto} alt="School Campus" loading="eager" fetchpriority="high" class="w-full h-full object-cover transition-all duration-[1000ms] md:rounded-xl border-t border-blue-600/10 md:group-hover:scale-[1.03] group-hover:border-blue-400/70 group-hover:shadow-[inset_0_0_20px_8px_rgba(59,130,246,0.5)]" />
               <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent pointer-events-none"></div>
               
               <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur text-blue-950 px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold border-l-4 border-amber-500 z-10">
