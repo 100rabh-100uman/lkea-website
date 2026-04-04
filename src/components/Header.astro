@@ -24,7 +24,16 @@ const mapLink = "https://maps.app.goo.gl/cEZA3mTEFiQGioS56";
       <a href="/" class="flex items-center gap-2 group max-w-[65%] md:max-w-none">
         <div class="relative w-10 h-10 md:w-20 md:h-20 shrink-0">
             <div class="w-full h-full bg-white rounded-full p-0.5 md:p-1 border-2 border-amber-500 shadow-sm overflow-hidden">
-                <Image src={logoImg} alt="Logo" class="w-full h-full object-contain" />
+                <Image 
+                    src={logoImg} 
+                    alt="Logo" 
+                    class="w-full h-full object-contain" 
+                    widths={[100, 200, 400]} 
+                    sizes="(max-width: 768px) 100px, 200px" 
+                    loading="eager" 
+                    fetchpriority="high"
+                    quality={80}
+                />
             </div>
         </div>
         
