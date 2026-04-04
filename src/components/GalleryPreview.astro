@@ -37,19 +37,25 @@ import campusin from '../assets/campusin.png'; // Science Lab
 
     <div class="grid grid-cols-2 md:grid-cols-4 grid-rows-[auto_auto_auto] md:grid-rows-2 gap-3 md:gap-4 h-auto md:h-[600px]">
     
-    <div class="col-span-2 row-span-2 relative rounded-2xl md:rounded-3xl overflow-hidden min-h-[300px] md:min-h-auto bg-black border border-white/5 shadow-lg group">
+    <div id="video-facade" class="col-span-2 row-span-2 relative rounded-2xl md:rounded-3xl overflow-hidden min-h-[300px] md:min-h-auto bg-black border border-white/5 shadow-lg group cursor-pointer">
         
-        <iframe 
-            class="absolute inset-0 w-full h-full scale-150 origin-centre"
-            src="https://www.youtube-nocookie.com/embed/o6HWUbYJGP8?start=10&rel=0&modestbranding=1" 
-            title="Saraswati Puja"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+        <div class="absolute inset-0 w-full h-full overflow-hidden">
+            <img 
+                src="https://img.youtube.com/vi/o6HWUbYJGP8/maxresdefault.jpg" 
+                alt="Saraswati Puja"
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover scale-[1.1] transition-transform duration-700 group-hover:scale-125 opacity-80"
+            />
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-center z-20 transition-transform duration-300 group-hover:scale-110">
+            <div class="w-16 h-16 bg-red-600/90 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.6)] backdrop-blur-sm">
+                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+        </div>
 
         <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent pointer-events-none z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
-        <div class="absolute bottom-0 left-0 p-4 md:p-8 pointer-events-none z-20 transition-opacity duration-300 group-hover:opacity-0">
+        <div class="absolute bottom-0 left-0 p-4 md:p-8 pointer-events-none z-30 transition-opacity duration-300 group-hover:opacity-0">
             <span class="bg-amber-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Cultural program</span>
             <h3 class="text-lg md:text-2xl font-bold text-white">Saraswati Puja</h3>
         </div>
@@ -106,93 +112,21 @@ import campusin from '../assets/campusin.png'; // Science Lab
 </section>
 
 <script>
-    let player;
-    let isVideoReady = false;
-
-    // 1. Inject YouTube API Script dynamically
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 2. Initialize the Player once API is ready
-    window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player('yt-player', {
-            videoId: 'o6HWUbYJGP8',
-            playerVars: {
-                'start': 10,             // Start at 10 seconds
-                'controls': 0,           // Hide default YT controls
-                'disablekb': 1,          // Disable keyboard controls
-                'fs': 0,                 // Hide fullscreen button
-                'modestbranding': 1,     // Remove YT logo
-                'rel': 0,                // Hide related videos
-                'mute': 0,               // Start UNMUTED as requested
-                'loop': 1,               // Loop the video
-                'playlist': 'o6HWUbYJGP8' // Required to loop a single video
-            },
-            events: {
-                'onReady': onPlayerReady
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        isVideoReady = true;
-        const card = document.getElementById('saraswati-card');
-        const muteBtn = document.getElementById('mute-btn');
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const unmuteIcon = document.getElementById('unmute-icon');
-        const muteIcon = document.getElementById('mute-icon');
-
-        // DESKTOP: Play on hover, Pause on leave
-        card.addEventListener('mouseenter', () => {
-            if (window.innerWidth >= 768 && isVideoReady) player.playVideo();
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            if (window.innerWidth >= 768 && isVideoReady) player.pauseVideo();
-        });
-
-        // MOBILE: Auto-play when visible on screen, Pause when scrolled away
-        const observer = new IntersectionObserver((entries) => {
-            if (window.innerWidth < 768 && isVideoReady) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        player.playVideo();
-                    } else {
-                        player.pauseVideo();
-                    }
-                });
-            }
-        }, { threshold: 0.5 }); // Triggers when at least 50% of the card is visible
-
-        if (card) observer.observe(card);
-
-        // Mute / Unmute Toggle Button
-        muteBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents clicking the card background
-            if (player.isMuted()) {
-                player.unMute();
-                muteIcon.classList.add('hidden');
-                unmuteIcon.classList.remove('hidden');
-            } else {
-                player.mute();
-                unmuteIcon.classList.add('hidden');
-                muteIcon.classList.remove('hidden');
-            }
-        });
-
-        // Fullscreen Toggle Button
-        fullscreenBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const iframe = document.getElementById('yt-player');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.webkitRequestFullscreen) { /* Safari */
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { /* IE11 */
-                iframe.msRequestFullscreen();
-            }
+    const facade = document.getElementById('video-facade');
+    if (facade) {
+        facade.addEventListener('click', function() {
+            this.innerHTML = `
+                <div class="absolute inset-0 w-full h-full overflow-hidden bg-black">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full scale-150 origin-center"
+                        src="https://www.youtube-nocookie.com/embed/o6HWUbYJGP8?start=10&autoplay=1&rel=0&modestbranding=1" 
+                        title="Saraswati Puja"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            `;
         });
     }
 </script>
