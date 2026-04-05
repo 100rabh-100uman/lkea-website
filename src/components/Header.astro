@@ -223,9 +223,11 @@ const mapLink = "https://maps.app.goo.gl/cEZA3mTEFiQGioS56";
   const drawer = document.getElementById('drawer');
   const backdrop = document.getElementById('menu-backdrop');
   const menuSpans = menuBtn?.querySelectorAll('span');
-  const navLinks = document.querySelectorAll('.mobile-link');
   
-  // Try to find WhatsApp button by ID first, then by common attributes
+  // Dono desktop aur mobile ke links select kar rahe hain
+  const navLinks = document.querySelectorAll('.mobile-link, nav a'); 
+  
+  // Find WhatsApp button
   const getWhatsAppBtn = () => {
     return document.getElementById('whatsapp-btn') || 
            document.querySelector('a[href*="wa.me"]') || 
@@ -239,41 +241,44 @@ const mapLink = "https://maps.app.goo.gl/cEZA3mTEFiQGioS56";
       mobileMenu.classList.remove('invisible', 'opacity-0');
       drawer.classList.remove('translate-x-full');
       
-      // Animate Hamburger
-      menuSpans[0].classList.add('rotate-45', 'translate-y-2');
-      menuSpans[1].classList.add('opacity-0');
-      menuSpans[2].classList.add('-rotate-45', '-translate-y-2');
+      if(menuSpans) {
+          menuSpans[0].classList.add('rotate-45', 'translate-y-2');
+          menuSpans[1].classList.add('opacity-0');
+          menuSpans[2].classList.add('-rotate-45', '-translate-y-2');
+      }
 
-      // Hide WhatsApp Button
       const waBtn = getWhatsAppBtn();
-      if(waBtn) waBtn.style.opacity = '0'; // Hide it
-      if(waBtn) waBtn.style.pointerEvents = 'none'; // Disable clicks
+      if(waBtn) {
+          waBtn.style.opacity = '0';
+          waBtn.style.pointerEvents = 'none';
+      }
 
-      // Staggered Links
-      navLinks.forEach((link, index) => {
+      document.querySelectorAll('.mobile-link').forEach((link, index) => {
           setTimeout(() => {
               link.classList.add('slide-in');
-          }, index * 30); // Faster stagger (30ms)
+          }, index * 30);
       });
   };
 
   const closeMenu = () => {
+      if (!isMenuOpen) return;
       isMenuOpen = false;
       drawer.classList.add('translate-x-full');
       mobileMenu.classList.add('opacity-0');
       
-      // Reset Hamburger
-      menuSpans[0].classList.remove('rotate-45', 'translate-y-2');
-      menuSpans[1].classList.remove('opacity-0');
-      menuSpans[2].classList.remove('-rotate-45', '-translate-y-2');
+      if(menuSpans) {
+          menuSpans[0].classList.remove('rotate-45', 'translate-y-2');
+          menuSpans[1].classList.remove('opacity-0');
+          menuSpans[2].classList.remove('-rotate-45', '-translate-y-2');
+      }
 
-      // Show WhatsApp Button Back
       const waBtn = getWhatsAppBtn();
-      if(waBtn) waBtn.style.opacity = '1';
-      if(waBtn) waBtn.style.pointerEvents = 'auto';
+      if(waBtn) {
+          waBtn.style.opacity = '1';
+          waBtn.style.pointerEvents = 'auto';
+      }
 
-      // Reset Links
-      navLinks.forEach(link => link.classList.remove('slide-in'));
+      document.querySelectorAll('.mobile-link').forEach(link => link.classList.remove('slide-in'));
 
       setTimeout(() => {
           mobileMenu.classList.add('invisible');
@@ -287,6 +292,65 @@ const mapLink = "https://maps.app.goo.gl/cEZA3mTEFiQGioS56";
 
   backdrop?.addEventListener('click', closeMenu);
   closeMenuBtn?.addEventListener('click', closeMenu);
+
+  // --- NEW LOGIC 1: Close menu on click & Smooth Scroll without URL hash ---
+  navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+          // 1. Click karte hi mobile menu band kar do
+          closeMenu();
+
+          const href = link.getAttribute('href');
+          if (!href) return;
+
+          // 2. Agar ye ek in-page link hai (#facilities ya /#facilities)
+          if (href.includes('#')) {
+              const targetId = href.split('#')[1];
+              const targetElement = document.getElementById(targetId);
+
+              // Agar section isi page par mojood hai (Home page par)
+              if (targetElement) {
+                  e.preventDefault(); // URL change hone se roko
+                  
+                  // Sticky header ke hisaab se space chhod kar scroll karo
+                  const headerOffset = 120; 
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+              // Agar section dusre page par hai (jaise gallery se home aana),
+              // toh default tarike se load hone do. URL wahan load hone ke baad saaf ho jayega.
+          }
+      });
+  });
+
+  // --- NEW LOGIC 2: Clean URL on page load ---
+  // Agar user /gallery se /#facilities par aaya hai, toh aate hi URL clean kar do
+  window.addEventListener('load', () => {
+      if (window.location.hash) {
+          const targetId = window.location.hash.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+              setTimeout(() => {
+                  const headerOffset = 120;
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+                  
+                  // URL se "#facilities" hata do, bina page reload kiye
+                  window.history.replaceState(null, '', window.location.pathname);
+              }, 100);
+          }
+      }
+  });
 </script>
 
 <style>
