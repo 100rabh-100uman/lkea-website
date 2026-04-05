@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// 1. Auto-fetch all images
+const images = await Astro.glob('/src/assets/gallery/*.{png,jpg,jpeg,webp,PNG,JPG}');
+
+// 2. Sort images alphabetically
+const sortedImages = images.sort((a, b) => a.default.src.localeCompare(b.default.src));
+
+// 3. Helper to format filenames into clean titles
+const formatTitle = (path: string) => {
+    const filename = path.split('/').pop()?.split('.')[0] || 'GALLERY IMAGE';
+    return filename.replace(/[-_]/g, ' ').toUpperCase();
+};
+---
+
+<Layout title="Photo Gallery - Lord Krishna Educational Academy Saharsa" description="Explore school events, campus facilities, and cultural programs at LKEA Saharsa.">
+    <section class="pt-4 pb-16 bg-slate-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="text-center mb-6">
+                <h1 class="text-3xl md:text-4xl font-black text-blue-950 uppercase tracking-tight mb-1">
+                    Photo <span class="text-amber-500">Gallery</span>
+                </h1>
+                <h2 class="text-slate-500 font-bold text-sm md:text-base mb-1">Glimpses of Life at LKEA Saharsa</h2>
+                
+                <p class="text-[10px] md:text-xs text-slate-400 max-w-2xl mx-auto leading-relaxed px-4">
+                    Explore our collection of school events, cultural programs, academic achievements, and campus facilities. Nurturing dreams and celebrating success at the best English medium school in Saharsa.
+                </p>
+            </div>
+
+            <div class="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
+                
+                {sortedImages.map((img) => (
+                    // break-inside-avoid ensure karta hai ki photo aadhey se na kate columns me
+                    // border-2 border-amber-400/80 se sunhera frame banega
+                    <div 
+                        class="gallery-item group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-300 bg-slate-200 cursor-zoom-in break-inside-avoid border-2 border-amber-400/80"
+                        data-src={img.default.src}
+                    >
+                        
+                        <Image 
+                            src={img.default} 
+                            alt={`LKEA Saharsa Event - ${formatTitle(img.default.src)}`} 
+                            widths={[400, 800]}
+                            sizes="(max-width: 768px) 400px, 800px"
+                            format="webp"
+                            quality={75}
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                        />
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                        
+                        <div class="absolute bottom-0 left-0 w-full p-3 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                            <p class="text-white font-black text-[10px] md:text-xs uppercase tracking-widest drop-shadow-md truncate border-l-2 border-amber-500 pl-2">
+                                {formatTitle(img.default.src)}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+            </div>
+
+        </div>
+    </section>
+    <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-blue-950/95 backdrop-blur-md flex-col items-center justify-center p-4 md:p-12 cursor-zoom-out">
+        <button id="close-lightbox" class="absolute top-6 right-6 text-white hover:text-amber-500 transition-colors z-50">
+            <svg class="w-10 h-10 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="relative max-w-5xl w-full h-full flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="Full size gallery image" class="max-w-full max-h-full object-contain rounded-lg shadow-[0_0_30px_rgba(245,158,11,0.3)] border-2 border-amber-400 scale-95 transition-transform duration-300" />
+        </div>
+    </div>
+
+</Layout>
+
+
+<style is:global>
+    footer {
+        display: none !important;
+    }
+</style>
+
+
+<script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const closeBtn = document.getElementById('close-lightbox');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const fullSrc = item.getAttribute('data-src');
+            if (fullSrc && lightbox && lightboxImg) {
+                lightboxImg.src = fullSrc;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden'; // Lock scroll
+                setTimeout(() => lightboxImg.classList.remove('scale-95'), 10);
+            }
+        });
+    });
+
+    const closeLightbox = () => {
+        if (lightbox && lightboxImg) {
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = ''; // Unlock scroll
+            }, 200);
+        }
+    };
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightbox.querySelector('.relative')) {
+            closeLightbox();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
