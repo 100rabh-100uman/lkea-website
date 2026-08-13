@@ -442,12 +442,12 @@ const access_key = "c4b0799c-0bde-498c-ba74-3b047d8162fc";
                      <div class="md:col-span-2 grid grid-cols-2 gap-5">
                          <div>
                              <label class="text-xs font-bold text-slate-500 uppercase">Studied From Year</label>
-                             <input type="text" name="Studied From Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let v = this.value.replace(/[^0-9]/g, ''); let cy = new Date().getFullYear(); if(v.length === 4 && parseInt(v) > cy) v = cy.toString(); this.value = v;">
+                             <input type="text" name="Studied From Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let fromYear = this.value.replace(/[^0-9]/g, ''); let currentYearFrom = new Date().getFullYear(); if(fromYear.length === 4 && parseInt(fromYear) > currentYearFrom) fromYear = currentYearFrom.toString(); this.value = fromYear;">
                          </div>
                          
                          <div>
                              <label class="text-xs font-bold text-slate-500 uppercase">To Year</label>
-                             <input type="text" name="Studied To Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let v = this.value.replace(/[^0-9]/g, ''); let cy = new Date().getFullYear(); if(v.length === 4 && parseInt(v) > cy) v = cy.toString(); this.value = v;">
+                             <input type="text" name="Studied To Year" class="w-full bg-white border border-slate-300 p-3 rounded-lg focus:border-blue-900 font-bold text-blue-950 shadow-sm text-center tracking-widest" placeholder="YYYY" maxlength="4" oninput="let toYear = this.value.replace(/[^0-9]/g, ''); let currentYearTo = new Date().getFullYear(); if(toYear.length === 4 && parseInt(toYear) > currentYearTo) toYear = currentYearTo.toString(); this.value = toYear;">
                          </div>
                      </div>
                      
